@@ -1,0 +1,53 @@
+===================Users======================================================
+
+npx sequelize model:create --name User --attributes login:string,email:string,password:string
+npx sequelize seed:create --name users
+
+===================Profiles======================================================
+
+npx sequelize model:create --name Profile --attributes name:string,lastName:string,age:integer,phoneNumber:integer,img:string,isAdmin:boolean
+npx sequelize seed:create --name profiles
+
+===================Features======================================================
+npx sequelize model:create --name Feature --attributes title:string
+npx sequelize seed:create --name features
+
+===================Ingredients======================================================
+npx sequelize model:create --name Ingredient --attributes title:string,img:string,measure:string
+npx sequelize seed:create --name ingredients
+
+===================Techs======================================================
+npx sequelize model:create --name Tech --attributes title:string,description:string,img:string
+npx sequelize seed:create --name techs
+
+===================Categories======================================================
+npx sequelize model:create --name Category --attributes title:string
+npx sequelize seed:create --name categories
+
+===================Barwares======================================================
+npx sequelize model:create --name Barware --attributes title:string,description:string,img:string
+npx sequelize seed:create --name barwares
+
+===================CouchTables======================================================
+npx sequelize model:create --name CouchTable --attributes user_id:integer,scores:integer,status:string,result:string
+npx sequelize seed:create --name couchTables
+
+===================Cocktails======================================================
+npx sequelize model:create --name Cocktail --attributes title:string,description:string,img:string,user_id:integer
+npx sequelize seed:create --name cocktails
+
+===================UserFavourites======================================================
+npx sequelize model:create --name UserFavourite --attributes user_id:integer,cocktail_id:integer
+npx sequelize seed:create --name userFavourites
+
+===================CocktailFeatures======================================================
+npx sequelize model:create --name CocktailFeature --attributes cocktail_id:integer,feature_id:integer
+npx sequelize seed:create --name cocktailFeatures
+
+===================Drinks======================================================
+npx sequelize model:create --name Drink --attributes title:string,description:string,category_id:integer
+npx sequelize seed:create --name drinks
+
+===================Formulas======================================================
+npx sequelize model:create --name Formula --attributes cocktail_id:integer,barware_id:integer,drink_id:integer,drinks_volume:integer,tech_id:integer,ingredient_id:integer,ingredient_volume:integer,order:integer
+npx sequelize seed:create --name formulas
