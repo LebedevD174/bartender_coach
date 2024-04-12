@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const signUtils = require('../../utils/signUtils');
 const jwtConfig = require('../../config/jwtConfig');
-const {User} = require('../../db/models')
+const { User, Profile } = require('../../db/models');
 const { Op } = require('sequelize');
 
 // router.get('/', async (req, res) => {
@@ -99,7 +99,9 @@ router.post('/registration', async (req, res) => {
       login.replace(' ', '').length !== login.length ||
       invalidCharacters.test(login)
     ) {
-      res.json({ message: 'Login не должен содержать пробелов или специальных символов' });
+      res.json({
+        message: 'Login не должен содержать пробелов или специальных символов',
+      });
       return;
     }
 
@@ -137,6 +139,8 @@ router.post('/registration', async (req, res) => {
         createdAt: new Date(),
         updatedAt: new Date(),
       });
+
+      await Profile.create({ createdAt: new Date(), updatedAt: new Date() });
 
       const user = await newUser.findOne({
         where: { id: newUser.id },
