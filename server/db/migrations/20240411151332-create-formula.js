@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       cocktail_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Cocktails',
@@ -19,6 +20,7 @@ module.exports = {
         onUpdate: 'cascade',
       },
       barware_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'Barwares',
@@ -28,6 +30,7 @@ module.exports = {
         onUpdate: 'cascade',
       },
       drink_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'Drinks',
@@ -37,9 +40,11 @@ module.exports = {
         onUpdate: 'cascade',
       },
       drinks_volume: {
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       tech_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'Teches',
@@ -49,6 +54,7 @@ module.exports = {
         onUpdate: 'cascade',
       },
       ingredient_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'Ingredients',
@@ -58,9 +64,11 @@ module.exports = {
         onUpdate: 'cascade',
       },
       ingredient_volume: {
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       order: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
