@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Ingredient.init({
     title: DataTypes.STRING,
-    img: DataTypes.STRING,
+    img: DataTypes.TEXT,
     measure: DataTypes.STRING
   }, {
     sequelize,

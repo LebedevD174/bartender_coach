@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Barware.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    img: DataTypes.STRING
+    img: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'Barware',
