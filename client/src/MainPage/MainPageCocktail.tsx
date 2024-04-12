@@ -1,6 +1,6 @@
 import React from 'react';
-import CocktailPopular from './cocktailPopular';
-import IngredientsPopular from './IngredientsPopular';
+import CocktailPopular from './components/cocktailPopular';
+import IngredientsPopular from './components/ingredientsPopular';
 
 function MainPageCocktail(): JSX.Element {
   return (

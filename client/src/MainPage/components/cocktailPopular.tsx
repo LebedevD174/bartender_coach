@@ -10,9 +10,9 @@ function CocktailPopular(): JSX.Element {
       <div className="container">
         {firstFourCocktails.map((cocktail) => (
           <div key={cocktail.id} className="card_cocktail">
-              <img src={cocktail.img} alt={cocktail.title} />
-              <h3>{cocktail.title}</h3>
-            </div>
+            <img src={cocktail.img} alt={cocktail.title} />
+            <h3>{cocktail.title}</h3>
+          </div>
         ))}
       </div>
       <p>{'все напитки ->'}</p>
