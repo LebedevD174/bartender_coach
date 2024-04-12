@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const signUtils = require('../../utils/signUtils');
 const jwtConfig = require('../../config/jwtConfig');
-const { User } = require('../../db/models');
+const {User} = require('../../db/models')
 const { Op } = require('sequelize');
 
 // router.get('/', async (req, res) => {
@@ -163,7 +163,7 @@ router.post('/registration', async (req, res) => {
 });
 router.get('/logout', (req, res) => {
   try {
-    res.clearCookie(configJWT.access.type).clearCookie(configJWT.refresh.type);
+    res.clearCookie(jwtConfig.access.type).clearCookie(jwtConfig.refresh.type);
     res.json({ message: 'success' });
   } catch ({ message }) {
     res.json({ message });

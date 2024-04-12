@@ -14,6 +14,7 @@ const {
 router.get('/', async (req, res) => {
   try {
     const cocktail = Cocktail.findAll({
+      where: {status: true},
       include: [
         {
           model: Formula,
@@ -63,6 +64,7 @@ router.post('/', async (req, res) => {
       description,
       img,
       user_id,
+      status: false,
     });
     res.status(200).json({ message: 'success', cocktail });
   } catch ({ message }) {
@@ -88,7 +90,7 @@ router.delete('/:id', async (req, res) => {
       });
       res.status(200).json({ message: 'success' });
     } else {
-      res.json({ message: 'fail to destroy' });
+      res.json({ message: 'failed to destroy' });
     }
   } catch ({ message }) {
     res.status(200).json({ error: message });
