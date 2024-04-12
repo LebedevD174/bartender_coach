@@ -3,23 +3,53 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    const drinksData = [
+      {
+        title: 'Белый ром',
+        description: 'Карибский крепкий алкоголь получают методом вертикальной перегонки спирта, полученного путем брожения патоки или сока из сахарного тростника. Перед купажированием выдерживают не менее 12 месяцев в обожженных дубовых бочках из-под бурбона и фильтруют, чтобы обесцветить напиток.',
+        category_id: 2,
+      },
+      {
+        title: 'Самбука классическая',
+        description: 'Итальянский крепкий алкоголь производят путем ароматизации пшеничного спирта с сахаром маслами обыкновенного и звездчатого аниса, выжимками из ягод, цветов бузины и разных трав, оттеняющих его стойкий аромат.',
+        category_id: 2,
+      },
+      {
+        title: 'Кокосовый ром',
+        description: 'Крепкий алкоголь получают методом мацерации кокосовой мякоти в белом роме в течение недели. Затем полученную жидкость подвергают дистилляции. Полученную жидкость оставляют вызревать в бочках не менее чем три месяца.',
+        category_id: 2,
+      },
+      {
+        title: 'Домашний белый вермут на хмеле',
+        description: 'По рецепту Фабио ла Пиерта на 1000 мл: положи хмель 4 г в белый вермут 1000 мл и настаивай минимум 24 часа. Отфильтруй в отдельную бутыль и храни в холодильнике.',
+        category_id: 3,
+      },
+      {
+        title: 'Яблочный сок',
+        description: 'Для производства сока яблоки пускают под пресс, затем фильтруют и разливают сок по бутылкам.',
+        category_id: 1,
+      },
+      {
+        title: 'Лаймовый сок',
+        description: 'Для производства сока лаймы пускают под пресс, затем фильтруют и разливают сок по бутылкам.',
+        category_id: 1,
+      },
+     
+    ];
+
+    const drinks = drinksData.map((drink) => ({
+      ...drink,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }));
+    await queryInterface.bulkInsert('Drinks', drinks);
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await Drink.destroy({
+      truncate: {
+        cascade: true,
+      },
+    });
   }
 };

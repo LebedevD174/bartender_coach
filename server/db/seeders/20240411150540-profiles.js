@@ -2,24 +2,55 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    const profilesData = [
+      {
+        name: 'Админ',
+        lastName: 'Админов',
+        age: 30,
+        phoneNumber: 1111111111,
+        img: 'https://fikiwiki.com/uploads/posts/2022-02/1644852387_2-fikiwiki-com-p-kartinki-admina-2.jpg',
+        isAdmin: true,
+      },
+      {
+        name: 'Валерий',
+        lastName: 'Супер',
+        age: 23,
+        phoneNumber: 1111111111,
+        img: 'https://klike.net/uploads/posts/2023-01/1674376895_3-19.jpg',
+        isAdmin: false,
+      },
+      {
+        name: 'Мария',
+        lastName: 'Марковка',
+        age: 24,
+        phoneNumber: 1111111111,
+        img: 'https://i.pinimg.com/originals/d1/be/8f/d1be8fe517d190dd3d318bde5e563f8c.jpg',
+        isAdmin: false,
+      },
+      {
+        name: 'Дмитрий',
+        lastName: 'Крут',
+        age: 26,
+        phoneNumber: 1111111111,
+        img: 'https://cdn1.ozone.ru/s3/multimedia-n/c600/6254352551.jpg',
+        isAdmin: false,
+      },
+    ];
+
+    const profiles = profilesData.map((profile) => ({
+      ...profile,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }));
+    await queryInterface.bulkInsert('Profiles', profiles);
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await Profile.destroy({
+      truncate: {
+        cascade: true,
+      },
+    });
+  },
 };

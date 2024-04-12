@@ -2,24 +2,53 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    const barwaresData = [
+      {
+        title: 'Френч-пресс',
+        description: 'Французский аксессуар для заваривания кофе и чая, состоящий из стеклянной колбы и пресса с ситечком.',
+        img: '',
+      },
+      {
+        title: 'Пресс для цитрусовых',
+        description: 'Незаменимый инструмент, помогающий выжимать сок лаймов или лимонов. Несмотря на то что сегодня в большинстве популярных заведений сок цитрусовых выжимают заранее, свежевыжатый сок считается высшим уровнем качества.',
+        img: '',
+      },
+      {
+        title: 'Питчер',
+        description: 'Металлический чайничек. Используют для взбивания сливок и приготовления согревающих коктейлей.',
+        img: '',
+      },
+      {
+        title: 'Блендер',
+        description: 'Придуманный в 1922 году Стефеном Поплавским электрический инструмент незаменим для приготовления тики-коктейлей, смузи и замороженных напитков.',
+        img: '',
+      },
+      {
+        title: 'Перлини шейкер',
+        description: 'Шейкер для газации коктейлей. После поступления газа в напиток, ингредиенты встряхивают, как в классическом шейкере, и получают газированную смесь, которую после некоторого ожидания (иначе выплеснется наружу) переливают в бокал.',
+        img: '',
+      },
+      {
+        title: 'Ножницы для перепелиных яиц',
+        description: 'Специальные ножницы с кольцом для фиксации яйца и лезвием, делающим надрез словно циркулем.',
+        img: '',
+      },
+    ];
+
+    const barwares = barwaresData.map((barware) => ({
+      ...barware,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }));
+    await queryInterface.bulkInsert('Barwares', barwares);
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await Barware.destroy({
+      truncate: {
+        cascade: true,
+      },
+    });
+  },
 };
