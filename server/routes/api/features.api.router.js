@@ -9,6 +9,7 @@ const {
   Ingredient,
   Tech,
   Drink,
+  Category,
 } = require('../../db/models');
 
 /**
