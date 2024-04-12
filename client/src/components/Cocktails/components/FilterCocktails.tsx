@@ -1,7 +1,6 @@
 import React from 'react';
 
 function FilterCocktails(): JSX.Element {
-    cocktailPop
   return (
     <div className="FilterCocktails">
         <p>Фильтр</p>

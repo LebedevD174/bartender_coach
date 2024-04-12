@@ -1,5 +1,6 @@
 import React from 'react';
-import { useAppSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../../app/redux/store';
 
 function CocktailPopular(): JSX.Element {
   const cocktailPop = useAppSelector((store) => store.cocktails.cocktails);
@@ -15,7 +16,7 @@ function CocktailPopular(): JSX.Element {
           </div>
         ))}
       </div>
-      <p>{'все напитки ->'}</p>
+      <Link to="/allCocktails">{'все напитки ->'}</Link>
     </div>
   );
 }

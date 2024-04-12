@@ -15,3 +15,4 @@ export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user:
     return response.data
 }
 
+export const fetchCoctailsLoad = async (): Promise<{ message: string, coctails:  }> => {}
