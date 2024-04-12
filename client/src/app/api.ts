@@ -13,12 +13,17 @@ export const fetchRegistration = async (
   return response.data;
 };
 
-export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user: UserAuth }> => {
-  const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
-    '/api/sign/authorization',
-    user,
-  );
-  return response.data;
-};
+
+export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user: User }> => {
+    const response: AxiosResponse<{ message: string, user: User }> = await axios.post("/api/sign/authorization", user);
+    return response.data
+}
+
+export const fetchLogout = async (): Promise<{ message: string }>=> {
+    const response: AxiosResponse<{ message: string}> = await axios.get("/api/sign/logout");
+    return response.data
+}
+
+
 
 export const fetchCoctailsLoad = async (): Promise<{ message: string; coctails: Cocktail }> => {};

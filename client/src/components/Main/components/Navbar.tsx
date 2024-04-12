@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Logout from '../../Auth/Logout';
 
 
 function Navbar():JSX.Element {
@@ -8,6 +9,7 @@ function Navbar():JSX.Element {
       <div className="navbar">
             <div className="top_ref"><Link to = '/authorization'>SIGN IN</Link></div>
             <div className="top_ref"><Link to = '/registration'>SIGN UP</Link></div>
+            <Logout/>
       </div>
     </div>
   );

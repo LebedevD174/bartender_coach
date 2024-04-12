@@ -14,8 +14,9 @@ const initialState: UserType = {
     error: undefined,
 };
 
-export const userReg = createAsyncThunk('sign/registration',(obj:UserWithoutId) => api.fetchAuth(obj));
-// export const userLog = createAsyncThunk('sign/authorization',(obj:UserAuth) => api.fetchRegistration(obj));
+export const userReg = createAsyncThunk('sign/registration',(obj:UserWithoutId) => api.fetchRegistration(obj));
+export const userLog = createAsyncThunk('sign/authorization',(obj:UserAuth) => api.fetchAuth(obj));
+export const userLogout = createAsyncThunk('sign/logout', () => api.fetchLogout())
 
 const authSlice = createSlice({
     name: 'user',
@@ -24,17 +25,23 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(userReg.fulfilled, (state, action) => {
-                state.user = action.payload;
+                state.user = action.payload.user;
             })
             .addCase(userReg.rejected, (state, action) => {
                 state.error = action.error.message;
             })
-            // .addCase(userLog.fulfilled, (state, action) => {
-            //     state.user = action.payload;
-            // })
-            // .addCase(userLog.rejected, (state, action) => {
-            //     state.error = action.error.message;
-            // })
+            .addCase(userLog.fulfilled, (state, action) => {
+                state.user = action.payload.user;
+            })
+            .addCase(userLog.rejected, (state, action) => {
+                state.error = action.error.message;
+            })
+            .addCase(userLogout.fulfilled, (state, action) => {
+                state.user = undefined;
+            })
+            .addCase(userLogout.rejected, (state, action) => {
+                state.error = action.error.message;
+            })
     },
 });
 
