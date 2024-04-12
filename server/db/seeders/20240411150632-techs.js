@@ -2,24 +2,59 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    const techesData = [
+      {
+        title: 'Шейк',
+        img: 'https://cdn1.ozone.ru/s3/multimedia-9/6002098737.jpg',
+        description:
+          'Методика Shake на практике применяется наиболее часто, если сравнивать с прочими техниками. И тут все понятно — напиток готовится с помощью шейкера.',
+      },
+      {
+        title: 'Виннинг',
+        img: 'https://example.com/vinning.jpg',
+        description:
+          'Методика Виннинг используется для создания напитков с высокой концентрацией алкоголя и смешивания ингредиентов без добавления льда. Это идеально подходит для коктейлей, где требуется максимальное сосредоточение вкусов и ароматов.',
+      },
+      {
+        title: 'Страйлинг',
+        img: 'https://example.com/strailing.jpg',
+        description:
+          'Страйлинг — это процесс смешивания напитков с использованием шейкера, но без добавления льда. Это позволяет создать более плотный и насыщенный вкус, сохраняя при этом ароматы и вкусы ингредиентов.',
+      },
+      {
+        title: 'Флайинг',
+        img: 'https://example.com/flyin.jpg',
+        description:
+          'Флайинг — это техника, при которой напиток готовится с использованием шейкера, но без добавления льда. Это позволяет создать более плотный и насыщенный вкус, сохраняя при этом ароматы и вкусы ингредиентов.',
+      },
+      {
+        title: 'Блендинг',
+        img: 'https://example.com/blending.jpg',
+        description:
+          'Блендинг — это процесс смешивания напитков с использованием шейкера, но без добавления льда. Это позволяет создать более плотный и насыщенный вкус, сохраняя при этом ароматы и вкусы ингредиентов.',
+      },
+      {
+        title: 'Смешивание',
+        img: 'https://example.com/mixing.jpg',
+        description:
+          'Смешивание — это процесс смешивания напитков с использованием шейкера, но без добавления льда. Это позволяет создать более плотный и насыщенный вкус, сохраняя при этом ароматы и вкусы ингредиентов.',
+      },
+    ];
+
+    const teches = techesData.map((tech) => ({
+      ...tech,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }));
+    await queryInterface.bulkInsert('Teches', teches);
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await Tech.destroy({
+      truncate: {
+        cascade: true,
+      },
+    });
+  },
 };

@@ -2,24 +2,41 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    const featuresData = [
+      {
+        title: 'Горький',
+      },
+      {
+        title: 'Кислый',
+      },
+      {
+        title: 'Острый',
+      },
+      {
+        title: 'Ореховый',
+      },
+      {
+        title: 'Цветочный',
+      },
+      {
+        title: 'Ягодный',
+      },
+    ];
+
+    const features = featuresData.map((feature) => ({
+      ...feature,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }));
+    await queryInterface.bulkInsert('Features', features);
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await Feature.destroy({
+      truncate: {
+        cascade: true,
+      },
+    });
+  },
 };
