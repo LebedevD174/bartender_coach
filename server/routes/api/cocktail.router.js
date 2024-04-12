@@ -9,32 +9,37 @@ const {
   Ingredient,
   Tech,
   Drink,
+  Category
 } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const cocktail = Cocktail.findAll({
+    const cocktails = await Cocktail.findAll({
       where: {status: true},
       include: [
         {
           model: Formula,
-          attributes: ['id', 'title'],
+          attributes: ['id', 'cocktail_id', 'barware_id', 'drink_id', 'drinks_volume', 'tech_id', 'ingredient_id', 'ingredient_volume', 'order'],
           include: [
             {
               model: Barware,
-              attributes: ['id', 'title'],
+              attributes: ['id', 'title', 'description', 'img'],
             },
             {
               model: Ingredient,
-              attributes: ['id', 'title'],
+              attributes: ['id', 'title', 'img', 'measure'],
             },
             {
               model: Tech,
-              attributes: ['id', 'title'],
+              attributes: ['id', 'title', 'description', 'img'],
             },
             {
               model: Drink,
               attributes: ['id', 'title', 'description', 'category_id', 'img'],
+              include: [{
+                model: Category,
+                attributes: ['id', 'title'],
+              }]
             },
           ],
         },
@@ -46,9 +51,11 @@ router.get('/', async (req, res) => {
             attributes: ['id', 'title'],
           }],
         },
-
       ],
+      raw: true,
     });
+    console.log(cocktails);
+    res.status(200).json({message: 'success', cocktails});
   } catch ({ message }) {
     res.json({ message });
   }
