@@ -5,16 +5,6 @@ const jwtConfig = require('../../config/jwtConfig');
 const { User, Profile } = require('../../db/models');
 const { Op } = require('sequelize');
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const users = await User.findAll();
-//     const response = { message: 'success', users };
-//     res.json(response);
-//   } catch ({ message }) {
-//     res.json({ message });
-//   }
-// });
-
 router.post('/authorization', async (req, res) => {
   let user;
   try {
@@ -44,6 +34,10 @@ router.post('/authorization', async (req, res) => {
         [Op.or]: [{ email }, { login: email }],
       },
       attributes: ['id', 'email', 'login'],
+      include: [{
+        model: Profile,
+        attributes: ['id', 'name', 'lastName', 'age', 'phoneNumber', 'img', 'isAdmin']
+      }]
     });
 
     if (!user) {
@@ -145,6 +139,10 @@ router.post('/registration', async (req, res) => {
       const user = await newUser.findOne({
         where: { id: newUser.id },
         attributes: ['id', 'email', 'login'],
+        include: [{
+          model: Profile,
+          attributes: ['id', 'name', 'lastName', 'age', 'phoneNumber', 'img', 'isAdmin']
+        }]
       });
       const { accessToken, refreshToken } = signUtils({ user });
 
