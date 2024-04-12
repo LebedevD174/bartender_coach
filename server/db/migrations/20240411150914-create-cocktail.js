@@ -17,6 +17,9 @@ module.exports = {
       img: {
         type: Sequelize.STRING,
       },
+      status: {
+        type: Sequelize.BOOLEAN,
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
