@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tech.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     img: DataTypes.STRING
   }, {
     sequelize,

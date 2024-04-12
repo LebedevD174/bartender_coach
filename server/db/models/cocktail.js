@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Cocktail.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     img: DataTypes.STRING,
     status:DataTypes.BOOLEAN,
     user_id: DataTypes.INTEGER,
