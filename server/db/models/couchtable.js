@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(User, { foreignKey: 'user_id' });
     }
   }
-  }
+  
   CouchTable.init({
     user_id: DataTypes.INTEGER,
     scores: DataTypes.INTEGER,
