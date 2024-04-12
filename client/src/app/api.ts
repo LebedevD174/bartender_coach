@@ -10,8 +10,13 @@ export const fetchRegistration = async (user:UserWithoutId): Promise<{message:st
 }
 
 
-export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user: UserAuth }> => {
+export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user: User }> => {
     const response: AxiosResponse<{ message: string, user: User }> = await axios.post("/api/sign/authorization", user);
+    return response.data
+}
+
+export const fetchLogout = async (): Promise<{ message: string }>=> {
+    const response: AxiosResponse<{ message: string}> = await axios.get("/api/sign/logout");
     return response.data
 }
 
