@@ -26,6 +26,7 @@ function RegistrationPage(): JSX.Element {
     };
         dispatch(userReg(data))
       }
+
   
 
   return (
