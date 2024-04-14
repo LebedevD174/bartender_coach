@@ -23,8 +23,6 @@ const cocktailsSlice = createSlice({
       .addCase(loadCocktails.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadCocktails.pending, (state, action) => {
-      });
   },
 });
 
