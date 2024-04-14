@@ -17,7 +17,6 @@ function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
 
  const dispatch = useAppDispatch();
 
- const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
  const user: User = useAppSelector((store: RootState) => store.auth.user);
 
  const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) : Promise<void> => {
