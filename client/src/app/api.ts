@@ -1,5 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId,  User, UserAuth } from '../components/Auth/types/User';
+import { Profile, ProfileWithoutID, UserProfile } from '../components/Profile/types/Profile';
   
 
 
@@ -15,3 +16,12 @@ export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user:
     return response.data
 }
 
+export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
+    const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
+    if (response.data.message === "success") {
+        return response.data
+    } else {
+        return response.data.message
+    }
+    
+}

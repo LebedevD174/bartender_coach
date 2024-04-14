@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo';
 
-function ProfilePage() {
+function ProfilePage(): JSX.Element {
     return (
         <div>
             <ProfileInfo/>

@@ -6,36 +6,29 @@ import {
     createAsyncThunk,
     createSlice,
 } from '@reduxjs/toolkit';
-import type { UserWithoutId, UserAuth, UserType } from './types/User';
+import type { Profile, ProfileType, ProfileWithoutID } from './types/Profile';
 import * as api from '../../app/api'
 
-const initialState: UserType = {
-    user: undefined,
+const initialState: ProfileType = {
+    profile: undefined,
     error: undefined,
 };
 
-export const userReg = createAsyncThunk('sign/registration',(obj:UserWithoutId) => api.fetchAuth(obj));
-// export const userLog = createAsyncThunk('sign/authorization',(obj:UserAuth) => api.fetchRegistration(obj));
+export const profileUpdate = createAsyncThunk('profile/update',(obj:ProfileWithoutID, id: number)  => api.fetchUpdateProfile(obj, id));
 
-const authSlice = createSlice({
-    name: 'user',
+const profileSlice = createSlice({
+    name: 'profile',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(userReg.fulfilled, (state, action) => {
-                state.user = action.payload;
+            .addCase(profileUpdate.fulfilled, (state, action) => {
+                state.profile = action.payload;
             })
-            .addCase(userReg.rejected, (state, action) => {
+            .addCase(profileUpdate.rejected, (state, action) => {
                 state.error = action.error.message;
             })
-            // .addCase(userLog.fulfilled, (state, action) => {
-            //     state.user = action.payload;
-            // })
-            // .addCase(userLog.rejected, (state, action) => {
-            //     state.error = action.error.message;
-            // })
     },
 });
 
-export default authSlice.reducer;
+export default profileSlice.reducer;
