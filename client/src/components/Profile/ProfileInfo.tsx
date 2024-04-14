@@ -45,9 +45,7 @@ function ProfileInfo(): JSX.Element {
             <div>Возраст не указан</div>}
             {profile && profile.phoneNumber ? <div>{profile.phoneNumber}</div> :
             <div>Номер телефона не указан</div>}
-            {profile && (profile.name || profile.lastName || profile.age || profile.phoneNumber) ?
-            <button type="button" onClick={()=> setShowEditForm(true)}>Заполнить данные</button> : 
-            <button type="button" onClick={()=> setShowEditForm(true)}>Изменить данные</button>}
+            <button type="button" onClick={()=> setShowEditForm(true)}>Изменить данные</button>
               {showEditForm && (
                 <ProfileEditForm onSubmitSuccess={handleFormSubmit}/>
             )}

@@ -24,6 +24,12 @@ export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user
   );
   return response.data;
 };
+export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
+  const response: AxiosResponse<{ message: string; user: User }> = await axios.get(
+    '/api/sign/check',
+  );
+  return response.data;
+};
 
 export const fetchLogout = async (): Promise<{ message: string }> => {
   const response: AxiosResponse<{ message: string }> = await axios.get('/api/sign/logout');
