@@ -67,7 +67,6 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    console.log(cocktails);
     res.status(200).json({ message: 'success', cocktails });
   } catch ({ message }) {
     res.json({ message });
