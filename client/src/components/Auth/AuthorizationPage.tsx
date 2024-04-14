@@ -1,21 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/redux/store';
-// import {userLog} from './authSlice'
+import {userLog} from './authSlice'
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const onHandleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault()
-      // dispatch({ type: 'auth/login', payload: response.data.user });
-      navigate('/');
+    const data = {
+      email,
+      password,
+    };
+    dispatch(userLog(data))
     }
 
   return (

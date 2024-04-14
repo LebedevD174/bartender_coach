@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../app/redux/store';
 import {userReg} from './authSlice'
 
@@ -12,7 +12,6 @@ function RegistrationPage(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checkPassword, setCheckPassword] = useState('');
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onHandleSubmit = async (
@@ -26,7 +25,6 @@ function RegistrationPage(): JSX.Element {
       checkPassword
     };
         dispatch(userReg(data))
-        navigate('/');
       }
   
 
