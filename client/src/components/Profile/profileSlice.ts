@@ -14,6 +14,7 @@ const initialState: ProfileType = {
     error: undefined,
 };
 
+export const profileLoad = createAsyncThunk('profile/load',(id: number)  => api.fetchLoadProfile(id));
 export const profileUpdate = createAsyncThunk('profile/update',(obj:ProfileWithoutID, id: number)  => api.fetchUpdateProfile(obj, id));
 
 const profileSlice = createSlice({

@@ -18,10 +18,19 @@ export const fetchRegistration = async (
 
 
 export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user: User }> => {
-    const response: AxiosResponse<{ message: string, user: User }> = await axios.post("/api/sign/authorization", user);
+    const response: AxiosResponse<{ message: string, user: UserProfile }> = await axios.post("/api/sign/authorization", user);
     return response.data
 }
 
+
+export const fetchLoadProfile = async (id: number): Promise<{ message: string, profile: Profile }> => {
+    const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.get(`/api/profile/${id}`, profile);
+    if (response.data.message === "success") {
+        return response.data
+    } else {
+        return response.data.message
+    }
+}
 
 export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
@@ -30,7 +39,6 @@ export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): 
     } else {
         return response.data.message
     }
-    
 }
 
 export const fetchLogout = async (): Promise<{ message: string }>=> {

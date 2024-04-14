@@ -34,10 +34,6 @@ router.post('/authorization', async (req, res) => {
         [Op.or]: [{ email }, { login: email }],
       },
       attributes: ['id', 'email', 'login'],
-      include: [{
-        model: Profile,
-        attributes: ['id', 'name', 'lastName', 'age', 'phoneNumber', 'img', 'isAdmin']
-      }]
     });
 
     if (!user) {
@@ -65,7 +61,6 @@ router.post('/authorization', async (req, res) => {
           maxAge: jwtConfig.access.expiresIn,
           httpOnly: true,
         });
-
       res.json({ message: 'success', user });
     }
   } catch ({ message }) {
@@ -139,10 +134,6 @@ router.post('/registration', async (req, res) => {
       const user = await newUser.findOne({
         where: { id: newUser.id },
         attributes: ['id', 'email', 'login'],
-        include: [{
-          model: Profile,
-          attributes: ['id', 'name', 'lastName', 'age', 'phoneNumber', 'img', 'isAdmin']
-        }]
       });
       const { accessToken, refreshToken } = signUtils({ user });
 
