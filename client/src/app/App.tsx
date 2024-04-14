@@ -8,6 +8,7 @@ import ProfilePage from '../components/Profile/ProfilePage';
 import CocktailsList from '../components/Cocktails/CocktailsList';
 import CoachPage from '../components/Coach/CoachPage';
 import DrinksList from '../components/Drinks/DrinksList';
+import DrinkPage from '../components/Drinks/DrinkPage';
 
 function App(): JSX.Element {
   return (
@@ -15,8 +16,9 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="/" element={<MainPageCocktail />} />
-          <Route path="/allCocktails" element={<CocktailsList />} />
-          <Route path="//allDrinks" element={<DrinksList />} />
+          <Route path="/cocktails" element={<CocktailsList />} />
+          <Route path="/drinks" element={<DrinksList />} />
+          <Route path="/drinks/drinkId" element={<DrinkPage />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="authorization" element={<AuthorizationPage />} />
           <Route path="profile" element={<ProfilePage />} />

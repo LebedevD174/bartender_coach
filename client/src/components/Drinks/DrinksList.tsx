@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import FilterDrinks from './components/FilterDrinks';
 import type { Drink } from './types/drink';
@@ -6,6 +7,7 @@ import { loadDrinks } from './drinksSlice';
 
 function DrinksList(): JSX.Element {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState({ category: 0 });
   const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
   const [drinks, setDrinks] = useState(drinksArr);
@@ -22,14 +24,17 @@ function DrinksList(): JSX.Element {
       setDrinks(drinksArr);
     }
   }, [drinksArr, filter]);
+
   return (
     <div className="DrinksList">
       <FilterDrinks setFilter={setFilter} />
       {drinks.map((drink) => (
-        <div key={drink.id} className="card_cocktail">
-          <img src={drink.img} alt={drink.title} />
-          <p>{drink.title}</p>
-        </div>
+        <Link to={`/drinks/${drink.id}`}>
+          <div key={drink.id} className="card_drink">
+            <img src={drink.img} alt={drink.title} />
+            <p>{drink.title}</p>
+          </div>
+        </Link>
       ))}
     </div>
   );
