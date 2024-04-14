@@ -23,7 +23,7 @@ function AuthorizationPage(): JSX.Element {
   return (
     <div className='container-auth auth'>
       <div>
-        <h2>Введите данные учтеной записи:</h2>
+        <h2>Введите данные ученой записи:</h2>
         <form className="sign-in" onSubmit={onHandleSubmit}>
           <input
             type='email'
