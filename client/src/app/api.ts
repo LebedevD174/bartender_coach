@@ -10,6 +10,7 @@ export const fetchRegistration = async (
     '/api/sign/registration',
     user,
   );
+  console.log(response.data);
   return response.data;
 };
 

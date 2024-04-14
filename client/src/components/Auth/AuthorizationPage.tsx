@@ -26,7 +26,7 @@ function AuthorizationPage(): JSX.Element {
         <h2>Введите данные учтеной записи:</h2>
         <form className="sign-in" onSubmit={onHandleSubmit}>
           <input
-            type='email'
+            type='text'
             name='email'
             placeholder='email'
             value={email}

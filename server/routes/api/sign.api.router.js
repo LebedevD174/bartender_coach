@@ -43,7 +43,7 @@ router.post('/authorization', async (req, res) => {
       where: {
         [Op.or]: [{ email }, { login: email }],
       },
-      attributes: ['id', 'email', 'login'],
+      attributes: ['id', 'email', 'login', 'password'],
     });
 
     if (!user) {
@@ -71,7 +71,6 @@ router.post('/authorization', async (req, res) => {
           maxAge: jwtConfig.access.expiresIn,
           httpOnly: true,
         });
-
       res.json({ message: 'success', user });
     }
   } catch ({ message }) {
@@ -81,7 +80,8 @@ router.post('/authorization', async (req, res) => {
 
 router.post('/registration', async (req, res) => {
   try {
-    const { email, password, r_password, login } = req.body;
+    const { email, password, checkPassword, login } = req.body;
+    console.log(req.body);
 
     if (email.trim() === '' || password.trim() === '') {
       res.json({ message: 'Заполните поля корректно' });
@@ -97,7 +97,7 @@ router.post('/registration', async (req, res) => {
     if (
       login.trim().length !== login.length ||
       login.replace(' ', '').length !== login.length ||
-      invalidCharacters.test(login)
+      !invalidCharacters.test(login)
     ) {
       res.json({
         message: 'Login не должен содержать пробелов или специальных символов',
@@ -108,8 +108,8 @@ router.post('/registration', async (req, res) => {
     if (
       password.trim().length !== password.length ||
       password.replace(' ', '').length !== password.length ||
-      r_password.trim().length !== r_password.length ||
-      r_password.replace(' ', '').length !== r_password.length
+      checkPassword.trim().length !== checkPassword.length ||
+      checkPassword.replace(' ', '').length !== checkPassword.length
     ) {
       res.json({
         message: 'Пароль или повтор пароля не должен содержать пробелов',
@@ -129,7 +129,7 @@ router.post('/registration', async (req, res) => {
       return;
     }
 
-    if (password !== r_password) {
+    if (password !== checkPassword) {
       res.json({ message: 'Пароли не совпадают!' });
     } else {
       const newUser = await User.create({
@@ -142,9 +142,9 @@ router.post('/registration', async (req, res) => {
 
       await Profile.create({ createdAt: new Date(), updatedAt: new Date() });
 
-      const user = await newUser.findOne({
+      const user = await User.findOne({
         where: { id: newUser.id },
-        attributes: ['id', 'email', 'login'],
+        attributes: ['id', 'email', 'login', 'password'],
       });
       const { accessToken, refreshToken } = signUtils({ user });
 
@@ -158,7 +158,6 @@ router.post('/registration', async (req, res) => {
           maxAge: jwtConfig.access.expiresIn,
           httpOnly: true,
         });
-
       res.json({ message: 'success', user: user });
     }
   } catch ({ message }) {
