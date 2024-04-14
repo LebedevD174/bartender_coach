@@ -28,6 +28,7 @@ const profileSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(profileUpdate.fulfilled, (state, action) => {
+                console.log(action.payload);
                 state.profile = action.payload;
             })
             .addCase(profileUpdate.rejected, (state, action) => {
