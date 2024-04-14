@@ -5,15 +5,9 @@ import type { Cocktail, CocktailFormula } from './types/cocktail';
 import { loadCocktails } from './cocktailsSlice';
 
 function CocktailsList(): JSX.Element {
-  const dispatch = useAppDispatch();
   const [filter, setFilter] = useState({ category: 0, feature: 0 });
   const cocktailsArr: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
   const [cocktails, setCocktails] = useState(cocktailsArr);
-
-  useEffect(() => {
-    dispatch(loadCocktails()).catch(console.log);
-  }, [dispatch]);
-
 
   useEffect(() => {
     setCocktails(cocktailsArr);

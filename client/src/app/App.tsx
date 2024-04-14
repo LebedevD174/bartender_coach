@@ -8,6 +8,7 @@ import ProfilePage from '../components/Profile/ProfilePage';
 import CocktailsList from '../components/Cocktails/CocktailsList';
 
 function App(): JSX.Element {
+  
   return (
     <BrowserRouter>
       <Routes>
