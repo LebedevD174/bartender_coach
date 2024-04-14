@@ -6,6 +6,7 @@ import Main from '../components/Main/components/Main';
 import MainPageCocktail from '../components/Main/components/MainPage';
 import ProfilePage from '../components/Profile/ProfilePage';
 import CocktailsList from '../components/Cocktails/CocktailsList';
+import CoachPage from '../components/Coach/CoachPage';
 
 function App(): JSX.Element {
   
@@ -18,6 +19,7 @@ function App(): JSX.Element {
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="authorization" element={<AuthorizationPage />} />
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="coach" element={<CoachPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

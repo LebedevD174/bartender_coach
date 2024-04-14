@@ -16,6 +16,7 @@ const initialState: UserType = {
 
 export const userReg = createAsyncThunk('sign/registration',(obj:UserWithoutId) => api.fetchRegistration(obj));
 export const userLog = createAsyncThunk('sign/authorization',(obj:UserAuth) => api.fetchAuth(obj));
+export const userCheck = createAsyncThunk('sign/check',() => api.fetchCheck());
 export const userLogout = createAsyncThunk('sign/logout', () => api.fetchLogout())
 
 const authSlice = createSlice({
@@ -34,6 +35,12 @@ const authSlice = createSlice({
                 state.user = action.payload.user;
             })
             .addCase(userLog.rejected, (state, action) => {
+                state.error = action.error.message;
+            })
+            .addCase(userCheck.fulfilled, (state, action) => {
+                state.user = action.payload.user;
+            })
+            .addCase(userCheck.rejected, (state, action) => {
                 state.error = action.error.message;
             })
             .addCase(userLogout.fulfilled, (state, action) => {
