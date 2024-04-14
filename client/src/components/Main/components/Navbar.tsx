@@ -19,6 +19,8 @@ function Navbar():JSX.Element {
       <div className="navbar">
         {profile?.name ? profile?.name : (isUserRegistered ? `${user?.email || user?.login}` : 'Guest')}
         <div className="top_ref">
+        <Link to="/">MAIN</Link>
+        <Link to="/coach">COACH</Link>
           {isUserRegistered ? (
             <>
               <Link to="/profile">PROFILE</Link>
