@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import { loadFeatures } from '../features/featuresSlice';
 import type { Feature } from '../features/types/features';
 
-function FilterCocktails({setFilter}): JSX.Element {
+function FilterCocktails({setFilter, filter}): JSX.Element {
   const dispatch = useAppDispatch();
   const features: Feature[] = useAppSelector((store) => store.features.features);
 
@@ -15,7 +15,7 @@ function FilterCocktails({setFilter}): JSX.Element {
 
   const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter(id);
+    setFilter({...filter, feature: id});
   };
 
   
