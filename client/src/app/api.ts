@@ -41,6 +41,7 @@ export const fetchLoadProfile = async (id: number): Promise<{ message: string, p
 
 export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
+    console.log(response.data);
     if (response.data.message === "success") {
         return response.data
     } else {

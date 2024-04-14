@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import type { User } from '../Auth/types/User';
 import type { Profile} from './types/Profile';
+import { profileUpdate } from './profileSlice';
 
 
 function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
@@ -15,11 +17,23 @@ function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
 
  const dispatch = useAppDispatch();
 
- const user: User = useAppSelector((store: RootState) => store.auth.user);
  const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
+ const user: User = useAppSelector((store: RootState) => store.auth.user);
 
- const handleSubmit = (e: React.FormEvent<HTMLFormElement>) :void => {
+ const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) : Promise<void> => {
     e.preventDefault();
+    const data = {
+        profileData: {
+           img,
+           name,
+           lastName,
+           age,
+           phoneNumber,
+        },
+        profileId: user.id,
+       };
+      dispatch(profileUpdate(data))
+
     onSubmitSuccess()
     setName('');
     setImg('');
@@ -27,6 +41,7 @@ function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
     setAge('');
     setPhoneNumber('');
  };
+
 
  return (
     <form onSubmit={handleSubmit}>
