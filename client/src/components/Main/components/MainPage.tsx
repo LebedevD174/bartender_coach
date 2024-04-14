@@ -1,12 +1,12 @@
 import React from 'react';
-import CocktailPopular from './components/cocktailPopular';
-import IngredientsPopular from './components/ingredientsPopular';
+import CocktailPopular from '../../Cocktails/components/cocktailPopular';
+import IngredientsPopular from '../../Ingredients/ingredientsPopular';
 
 function MainPageCocktail(): JSX.Element {
   return (
     <div className="MainPage">
       <CocktailPopular />
-      <IngredientsPopular />
+      {/* <IngredientsPopular /> */}
     </div>
   );
 }

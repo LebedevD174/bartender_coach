@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 
 // Компонент главной страницы
 function Main(): JSX.Element {

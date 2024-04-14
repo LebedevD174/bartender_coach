@@ -9,7 +9,7 @@ const {
   Ingredient,
   Tech,
   Drink,
-  Category
+  Category,
 } = require('../../db/models');
 
 router.get('/', async (req, res) => {
@@ -52,20 +52,18 @@ router.get('/', async (req, res) => {
           }],
         },
       ],
-      raw: true,
+
     });
-    console.log(cocktails);
     res.status(200).json({message: 'success', cocktails});
   } catch ({ message }) {
     res.json({ message });
   }
 });
 
+
 router.post('/', async (req, res) => {
   try {
-    const {
-      title, description, img, user_id,
-    } = req.body;
+    const { title, description, img, user_id } = req.body;
     const cocktail = await Cocktail.create({
       title,
       description,
@@ -85,10 +83,7 @@ router.delete('/:id', async (req, res) => {
     const { userId } = req.body;
     const cocktail = Cocktail.findOne({
       where: {
-        [Op.and]: [
-          { id },
-          { user_id: userId },
-        ],
+        [Op.and]: [{ id }, { user_id: userId }],
       },
     });
     if (cocktail) {

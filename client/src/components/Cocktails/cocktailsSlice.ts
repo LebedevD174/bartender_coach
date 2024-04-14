@@ -7,7 +7,7 @@ const initialState: CocktailType = {
   error: undefined,
 };
 
-export const loadCocktails = createAsyncThunk('cocktails/loadTasks', () =>
+export const loadCocktails = createAsyncThunk('cocktails/loadCocktails', () =>
   api.fetchCocktailsLoad(),
 );
 

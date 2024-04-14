@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../app/redux/store';
+import { useAppSelector } from '../../app/redux/store';
 
 function IngredientsPopular(): JSX.Element {
   const ingredientsPop = useAppSelector((store) => store.ingredients.ingredients);
