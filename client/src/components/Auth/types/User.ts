@@ -1,5 +1,3 @@
-import { UserProfile } from "../../Profile/types/Profile";
-
 export type User = {
     id: number,
     login: string,
@@ -14,7 +12,7 @@ export type UserAuth = {
 }
 
 export type UserType = {
-    user: UserProfile|undefined,
+    user: User|undefined,
     error:string|undefined
 }
 
