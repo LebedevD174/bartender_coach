@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { User } from '../Auth/types/User';
-import { Profile, UserProfile } from './types/Profile';
-import { RootState, useAppDispatch, useAppSelector } from '../../app/redux/store';
+import type { User } from '../Auth/types/User';
+import type { Profile} from './types/Profile';
+import { UserProfile } from './types/Profile';
+import type { RootState} from '../../app/redux/store';
+import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import { profileLoad } from './profileSlice';
 
 function ProfileInfo(): JSX.Element {
@@ -23,8 +25,6 @@ function ProfileInfo(): JSX.Element {
     return (
         <div>
             <h1>Личные данные</h1>
-            {user.email && user.login && <><div>Email: {user.email}</div><div>Login: {user.login}</div></>}
-            {user.email && <div>Email: {user.email}</div>}
             {user.login && <div>Login: {user.login}</div>}
             {profile.img ? <div><img src={profile.img} alt="" /></div> :
             <div><img src='https://avatars.mds.yandex.net/i?id=73b4bfb589b8a8fe988fb3300fea843566ed6de5-12569748-images-thumbs&n=13' alt="" /></div>}

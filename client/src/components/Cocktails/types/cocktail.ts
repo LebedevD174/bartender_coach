@@ -13,3 +13,7 @@ export type CocktailType = {
   cocktails: Cocktail[];
   error: string | undefined;
 };
+
+export type CocktailInclude = Cocktail & {
+  
+}

@@ -47,7 +47,7 @@ export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): 
     } else {
         return response.data.message
     }
-}
+ 
 
 
 
