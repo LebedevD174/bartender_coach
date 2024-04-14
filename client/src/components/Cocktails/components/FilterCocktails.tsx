@@ -3,7 +3,12 @@ import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import { loadFeatures } from '../features/featuresSlice';
 import type { Feature } from '../features/types/features';
 
-function FilterCocktails({ setFilter, filter }): JSX.Element {
+type FilterCocktailsProps = {
+  setFilter: (filter: { feature: string; category: string }) => void;
+  filter: { feature: string; category: string };
+};
+
+function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Element {
   const dispatch = useAppDispatch();
   const features: Feature[] = useAppSelector((store) => store.features.features);
 

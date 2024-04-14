@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FilterCocktails from './components/FilterCocktails';
-import { useAppDispatch, useAppSelector } from '../../app/redux/store';
-import type { Cocktail, CocktailFormula } from './types/cocktail';
-import { loadCocktails } from './cocktailsSlice';
+import { useAppSelector } from '../../app/redux/store';
+import type { Cocktail } from './types/cocktail';
 
 function CocktailsList(): JSX.Element {
   const [filter, setFilter] = useState({ category: 0, feature: 0 });
@@ -13,7 +12,7 @@ function CocktailsList(): JSX.Element {
     setCocktails(cocktailsArr);
     if (+filter.category > 0 || +filter.feature > 0) {
       const res = cocktailsArr.filter(
-        (cocktail) =>
+        (cocktail: Cocktail) =>
           (+filter.category === 0 || cocktail.category_id === +filter.category) &&
           (+filter.feature === 0 ||
             cocktail.CocktailFeatures.some((el) => el.feature_id === +filter.feature)),
