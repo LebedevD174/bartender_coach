@@ -12,6 +12,11 @@ function ProfileInfo(): JSX.Element {
     const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
     const dispatch = useAppDispatch();
     const [modal, setModal] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
+
+    const handleFormSubmit = ():void => {
+        setShowEditForm(false);
+    };
 
     const showModal = (): void => {
         setModal(true);
@@ -42,9 +47,9 @@ function ProfileInfo(): JSX.Element {
             <div>Номер телефона не указан</div>}
             {profile && (profile.name || profile.lastName || profile.age || profile.phoneNumber) ?
             <button type="button" onClick={showModal}>Заполнить данные</button> : 
-            <button type="button" onClick={showModal}>Изменить данные</button>}
+            <button type="button" onClick={()=> setShowEditForm(true)}>Изменить данные</button>}
               {showEditForm && (
-                <ProfileEditForm/>
+                <ProfileEditForm onSubmitSuccess={handleFormSubmit}/>
             )}
            </div>
         );

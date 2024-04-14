@@ -126,6 +126,7 @@ router.post('/registration', async (req, res) => {
         email,
         password: await bcrypt.hash(password, 10),
         login,
+        isAdmin:false,
         createdAt: new Date(),
         updatedAt: new Date(),
       });
