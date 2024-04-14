@@ -4,6 +4,7 @@ import type { Profile, ProfileWithoutID} from '../components/Profile/types/Profi
 import { UserProfile } from '../components/Profile/types/Profile';
 import type { Cocktail } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
+import type { Feature } from '../components/Cocktails/features/types/features';
 
 // eslint-disable-next-line import/prefer-default-export
 export const fetchRegistration = async (
@@ -24,12 +25,10 @@ export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user
   return response.data;
 };
 
-
 export const fetchLogout = async (): Promise<{ message: string }> => {
   const response: AxiosResponse<{ message: string }> = await axios.get('/api/sign/logout');
   return response.data;
 };
-
 
 export const fetchLoadProfile = async (id: number): Promise<{ message: string, profile: Profile }> => {
     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.get(`/api/profile/${id}`, profile);
@@ -50,14 +49,11 @@ export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): 
     
 }
 
-
-
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
   const response: AxiosResponse<{ message: string; cocktails: Cocktail[] }> =
     await axios.get('/api/cocktails/');
   return response.data;
 };
-
 
 export const fetchDrinksLoad = async (): Promise<{ message: string; drinks: Drink[] }> => {
   const response: AxiosResponse<{ message: string; drinks: Drink[] }> =
@@ -65,4 +61,8 @@ export const fetchDrinksLoad = async (): Promise<{ message: string; drinks: Drin
   return response.data;
 };
 
-
+export const fetchFeaturesLoad = async (): Promise<{ message: string; features: Feature[] }> => {
+  const response: AxiosResponse<{ message: string; features: Feature[] }> =
+    await axios.get('/api/features/');
+  return response.data;
+};

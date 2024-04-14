@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import type { User } from '../Auth/types/User';
-import type { Profile} from './types/Profile';
 import { profileUpdate } from './profileSlice';
 
 
