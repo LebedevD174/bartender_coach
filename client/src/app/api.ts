@@ -30,11 +30,6 @@ export const fetchLogout = async (): Promise<{ message: string }> => {
   return response.data;
 };
 
-export const fetchAuth = async (user:UserAuth): Promise<{ message: string, user: User }> => {
-    const response: AxiosResponse<{ message: string, user: UserProfile }> = await axios.post("/api/sign/authorization", user);
-    return response.data
-}
-
 
 export const fetchLoadProfile = async (id: number): Promise<{ message: string, profile: Profile }> => {
     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.get(`/api/profile/${id}`, profile);
@@ -52,11 +47,6 @@ export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): 
     } else {
         return response.data.message
     }
-}
-
-export const fetchLogout = async (): Promise<{ message: string }>=> {
-    const response: AxiosResponse<{ message: string}> = await axios.get("/api/sign/logout");
-    return response.data
 }
 
 
