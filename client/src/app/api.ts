@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
-import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
-import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
+import type { UserWithoutId,  User, UserAuth } from '../components/Auth/types/User';
+import type { Profile, ProfileWithoutID} from '../components/Profile/types/Profile';
 import { UserProfile } from '../components/Profile/types/Profile';
 import type { Cocktail } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
@@ -32,21 +32,21 @@ export const fetchLogout = async (): Promise<{ message: string }> => {
 
 export const fetchLoadProfile = async (id: number): Promise<{ message: string, profile: Profile }> => {
     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.get(`/api/profile/${id}`, profile);
+    
     if (response.data.message === "success") {
         return response.data
-    } else {
+    } 
         return response.data.message
-    }
+    
 }
 
 export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
-    console.log(response.data);
     if (response.data.message === "success") {
-        return response.data
-    } else {
+        return response.data.profile
+    } 
         return response.data.message
-    }
+    
 }
 
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
