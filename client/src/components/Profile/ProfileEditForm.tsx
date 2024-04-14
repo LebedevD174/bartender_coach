@@ -6,7 +6,7 @@ import type { User } from '../Auth/types/User';
 import type { Profile} from './types/Profile';
 
 
-function ProfileEditForm():JSX.Element {
+function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
  const [name, setName] = useState('');
  const [lastName, setLastName] = useState('');
  const [img, setImg] = useState('');
@@ -20,6 +20,7 @@ function ProfileEditForm():JSX.Element {
 
  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) :void => {
     e.preventDefault();
+    onSubmitSuccess()
     setName('');
     setImg('');
     setLastName('');
