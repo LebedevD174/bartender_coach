@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../app/redux/store';
+import type { Cocktail } from '../types/cocktail';
 
 function CocktailPopular(): JSX.Element {
-  const cocktailPop = useAppSelector((store) => store.cocktails.cocktails);
+  const cocktailPop: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
   const firstFourCocktails = cocktailPop.slice(0, 4);
   return (
     <div className="popular_cocktail">

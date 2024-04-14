@@ -26,4 +26,7 @@ export const fetchLogout = async (): Promise<{ message: string }>=> {
 
 
 
-export const fetchCoctailsLoad = async (): Promise<{ message: string; coctails: Cocktail }> => {};
+export const fetchCocktailsLoad = async (): Promise<{ message: string, cocktails: Cocktail[] }> => {
+  const response: AxiosResponse<{ message: string, cocktails: Cocktail[] }> = await axios.get("/api/cocktails/");
+    return response.data
+};
