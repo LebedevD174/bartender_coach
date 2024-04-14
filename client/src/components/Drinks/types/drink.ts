@@ -9,6 +9,6 @@ export type Drink = {
 export type DrinkID = Drink['id'];
 
 export type DrinkType = {
-  drink: Drink[];
+  drinks: Drink[];
   error: string | undefined;
 };

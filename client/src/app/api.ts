@@ -1,7 +1,7 @@
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Cocktail } from '../components/Cocktails/types/cocktail';
-import type { Drink } from '../components/Ingredients/types/drink';
+import type { Drink } from '../components/Drinks/types/drink';
 
 // eslint-disable-next-line import/prefer-default-export
 export const fetchRegistration = async (
@@ -30,15 +30,11 @@ export const fetchLogout = async (): Promise<{ message: string }> => {
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
   const response: AxiosResponse<{ message: string; cocktails: Cocktail[] }> =
     await axios.get('/api/cocktails/');
-    console.log(response.data);
-    
   return response.data;
 };
 
-export const fetchIngredientsLoad = async (): Promise<{ message: string; ingredients: Drink[] }> => {
-  const response: AxiosResponse<{ message: string; ingredients: Drink[] }> =
+export const fetchDrinksLoad = async (): Promise<{ message: string; drinks: Drink[] }> => {
+  const response: AxiosResponse<{ message: string; drinks: Drink[] }> =
     await axios.get('/api/drinks/');
-    console.log(response.data);
-    
   return response.data;
 };

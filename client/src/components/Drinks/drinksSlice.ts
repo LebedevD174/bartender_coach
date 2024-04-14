@@ -1,18 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
+import type { DrinkType } from './types/drink';
 
-
-const initialState: IngredientType = {
-  ingredient: [],
+const initialState: DrinkType = {
+  drinks: [],
   error: undefined,
 };
 
-export const loadIngredients = createAsyncThunk('drinks/loadDrinks', () =>
-  api.fetchDrinksLoad(),
-);
+export const loadDrinks = createAsyncThunk('drinks/loadDrinks', () => api.fetchDrinksLoad());
 
 const cocktailsSlice = createSlice({
-  name: 'ingredients',
+  name: 'drinks',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

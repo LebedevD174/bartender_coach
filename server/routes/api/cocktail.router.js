@@ -15,11 +15,21 @@ const {
 router.get('/', async (req, res) => {
   try {
     const cocktails = await Cocktail.findAll({
-      where: {status: true},
+      where: { status: true },
       include: [
         {
           model: Formula,
-          attributes: ['id', 'cocktail_id', 'barware_id', 'drink_id', 'drinks_volume', 'tech_id', 'ingredient_id', 'ingredient_volume', 'order'],
+          attributes: [
+            'id',
+            'cocktail_id',
+            'barware_id',
+            'drink_id',
+            'drinks_volume',
+            'tech_id',
+            'ingredient_id',
+            'ingredient_volume',
+            'order',
+          ],
           include: [
             {
               model: Barware,
@@ -36,30 +46,33 @@ router.get('/', async (req, res) => {
             {
               model: Drink,
               attributes: ['id', 'title', 'description', 'category_id', 'img'],
-              include: [{
-                model: Category,
-                attributes: ['id', 'title'],
-              }]
+              include: [
+                {
+                  model: Category,
+                  attributes: ['id', 'title'],
+                },
+              ],
             },
           ],
         },
         {
           model: CocktailFeature,
           attributes: ['id', 'cocktail_id', 'feature_id'],
-          include: [{
-            model: Feature,
-            attributes: ['id', 'title'],
-          }],
+          include: [
+            {
+              model: Feature,
+              attributes: ['id', 'title'],
+            },
+          ],
         },
       ],
-
     });
-    res.status(200).json({message: 'success', cocktails});
+    console.log(cocktails);
+    res.status(200).json({ message: 'success', cocktails });
   } catch ({ message }) {
     res.json({ message });
   }
 });
-
 
 router.post('/', async (req, res) => {
   try {

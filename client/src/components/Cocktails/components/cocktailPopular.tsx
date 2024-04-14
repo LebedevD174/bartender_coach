@@ -10,9 +10,6 @@ function CocktailPopular(): JSX.Element {
 
   useEffect(() => {
     dispatch(loadCocktails()).catch(console.log);
-    return () => {
-      console.log('Unmount');
-    };
   }, []);
 
   const firstFourCocktails = cocktailPop.slice(0, 4);
