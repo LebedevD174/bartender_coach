@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import type { User } from '../Auth/types/User';
-import type { Profile} from './types/Profile';
 import { profileUpdate } from './profileSlice';
 
 
@@ -17,7 +16,6 @@ function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
 
  const dispatch = useAppDispatch();
 
- const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
  const user: User = useAppSelector((store: RootState) => store.auth.user);
 
  const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) : Promise<void> => {
