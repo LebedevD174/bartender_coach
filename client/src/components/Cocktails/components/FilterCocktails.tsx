@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import { loadFeatures } from '../features/featuresSlice';
 import type { Feature } from '../features/types/features';
 
-function FilterCocktails({setFilter, filter}): JSX.Element {
+function FilterCocktails({ setFilter, filter }): JSX.Element {
   const dispatch = useAppDispatch();
   const features: Feature[] = useAppSelector((store) => store.features.features);
 
@@ -15,14 +15,13 @@ function FilterCocktails({setFilter, filter}): JSX.Element {
 
   const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter({...filter, feature: id});
+    setFilter({ ...filter, feature: id });
   };
   const onHandlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter({...filter, category: id});
+    setFilter({ ...filter, category: id });
   };
 
-  
   return (
     <div className="FilterCocktails">
       <p>Фильтр</p>
@@ -31,6 +30,7 @@ function FilterCocktails({setFilter, filter}): JSX.Element {
           <div className="filter-item">
             <select id="filter_category" onChange={onHandlerChange2}>
               <option hidden>Крепость</option>
+              <option value={0}>Все</option>
               <option value={1}>Безалкогольные</option>
               <option value={2}>Крепкие</option>
               <option value={3}>Слабоалкогольные</option>

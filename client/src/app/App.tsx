@@ -9,6 +9,7 @@ import CocktailsList from '../components/Cocktails/CocktailsList';
 import CoachPage from '../components/Coach/CoachPage';
 
 function App(): JSX.Element {
+  
   return (
     <BrowserRouter>
       <Routes>

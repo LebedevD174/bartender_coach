@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import { RootState, useAppDispatch, useAppSelector } from "../../../app/redux/store";
 import { userCheck } from "../../Auth/authSlice";
+import { loadCocktails } from '../../Cocktails/cocktailsSlice';
 
 // Компонент главной страницы
 function Main(): JSX.Element {
@@ -12,14 +13,15 @@ function Main(): JSX.Element {
         dispatch(userCheck());
       }
     useEffect(() => {
+      dispatch(loadCocktails()).catch(console.log);
         checkUser()
     }, [])
     return (
     <div className="wrapper">
-        <Navbar />
-        <Outlet/>
+      <Navbar />
+      <Outlet />
     </div>
-    );
-   }
+  );
+}
 
-export default Main
+export default Main;
