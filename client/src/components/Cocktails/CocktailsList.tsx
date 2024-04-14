@@ -9,20 +9,19 @@ function CocktailsList(): JSX.Element {
   const [filter, setFilter] = useState({ category: null, feature: null });
   const cocktailsArr: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
   const [cocktails, setCocktails] = useState(cocktailsArr);
-  // const filterCocktailsByFeature = (cocktails: CocktailFormula[]): number[] => cocktails.filter((cocktail) => cocktail.CocktailFeatures.some((el) => el.feature_id === filter.feature))
- function filterCocktailsByFeature(filter:{category: string | null, feature: string | null}) {
-  console.log(cocktails, '++++++++++');
-  const res = cocktails.filter((cocktail) => {
+ function filterCocktailsByFeature(filter:{category: string | number, feature: string | number}): void {
+  if (filter.feature === 0) {setCocktails(cocktailsArr)}
+  const res = cocktailsArr.filter((cocktail) => {
     return cocktail.CocktailFeatures.some((el) => el.feature_id === +filter.feature)})
-
-  console.log(res);
+    console.log(res);
   setCocktails(res)
  }
+ 
   useEffect(() => {
-    setCocktails(cocktailsArr)
-    if (filter.feature !== null) {
+    if (filter.feature !== 0) {
       filterCocktailsByFeature(filter)
     }
+
   }, [filter]);
 
   useEffect(() => {

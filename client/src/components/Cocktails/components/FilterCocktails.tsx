@@ -17,6 +17,10 @@ function FilterCocktails({setFilter, filter}): JSX.Element {
     const id = e.target.value;
     setFilter({...filter, feature: id});
   };
+  const onHandlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const id = e.target.value;
+    setFilter({...filter, category: id});
+  };
 
   
   return (
@@ -25,7 +29,7 @@ function FilterCocktails({setFilter, filter}): JSX.Element {
       <div className="container_filter">
         <div className="filter">
           <div className="filter-item">
-            <select id="filter_category">
+            <select id="filter_category" onChange={onHandlerChange2}>
               <option hidden>Крепость</option>
               <option value={1}>Безалкогольные</option>
               <option value={2}>Крепкие</option>
@@ -35,6 +39,7 @@ function FilterCocktails({setFilter, filter}): JSX.Element {
           <div className="filter-item">
             <select id="filter_features" onChange={onHandlerChange}>
               <option hidden>Вкусы</option>
+              <option value={0}>Все вкусы</option>
               {features.map((feature) => (
                 <option key={feature.id} value={feature.id}>
                   {feature.title}
