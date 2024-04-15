@@ -4,10 +4,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../app/redux/store';
 import { userLog } from './authSlice';
+import Modal from '../ui/Modal';
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useAppDispatch();
 
   const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -18,6 +20,11 @@ function AuthorizationPage(): JSX.Element {
     };
     dispatch(userLog(data));
   };
+
+  
+ const closeModal = () => {
+  setIsModalOpen(false);
+};
 
   return (
     <div className="container-auth auth">
@@ -46,6 +53,7 @@ function AuthorizationPage(): JSX.Element {
         </form>
       </div>
       <Link to="/registration">Зарегистрироваться</Link>
+      <Modal onClose={closeModal}/>
     </div>
   );
 }

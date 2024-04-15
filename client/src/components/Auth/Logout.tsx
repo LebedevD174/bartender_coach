@@ -4,6 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {userLogout} from './authSlice'
 import { useAppDispatch } from '../../app/redux/store';
+import Modal from '../ui/Modal';
 
 function Logout(): JSX.Element {
 const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ const dispatch = useAppDispatch();
 
   return (
     <div className="top_ref"><Link onClick={logout} to = '/'><span>Выйти</span></Link></div>
+    <Modal/>
   )
 }
 
