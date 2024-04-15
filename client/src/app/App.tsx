@@ -6,6 +6,7 @@ import Main from '../components/Main/components/Main';
 import MainPageCocktail from '../components/Main/components/MainPage';
 import ProfilePage from '../components/Profile/ProfilePage';
 import CocktailsList from '../components/Cocktails/CocktailsList';
+import CocktailCard from '../components/Cocktails/components/CocktailCard';
 
 function App(): JSX.Element {
   return (
@@ -14,6 +15,7 @@ function App(): JSX.Element {
         <Route path="/" element={<Main />}>
           <Route path="/" element={<MainPageCocktail />} />
           <Route path="/allCocktails" element={<CocktailsList />} />
+          <Route path='/cocktails/:id' element = {<CocktailCard/>} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="authorization" element={<AuthorizationPage />} />
           <Route path="profile" element={<ProfilePage />} />
