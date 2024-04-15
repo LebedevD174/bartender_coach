@@ -19,9 +19,6 @@ function CoachWindow({ cocktail, setCocktail }: { cocktail: CocktailFormula | nu
 
   type CheckState = { [key: number]: boolean | null };
   useEffect(()=>{
-    // console.log(initialFormulas.current.map(el=>el.order));
-    // console.log(newFormulas.map(el=>el.order));
-    // console.log(formulas.map(el=>el.order));
     initialFormulas.current.forEach((formula, index) => {
         if (newFormulas[index]){
             if (formula.order === newFormulas[index].order){
@@ -35,7 +32,6 @@ function CoachWindow({ cocktail, setCocktail }: { cocktail: CocktailFormula | nu
             }
         }
     })
-    
     if (equal(newFormulas, initialFormulas.current)) {
         setResult(true)
     } else {
