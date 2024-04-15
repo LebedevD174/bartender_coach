@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -15,11 +16,11 @@ const initialState: ProfileType = {
 };
 
 export const profileLoad = createAsyncThunk('profile/load',(id: number)  => api.fetchLoadProfile(id));
+export const profileLogout = createAsyncThunk('profile/logout', async () => {return undefined;});
 export const profileUpdate = createAsyncThunk(
     'profile/update',
-    ({ profileData, profileId }: { profileData: ProfileWithoutID; profileId: number }) =>
-       api.fetchUpdateProfile(profileData, profileId)
-   );
+    (data: FormData) => api.fetchUpdateProfile(data)
+);
 
 const profileSlice = createSlice({
     name: 'profile',
@@ -34,6 +35,9 @@ const profileSlice = createSlice({
             .addCase(profileUpdate.rejected, (state, action) => {
                 state.error = action.error.message;
             })
+            .addCase(profileLogout.fulfilled, (state) => {
+                state.profile = undefined; 
+              });
     },
 });
 
