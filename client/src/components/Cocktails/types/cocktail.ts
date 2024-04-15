@@ -29,6 +29,7 @@ export type Formula = {
   Barware: Barware,
   Ingredient: Ingredient,
   Drink: Drink,
+  Tech: Tech
 }
 
 export type Barware = {
@@ -47,4 +48,11 @@ export type Ingredient = {
 
 export type CocktailFormula = Cocktail & {
   Formula: Formula[]
+}
+
+export type Tech = {
+  id: number,
+  title: string,
+  description: string,
+  img: string,
 }
