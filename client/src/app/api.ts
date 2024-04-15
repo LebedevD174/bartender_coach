@@ -1,3 +1,4 @@
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -34,11 +35,11 @@ export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user
       user,
     );
     return response.data;
-  } catch (error) {
-    const axiosError = error as AxiosError
-    throw new Error(axiosError.response?.data.message)
   } 
-  
+    catch (error) {
+      const axiosError = error as AxiosError
+      throw new Error(axiosError.response.data.message)
+    }
 };
 export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
   const response: AxiosResponse<{ message: string; user: User }> =

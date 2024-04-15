@@ -27,6 +27,7 @@ const authSlice = createSlice({
         builder
             .addCase(userReg.fulfilled, (state, action) => {
                 state.user = action.payload.user;
+                state.error = undefined; 
             })
             .addCase(userReg.rejected, (state, action) => {
                 state.error = action.error.message;
@@ -39,6 +40,7 @@ const authSlice = createSlice({
             })
             .addCase(userCheck.fulfilled, (state, action) => {
                 state.user = action.payload.user;
+                state.error = undefined; 
             })
             .addCase(userCheck.rejected, (state, action) => {
                 state.error = action.error.message;
