@@ -15,16 +15,16 @@ function CocktailPopular(): JSX.Element {
   const firstFourCocktails = cocktailPop.slice(0, 4);
   return (
     <div className="popular_cocktail">
-      <p>Популярные напитки</p>
+      <p className='categoryPopular'>Популярные коктейли</p>
       <div className="container">
         {firstFourCocktails.map((cocktail) => (
           <div key={cocktail.id} className="card_cocktail">
             <img src={cocktail.img} alt={cocktail.title} />
-            <h3>{cocktail.title}</h3>
+            <h3 className='cocktail_title'>{cocktail.title}</h3>
           </div>
         ))}
       </div>
-      <Link to="/allCocktails">{'все напитки ->'}</Link>
+      <Link to="/cocktails"><p className='all_cards'>все коктейли →</p></Link>
     </div>
   );
 }

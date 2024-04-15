@@ -1,41 +1,38 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Logout from '../../Auth/Logout';
-import type { RootState} from '../../../app/redux/store';
+import type { RootState } from '../../../app/redux/store';
 import { useAppSelector } from '../../../app/redux/store';
 import type { User } from '../../Auth/types/User';
-import type { Profile} from '../../Profile/types/Profile';
-import { UserProfile } from '../../Profile/types/Profile';
+import type { Profile } from '../../Profile/types/Profile';
 
-
-function Navbar():JSX.Element {
-  const user: User = useAppSelector((store: RootState) => store.auth.user)
-  const profile: Profile = useAppSelector((store: RootState) => store.profile.profile)
+function Navbar(): JSX.Element {
+  const user: User = useAppSelector((store: RootState) => store.auth.user);
+  const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
 
   const isUserRegistered = user?.email || user?.login;
   return (
     <div className="navbar_top">
       <div className="navbar">
-        {profile?.name ? profile?.name : (isUserRegistered ? `${user?.email || user?.login}` : 'Guest')}
-        <div className="top_ref">
-        <Link to="/">MAIN</Link>
-        <Link to="/coach">COACH</Link>
+        <div className="top_navbar">
+          <Link to="/"><img className='logo' src='/public/img/LOGO.png' alt=''/></Link>
+
           {isUserRegistered ? (
             <>
-              <Link to="/profile">PROFILE</Link>
+              <Link to="/drinks"><span>Напитки</span></Link>
+              <Link to="/cocktails"><span>Коктейли</span></Link>
+              <Link to="/coach"><span>Тренажер</span></Link>
+              <Link to="/profile"><span>Личный кабинет</span></Link>
               <Logout />
             </>
           ) : (
-            <>
-              <Link to="/authorization">SIGN IN</Link>
-              <Link to="/registration">SIGN UP</Link>
-            </>
+            <Link to="/authorization"><span>Войти</span></Link>
           )}
         </div>
       </div>
     </div>
- );
+  );
 }
 
 export default Navbar;

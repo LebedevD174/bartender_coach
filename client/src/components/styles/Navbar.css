@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch+Pop&family=Underdog&display=swap');
+
+body {
+  background-color: #151515;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.top_navbar {
+  border-bottom-left-radius: 5.25rem;
+  border-bottom-right-radius: 5.25rem;
+  background-color: #000000;
+  height: 11rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 -11px 29.8px #d5b256;
+}
+
+.top_navbar span {
+  font-size: 2.25rem;
+  background-image: linear-gradient(to right, #ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo {
+  width: 90%;
+}

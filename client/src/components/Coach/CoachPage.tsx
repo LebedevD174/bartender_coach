@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { RootState, useAppSelector } from '../../app/redux/store';
-import CoachWindow from './CoachWindow';
-import { Cocktail, CocktailFormula } from '../Cocktails/types/cocktail';
+import type { RootState} from '../../app/redux/store';
+import { useAppSelector } from '../../app/redux/store';
+// import CoachWindow from './CoachWindow';
+import type { Cocktail} from '../Cocktails/types/cocktail';
+import { CocktailFormula } from '../Cocktails/types/cocktail';
 
 function CoachPage(): JSX.Element {
     const user = useAppSelector((store: RootState) => store.auth.user);
