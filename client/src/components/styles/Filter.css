@@ -1,0 +1,40 @@
+.filter,
+.FilterCocktails,
+.FilterDrinks {
+  display: flex;
+}
+
+.FilterCocktails,
+.FilterDrinks {
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 3rem;
+  width: 85%;
+  height: 5rem;
+  border-radius: 20px;
+  background-color: #ffd4971a;
+}
+
+.categoryFilt {
+  font-size: 2rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-image: linear-gradient(to right, #fdca82, #9e6e2b);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 1rem;
+}
+
+.FilterCocktails select,
+.FilterDrinks select {
+  font-family: 'Montserrat Alternates', sans-serif;
+  border-radius: 0.5rem;
+  width: 80%;
+  font-size: 1.5rem;
+  background-color: #faddb47c;
+  padding: 4px;
+  margin: 1rem;
+}

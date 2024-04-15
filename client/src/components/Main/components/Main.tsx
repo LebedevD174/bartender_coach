@@ -19,8 +19,6 @@ function Main(): JSX.Element {
     checkUser();
   }, []);
 
-
-
   return (
     <div className="wrapper">
       <Navbar />

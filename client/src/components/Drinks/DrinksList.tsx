@@ -27,14 +27,16 @@ function DrinksList(): JSX.Element {
   return (
     <div className="DrinksList">
       <FilterDrinks setFilter={setFilter} />
-      {drinks.map((drink) => (
-        <Link to={`/drinks/${drink.id}`}>
-          <div key={drink.id} className="card_drink">
-            <img src={drink.img} alt={drink.title} />
-            <p>{drink.title}</p>
-          </div>
-        </Link>
-      ))}
+      <div className="container">
+        {drinks.map((drink) => (
+          <Link to={`/drinks/${drink.id}`}>
+            <div key={drink.id} className="card_drink">
+              <img src={drink.img} alt={drink.title} />
+              <p>{drink.title}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

@@ -25,6 +25,11 @@ body {
   color: transparent;
 }
 
+span:hover {
+  color: #eeac50;
+  text-decoration:overline
+}
+
 .logo {
   width: 90%;
 }
