@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegistrationPage from '../components/Auth/RegistrationPage';
-import AuthorizationPage from '../components/Auth/AuthorizationPage';
+import AuthorizationPage from '../components/Auth/AuthorizationPage copy';
 import Main from '../components/Main/components/Main';
 import MainPageCocktail from '../components/Main/components/MainPage';
 import ProfilePage from '../components/Profile/ProfilePage';

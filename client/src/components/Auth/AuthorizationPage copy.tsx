@@ -50,7 +50,7 @@ function AuthorizationPage(): JSX.Element {
         <i className="--clr" />
         <h2>Login</h2>
         <form className="sign-in" onSubmit={onHandleSubmit}>
-          <div className='"inputBx"'>
+          <div className="inputBx">
             <input
               type="text"
               name="email"
