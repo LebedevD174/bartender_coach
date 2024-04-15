@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import { RootState, useAppDispatch, useAppSelector } from "../../../app/redux/store";
+import type { RootState} from "../../../app/redux/store";
+import { useAppDispatch, useAppSelector } from "../../../app/redux/store";
 import { userCheck } from "../../Auth/authSlice";
 import { loadCocktails } from '../../Cocktails/cocktailsSlice';
 

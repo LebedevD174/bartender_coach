@@ -38,5 +38,14 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const drink = await Drink.findOne({ where: { id } });
+    res.status(200).json({ message: 'success', drink });
+  } catch ({ message }) {
+    res.json({ message });
+  }
+});
 
 module.exports = router;
