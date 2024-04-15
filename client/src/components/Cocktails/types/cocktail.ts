@@ -1,4 +1,4 @@
-import type { Drink } from "../../Drinks/types/drink";
+import type { Drink } from '../../Drinks/types/drink';
 
 export type Cocktail = {
   id: number;
@@ -7,13 +7,22 @@ export type Cocktail = {
   description: string;
   user_id: number;
   status: boolean;
+  category_id: number;
+  CocktailFeatures: CocktailFeature[];
 };
 
 export type CocktailID = Cocktail['id'];
 
 export type CocktailType = {
+  cocktail:Cocktail | {};
   cocktails: Cocktail[];
   error: string | undefined;
+};
+
+export type CocktailFeature = {
+  id: number;
+  cocktail_id: number;
+  feature_id: number;
 };
 
 export type Formula = {
@@ -32,19 +41,20 @@ export type Formula = {
   Tech: Tech
 }
 
+
 export type Barware = {
-  id: number,
-  title: string,
-  description: string,
-  img: string,
-}
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+};
 
 export type Ingredient = {
-  id: number,
-  title: string,
-  measure: string,
-  img: string,
-}
+  id: number;
+  title: string;
+  measure: string;
+  img: string;
+};
 
 export type CocktailFormula = Cocktail & {
   Formula: Formula[]
@@ -56,3 +66,4 @@ export type Tech = {
   description: string,
   img: string,
 }
+

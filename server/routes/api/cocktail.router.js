@@ -73,6 +73,70 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const {id} = req.params
+    const cocktails = await Cocktail.findOne({
+      where: {
+        [Op.and]: [{ id }, { status: true }],
+      },
+      include: [
+        {
+          model: Formula,
+          attributes: [
+            'id',
+            'cocktail_id',
+            'barware_id',
+            'drink_id',
+            'drinks_volume',
+            'tech_id',
+            'ingredient_id',
+            'ingredient_volume',
+            'order',
+          ],
+          include: [
+            {
+              model: Barware,
+              attributes: ['id', 'title', 'description', 'img'],
+            },
+            {
+              model: Ingredient,
+              attributes: ['id', 'title', 'img', 'measure'],
+            },
+            {
+              model: Tech,
+              attributes: ['id', 'title', 'description', 'img'],
+            },
+            {
+              model: Drink,
+              attributes: ['id', 'title', 'description', 'category_id', 'img'],
+              include: [
+                {
+                  model: Category,
+                  attributes: ['id', 'title'],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          model: CocktailFeature,
+          attributes: ['id', 'cocktail_id', 'feature_id'],
+          include: [
+            {
+              model: Feature,
+              attributes: ['id', 'title'],
+            },
+          ],
+        },
+      ],
+    });
+    res.status(200).json({ message: 'success', cocktails });
+  } catch ({ message }) {
+    res.json({ message });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const { title, description, img, user_id } = req.body;

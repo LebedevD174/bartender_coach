@@ -24,7 +24,7 @@ function DrinksPopular(): JSX.Element {
           </div>
         ))}
       </div>
-      <Link to="/allDrinks">{'все ингредиенты ->'}</Link>
+      <Link to="/drinks">{'все ингредиенты ->'}</Link>
     </div>
   );
 }
