@@ -1,4 +1,5 @@
-import axios, { type AxiosResponse } from 'axios';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import axios, { AxiosError, type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
 import type { Cocktail } from '../components/Cocktails/types/cocktail';
@@ -17,11 +18,17 @@ export const fetchRegistration = async (
 };
 
 export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user: User }> => {
-  const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
-    '/api/sign/authorization',
-    user,
-  );
-  return response.data;
+  try {
+    const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
+      '/api/sign/authorization',
+      user,
+    );
+    return response.data;
+  } 
+    catch (error) {
+      const axiosError = error as AxiosError
+      throw new Error(axiosError.response.data.message)
+    }
 };
 export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
   const response: AxiosResponse<{ message: string; user: User }> =
