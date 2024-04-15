@@ -1,0 +1,69 @@
+.CoachPage,
+.btnCocktailCoach,
+.allContainerFormula {
+  display: flex;
+}
+
+.CoachPage {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titlePage,
+.titleCocktailBtn {
+  background-image: linear-gradient(to right, #ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 3rem 0 2rem 0;
+}
+
+.btnCocktailCoach {
+  background-color: #cf994c48;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  padding: 2rem;
+  color: #ecd8bbf8;
+  margin: 2rem;
+}
+
+.titleCocktailBtn {
+  background-image: linear-gradient(to right, #ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.cardFormula {
+  background-color: #cfb59075;
+  border-radius: 5rem;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.newContainerCardFormula {
+  width: 300px;
+  margin: 1rem;
+}
+
+.btnClose,
+.btnRestart {
+  background-color: #ebbb7948;
+  font-size: 1rem;
+  padding: 1rem;
+  color: #ecd8bbf8;
+  margin: 1rem;
+}
+
+.lost,
+.cool {
+  color: #ecd8bbf8;
+  margin: 1rem;
+}

@@ -6,8 +6,8 @@ body {
 }
 
 .top_navbar {
-  border-bottom-left-radius: 5.25rem;
-  border-bottom-right-radius: 5.25rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   background-color: #000000;
   height: 11rem;
   display: flex;
@@ -27,7 +27,7 @@ body {
 
 span:hover {
   color: #eeac50;
-  text-decoration:overline
+  text-decoration: overline;
 }
 
 .logo {
