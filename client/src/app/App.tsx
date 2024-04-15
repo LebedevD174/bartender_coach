@@ -12,10 +12,10 @@ import DrinksList from '../components/Drinks/DrinksList';
 import DrinkPage from '../components/Drinks/DrinkPage';
 import '../components/styles/reset_style.css';
 import '../components/styles/Navbar.css';
-import '../components/styles/MainPage.css'
-import '../components/styles/ListPage.css'
-import '../components/styles/Filter.css'
-
+import '../components/styles/MainPage.css';
+import '../components/styles/ListPage.css';
+import '../components/styles/Filter.css';
+import '../components/styles/Coach.css';
 
 function App(): JSX.Element {
   return (
