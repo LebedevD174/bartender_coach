@@ -10,6 +10,9 @@ import CocktailCard from '../components/Cocktails/components/CocktailCard';
 import CoachPage from '../components/Coach/CoachPage';
 import DrinksList from '../components/Drinks/DrinksList';
 import DrinkPage from '../components/Drinks/DrinkPage';
+import '../components/styles/reset_style.css';
+import '../components/styles/Navbar.css';
+import '../components/styles/MainPage.css'
 
 
 function App(): JSX.Element {
@@ -18,11 +21,10 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route path="/" element={<MainPageCocktail />} />
-          <Route path="/allCocktails" element={<CocktailsList />} />
-          <Route path='/cocktails/:id' element = {<CocktailCard/>} />
+          <Route path="/cocktails/:id" element={<CocktailCard />} />
           <Route path="/cocktails" element={<CocktailsList />} />
           <Route path="/drinks" element={<DrinksList />} />
-          <Route path="/drinks/drinkId" element={<DrinkPage />} />
+          <Route path="/drinks/:drinkId" element={<DrinkPage />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="authorization" element={<AuthorizationPage />} />
           <Route path="profile" element={<ProfilePage />} />
