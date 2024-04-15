@@ -15,7 +15,7 @@ function CocktailPopular(): JSX.Element {
   const firstFourCocktails = cocktailPop.slice(0, 4);
   return (
     <div className="popular_cocktail">
-      <p>Популярные напитки</p>
+      <p className='categoryPopular'>Популярные коктейли</p>
       <div className="container">
         {firstFourCocktails.map((cocktail) => (
           <div key={cocktail.id} className="card_cocktail">
@@ -24,7 +24,7 @@ function CocktailPopular(): JSX.Element {
           </div>
         ))}
       </div>
-      <Link to="/cocktails">{'все напитки ->'}</Link>
+      <Link to="/cocktails"><p className='all_cards'>все коктейли →</p></Link>
     </div>
   );
 }
