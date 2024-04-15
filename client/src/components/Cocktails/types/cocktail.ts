@@ -1,3 +1,4 @@
+import type { Barware } from '../../Barware/types/barware';
 import type { Drink } from '../../Drinks/types/drink';
 
 export type Cocktail = {
@@ -40,14 +41,6 @@ export type Formula = {
   Drink: Drink,
   Tech: Tech
 }
-
-
-export type Barware = {
-  id: number;
-  title: string;
-  description: string;
-  img: string;
-};
 
 export type Ingredient = {
   id: number;
