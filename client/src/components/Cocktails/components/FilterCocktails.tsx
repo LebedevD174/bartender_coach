@@ -3,7 +3,12 @@ import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import { loadFeatures } from '../features/featuresSlice';
 import type { Feature } from '../features/types/features';
 
-function FilterCocktails({setFilter}): JSX.Element {
+type FilterCocktailsProps = {
+  setFilter: (filter: { feature: string; category: string }) => void;
+  filter: { feature: string; category: string };
+};
+
+function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Element {
   const dispatch = useAppDispatch();
   const features: Feature[] = useAppSelector((store) => store.features.features);
 
@@ -15,18 +20,22 @@ function FilterCocktails({setFilter}): JSX.Element {
 
   const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter(id);
+    setFilter({ ...filter, feature: id });
+  };
+  const onHandlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const id = e.target.value;
+    setFilter({ ...filter, category: id });
   };
 
-  
   return (
     <div className="FilterCocktails">
       <p>Фильтр</p>
       <div className="container_filter">
         <div className="filter">
           <div className="filter-item">
-            <select id="filter_category">
+            <select id="filter_category" onChange={onHandlerChange2}>
               <option hidden>Крепость</option>
+              <option value={0}>Все</option>
               <option value={1}>Безалкогольные</option>
               <option value={2}>Крепкие</option>
               <option value={3}>Слабоалкогольные</option>
@@ -35,6 +44,7 @@ function FilterCocktails({setFilter}): JSX.Element {
           <div className="filter-item">
             <select id="filter_features" onChange={onHandlerChange}>
               <option hidden>Вкусы</option>
+              <option value={0}>Все вкусы</option>
               {features.map((feature) => (
                 <option key={feature.id} value={feature.id}>
                   {feature.title}
