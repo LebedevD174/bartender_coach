@@ -12,21 +12,21 @@ function CocktailCard(): JSX.Element {
     console.log(formula, 'card');
     useEffect(() => {
         dispatch(loadCocktailsID(id)).catch(console.log);
-      }, [dispatch, id]); 
+      }, []); 
     return ( 
         <>
-        <h1>Рецепт</h1> 
+        <h1>{formula.title}</h1> 
         <div>{formula.img}</div>
-        <div>{formula.title}</div>
+        <h2>Описание</h2>
         <div>{formula.description}</div>
-        {/* {formula.Formulas.toSorted((a,b) => a.order - b.order).map((el) =>  
-            <div> 
-                    {el.order && <>{el.order}</>} 
+        <h2>Рецепт</h2>
+        {formula?.Formulas?.toSorted((a,b) => a.order - b.order).map((el) =>  
+            <div key={el.id}>       
                     {el.Barware && <div>{el.Barware?.title}</div>} 
                     {el.Drink && <div>{el.Drink?.title}: {el.drinks_volume}мл</div>} 
                     {el.Ingredient && <div>{el.Ingredient?.title}: {el.ingredient_volume} {el.Ingredient?.measure}</div>} 
                     {el.Tech && <div>{el.Tech?.title}</div>} 
-                </div>)} */}
+                </div>)}
         </>
     ); 
 } 
