@@ -15,16 +15,16 @@ function DrinksPopular(): JSX.Element {
   }, []);
   return (
     <div className="popular_drinks">
-      <p>Популярные ингредиенты</p>
+      <p className='categoryPopular'>Популярные ингредиенты</p>
       <div className="container">
         {firstEightDrinks.map((drink) => (
           <div key={drink.id} className="card_drink">
             <img src={drink.img} alt={drink.title} />
-            <h3>{drink.title}</h3>
+            <h3 className='drink_title'>{drink.title}</h3>
           </div>
         ))}
       </div>
-      <Link to="/drinks">{'все ингредиенты ->'}</Link>
+      <Link to="/drinks"><p className='all_cards'>все напитки →</p></Link>
     </div>
   );
 }
