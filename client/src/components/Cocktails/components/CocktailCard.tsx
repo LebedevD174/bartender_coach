@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { useEffect } from 'react'; 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useAppSelector , useAppDispatch } from '../../../app/redux/store'; 
-import type { Cocktail } from "../types/cocktail";
+import type { CocktailFormula } from "../types/cocktail";
 import { loadCocktailsID } from '../cocktailsSlice';
  
 function CocktailCard(): JSX.Element { 
     const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
-    const formula:Cocktail  = useAppSelector((store) => store.cocktails.cocktail);
-    console.log(formula, 'card');
+    const formula: CocktailFormula  = useAppSelector((store) => store.cocktails.cocktail);
+    const navigate = useNavigate()
     useEffect(() => {
         dispatch(loadCocktailsID(id)).catch(console.log);
       }, []); 
@@ -27,6 +27,7 @@ function CocktailCard(): JSX.Element {
                     {el.Ingredient && <div>{el.Ingredient?.title}: {el.ingredient_volume} {el.Ingredient?.measure}</div>} 
                     {el.Tech && <div>{el.Tech?.title}</div>} 
                 </div>)}
+        <button onClick={() => navigate(-1)}>Назад</button> 
         </>
     ); 
 } 

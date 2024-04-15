@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type { AxiosError} from 'axios';
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
@@ -9,19 +13,31 @@ import type { Feature } from '../components/Cocktails/features/types/features';
 export const fetchRegistration = async (
   user: UserWithoutId,
 ): Promise<{ message: string; user: User }> => {
-  const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
-    '/api/sign/registration',
-    user,
-  );
-  return response.data;
+  try {
+    const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
+      '/api/sign/registration',
+      user,
+    );
+    return response.data;
+  } catch (error) {
+    const axiosError = error as AxiosError
+    throw new Error(axiosError.response?.data.message)
+  } 
+
 };
 
 export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user: User }> => {
-  const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
-    '/api/sign/authorization',
-    user,
-  );
-  return response.data;
+  try {
+    const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
+      '/api/sign/authorization',
+      user,
+    );
+    return response.data;
+  } catch (error) {
+    const axiosError = error as AxiosError
+    throw new Error(axiosError.response?.data.message)
+  } 
+  
 };
 export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
   const response: AxiosResponse<{ message: string; user: User }> =
@@ -41,26 +57,20 @@ export const fetchLoadProfile = async (
     `/api/profile/${id}`,
     profile,
   );
-
-  if (response.data.message === 'success') {
+    if (response.data.message === 'success') {
     return response.data;
   }
   return response.data.message;
 };
 
-export const fetchUpdateProfile = async (
-  profile: ProfileWithoutID,
-  id: number,
-): Promise<{ message: string; profile: Profile }> => {
-  const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.put(
-    `/api/profile/${id}`,
-    profile,
-  );
-  if (response.data.message === 'success') {
-    return response.data.profile;
-  }
+export const fetchUpdateProfile = async (profile: FormData): Promise<{ message: string, profile: Profile }> => {
+  const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${profile.get('profileId')}`, profile);
+  if (response.data.message === "success") {
+      return response.data.profile;
+  } 
   return response.data.message;
 };
+
 
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
   const response: AxiosResponse<{ message: string; cocktails: Cocktail[] }> =
