@@ -36,10 +36,12 @@ router.post('/authorization', async (req, res) => {
       attributes: ['id', 'email', 'login', 'password'],
     });
 
-    if (!user) {
-      res.json({ message: 'Такого пользователя нет или пароль неверный' });
-      return;
-    }
+    if (!user) { 
+      res.status(400).json({ 
+          message: 'Такого пользователя нет или пароль неверный', 
+      }) 
+      return 
+  }
     const passTest = await bcrypt.compare(password, user.password);
     if (!passTest) {
       res.json({ message: 'Такого пользователя нет или пароль неверный' });
@@ -71,7 +73,6 @@ router.post('/authorization', async (req, res) => {
 router.post('/registration', async (req, res) => {
   try {
     const { email, password, checkPassword, login } = req.body;
-    console.log(req.body);
 
     if (email.trim() === '' || password.trim() === '') {
       res.json({ message: 'Заполните поля корректно' });
