@@ -14,45 +14,45 @@ function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
 
  const [name, setName] = useState(profile ? profile.name : '');
  const [lastName, setLastName] = useState(profile ? profile.lastName : '');
- const [img, setImg] = useState(profile ? profile.img : '');
+ const [img, setImg] = useState(profile ? profile.img : null);
  const [age, setAge] = useState(profile ? profile.age : '');
  const [phoneNumber, setPhoneNumber] = useState(profile ? profile.phoneNumber : '');
 
  const dispatch = useAppDispatch();
 
 
- const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) : Promise<void> => {
-    e.preventDefault();
-    const data = {
-        profileData: {
-           img,
-           name,
-           lastName,
-           age,
-           phoneNumber,
-        },
-        profileId: user.id
-       };
-      dispatch(profileUpdate(data))
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  e.preventDefault();
+  const data = new FormData();
 
-    onSubmitSuccess()
-    setName('');
-    setImg('');
-    setLastName('');
-    setAge('');
-    setPhoneNumber('');
- };
+  data.append('name', name);
+  data.append('lastName', lastName);
+  data.append('age', +age);
+  data.append('phoneNumber', +phoneNumber);
+  if (img) {
+    data.append('img', img); 
+  }
+  data.append('profileId', user.id.toString());
+
+  dispatch(profileUpdate(data))
+    .then(() => {
+      onSubmitSuccess();
+      setName('');
+      setImg(null);
+      setLastName('');
+      setAge('');
+      setPhoneNumber('');
+    })
+    .catch((error) => {
+      console.error('Ошибка при обновлении профиля:', error);
+    });
+};
 
 
  return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="img">Фотография:</label>
-      <input
-        type="text"
-        name='img'
-        value={img}
-        onChange={(e) => setImg(e.target.value)}
-      />
+       <input type="file" onChange={(e) => setImg(e.target.files[0])} />
       <br />
       <label htmlFor="name">Имя:</label>
       <input

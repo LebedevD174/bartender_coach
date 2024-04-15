@@ -46,14 +46,21 @@ export const fetchLoadProfile = async (id: number): Promise<{ message: string, p
     
 }
 
-export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
-    const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
-    if (response.data.message === "success") {
-        return response.data.profile
-    } 
-        return response.data.message
-    
-}
+export const fetchUpdateProfile = async (profile: FormData): Promise<{ message: string, profile: Profile }> => {
+  const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${profile.get('profileId')}`, profile);
+  if (response.data.message === "success") {
+      return response.data.profile;
+  } 
+  return response.data.message;
+};
+
+// export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
+//     const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
+//     if (response.data.message === "success") {
+//         return response.data.profile
+//     } 
+//         return response.data.message  
+// }
 
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
   const response: AxiosResponse<{ message: string; cocktails: Cocktail[] }> =

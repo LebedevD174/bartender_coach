@@ -15,11 +15,16 @@ const initialState: ProfileType = {
 };
 
 export const profileLoad = createAsyncThunk('profile/load',(id: number)  => api.fetchLoadProfile(id));
+
 export const profileUpdate = createAsyncThunk(
     'profile/update',
-    ({ profileData, profileId }: { profileData: ProfileWithoutID; profileId: number }) =>
-       api.fetchUpdateProfile(profileData, profileId)
-   );
+    (data: FormData) => api.fetchUpdateProfile(data)
+);
+// export const profileUpdate = createAsyncThunk(
+//     'profile/update',
+//     ({ profileData, profileId }: { profileData: ProfileWithoutID; profileId: number }) =>
+//        api.fetchUpdateProfile(profileData, profileId)
+//    );
 
 const profileSlice = createSlice({
     name: 'profile',
