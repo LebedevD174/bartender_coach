@@ -16,6 +16,7 @@ import '../components/styles/MainPage.css';
 import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
+import '../components/styles/login.css';
 
 function App(): JSX.Element {
   return (
