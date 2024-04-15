@@ -31,14 +31,16 @@ export type Formula = {
   barware_id: number;
   drink_id: number;
   drinks_volume: number;
-  tech_id: number;
-  ingredient_id: number;
-  ingredient_volume: number;
-  order: number;
-  Barware: Barware;
-  Ingredient: Ingredient;
-  Drink: Drink;
-};
+  tech_id: number,
+  ingredient_id: number,
+  ingredient_volume: number,
+  order: number,
+  Barware: Barware,
+  Ingredient: Ingredient,
+  Drink: Drink,
+  Tech: Tech
+}
+
 
 export type Barware = {
   id: number;
@@ -55,5 +57,13 @@ export type Ingredient = {
 };
 
 export type CocktailFormula = Cocktail & {
-  Formula: Formula[];
-};
+  Formula: Formula[]
+}
+
+export type Tech = {
+  id: number,
+  title: string,
+  description: string,
+  img: string,
+}
+
