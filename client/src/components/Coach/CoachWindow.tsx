@@ -1,5 +1,5 @@
 import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import type { RootState} from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
 import { Cocktail, CocktailFormula } from '../Cocktails/types/cocktail';
