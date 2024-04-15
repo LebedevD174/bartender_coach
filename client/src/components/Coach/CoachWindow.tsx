@@ -13,43 +13,57 @@ function CoachWindow({ cocktail, setCocktail }: { cocktail: CocktailFormula | nu
   const [formulas, setFormulas] = useState<Formula[]>(cocktail.Formulas.toSorted((a: Formula, b: Formula) => Math.random() - 0.5));
   const [newFormulas, setNewFormulas] = useState<Formula[]>([]);
   const initialFormulas = useRef<Formula[]>(cocktail.Formulas.toSorted((a: Formula, b: Formula) => a.order - b.order));
-  const [check, setCheck] = useState({});
+  const [check, setCheck] = useState<CheckState>({});
   const [result, setResult] = useState(false);
+  const [win, setWin] = useState<boolean | null>(null);
 
+  type CheckState = { [key: number]: boolean | null };
   useEffect(()=>{
     // console.log(initialFormulas.current.map(el=>el.order));
     // console.log(newFormulas.map(el=>el.order));
     // console.log(formulas.map(el=>el.order));
     initialFormulas.current.forEach((formula, index) => {
-        console.log(check);
-        
         if (newFormulas[index]){
-            console.log(newFormulas[index].order === formula.order);
             if (formula.order === newFormulas[index].order){
-                
+                const updatedCheck: CheckState = { ...check }; 
+                updatedCheck[index] = true;
+                setCheck(updatedCheck);
+            } else {
+                const updatedCheck: CheckState = { ...check }; 
+                updatedCheck[index] = false;
+                setCheck(updatedCheck);
             }
-            
         }
     })
+    
     if (equal(newFormulas, initialFormulas.current)) {
         setResult(true)
     } else {
         setResult(false)
     }
-
   },[newFormulas])
+
+  useEffect(()=>{
+    console.log(check);
+    
+    if (Object.values(check).some(el => el === false)) {
+        setResult(true);
+        setWin(false)
+    }
+    if (Object.values(check).every(el => el === true)) {
+        setResult(true);
+        setWin(true)
+    }
+    console.log(result, win, Object.values(check));
+    
+  }, [check])
   useEffect(()=>{
     setFormulas(cocktail.Formulas.toSorted((a: Formula, b: Formula) => Math.random() - 0.5))
     setNewFormulas([])
     setCheck({...Array(formulas.length).fill(null)})
+    setWin(null)
+    setResult(false)
   }, [cocktail])
-//   const onDragEnd = (result: DropResult): void => {
-//     if (!result.destination) return;
-//     const items:Formula[] = Array.from(formulas);
-//     const [reorderedItem] = items.splice(result.source.index, 1);
-//     items.splice(result.destination.index, 0, reorderedItem);
-//         setFormulas(items);
-//   };
 
 const onDragEnd = (result: DropResult): void => {
     if (!result.destination) return;
@@ -72,6 +86,13 @@ const onDragEnd = (result: DropResult): void => {
 
   function closeCoach(): void {
     setCocktail(null)
+  }
+  function restartCoach(): void {
+    setFormulas(cocktail.Formulas.toSorted((a: Formula, b: Formula) => Math.random() - 0.5))
+    setNewFormulas([])
+    setCheck({...Array(formulas.length).fill(null)})
+    setWin(null)
+    setResult(false)
   }
 
   return (
@@ -135,6 +156,8 @@ const onDragEnd = (result: DropResult): void => {
 
       <div>
         {result === true && <button onClick={closeCoach}>Завершить</button>}
+        {win === true && <div>Успех!</div>}
+        {win === false && <><div>Вы проиграли</div><button onClick={restartCoach}>Начать заново</button></>}
       </div>
     </>
   );
