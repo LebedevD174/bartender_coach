@@ -13,7 +13,7 @@ const dispatch = useAppDispatch();
     }
 
   return (
-    <div className="top_ref"><Link onClick={logout} to = '/'>Выйти</Link></div>
+    <div className="top_ref"><Link onClick={logout} to = '/'><span>Выйти</span></Link></div>
   )
 }
 

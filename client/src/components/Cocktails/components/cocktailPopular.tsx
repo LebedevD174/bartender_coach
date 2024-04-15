@@ -20,7 +20,7 @@ function CocktailPopular(): JSX.Element {
         {firstFourCocktails.map((cocktail) => (
           <div key={cocktail.id} className="card_cocktail">
             <img src={cocktail.img} alt={cocktail.title} />
-            <h3>{cocktail.title}</h3>
+            <h3 className='cocktail_title'>{cocktail.title}</h3>
           </div>
         ))}
       </div>

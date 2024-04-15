@@ -1,0 +1,38 @@
+.MainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popular_cocktail {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container img {
+  width: 17.875rem;
+  height: 25rem;
+  border-radius: 2rem;
+}
+.container .cocktail_title {
+  font-size: 1.5rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-image: linear-gradient(to right, #ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 1rem;
+}
+
+.card_cocktail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
+}
