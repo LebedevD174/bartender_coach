@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { RootState} from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
-// import CoachWindow from './CoachWindow';
+import CoachWindow from './CoachWindow';
 import type { Cocktail} from '../Cocktails/types/cocktail';
 import { CocktailFormula } from '../Cocktails/types/cocktail';
 
