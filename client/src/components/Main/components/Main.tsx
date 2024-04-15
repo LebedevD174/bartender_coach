@@ -19,9 +19,7 @@ function Main(): JSX.Element {
     checkUser();
   }, []);
 
-  useEffect(() => {
-    dispatch(loadDrinks()).catch(console.log);
-  }, []);
+
 
   return (
     <div className="wrapper">

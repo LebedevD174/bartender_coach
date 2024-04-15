@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import FilterDrinks from './components/FilterDrinks';
 import type { Drink } from './types/drink';
-
+import { loadDrinks } from './drinksSlice';
 
 function DrinksList(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -11,7 +11,9 @@ function DrinksList(): JSX.Element {
   const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
   const [drinks, setDrinks] = useState(drinksArr);
 
-
+  useEffect(() => {
+    dispatch(loadDrinks()).catch(console.log);
+  }, []);
 
   useEffect(() => {
     if (+filter.category > 0) {
