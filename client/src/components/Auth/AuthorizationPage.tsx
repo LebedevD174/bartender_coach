@@ -1,19 +1,23 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link , useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
+
 import { userLog } from './authSlice';
+import * as thunk from './authSlice'
 import Modal from '../ui/Modal';
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const dispatch = useAppDispatch();
-  const errorMessage = useAppSelector((state) => state.auth.error)
-  console.log(errorMessage);
+  const navigate = useNavigate()
+  const user = useAppSelector((store) => store.auth.user)
+  const error = useAppSelector((state) => state.auth.error)
+  console.log(error);
   
   const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -25,9 +29,19 @@ function AuthorizationPage(): JSX.Element {
   };
 
   
- const closeModal = () :void => {
-  setIsModalOpen(false);
-};
+  const closeModal = () :void => {
+    setIsModalOpen(false)
+    dispatch(thunk.clearError())
+}
+
+useEffect(() => {
+  if (error) {
+      setIsModalOpen(true)
+  }
+  if(user){
+    navigate('/')
+  }
+}, [error,user])
 
   return (
     <div className="container-auth auth">
@@ -56,7 +70,7 @@ function AuthorizationPage(): JSX.Element {
         </form>
       </div>
       <Link to="/registration">Зарегистрироваться</Link>
-      {errorMessage && <Modal onClose={closeModal}>{errorMessage}</Modal>}
+      <Modal children={error} isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }

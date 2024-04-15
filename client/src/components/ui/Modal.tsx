@@ -1,7 +1,9 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 
-function Modal({ message, onClose }) :JSX.Element {
- if (!message) {
+function Modal({ children, isOpen, onClose }) :JSX.Element {
+ if (!isOpen) {
     return null; 
  }
 
@@ -18,7 +20,7 @@ function Modal({ message, onClose }) :JSX.Element {
       boxShadow: '0 0 10px rgba(0, 0, 0, 0.25)',
     }}>
       <button onClick={onClose}>Закрыть</button>
-      <div>{message}</div>
+      <div>{children}</div>
     </div>
  );
 }
