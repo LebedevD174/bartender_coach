@@ -68,6 +68,12 @@ export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails
   return response.data;
 };
 
+export const fetchCocktailsLoadId = async (id: string): Promise<{ message: string; cocktails: Cocktail }> => {
+  const response: AxiosResponse<{ message: string; cocktails: Cocktail}> =
+    await axios.get(`/api/cocktails/${id}`);
+  return response.data;
+};
+
 export const fetchDrinksLoad = async (): Promise<{ message: string; drinks: Drink[] }> => {
   const response: AxiosResponse<{ message: string; drinks: Drink[] }> =
     await axios.get('/api/drinks/');

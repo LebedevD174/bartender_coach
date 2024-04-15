@@ -14,6 +14,7 @@ export type Cocktail = {
 export type CocktailID = Cocktail['id'];
 
 export type CocktailType = {
+  cocktail:Cocktail | {};
   cocktails: Cocktail[];
   error: string | undefined;
 };
