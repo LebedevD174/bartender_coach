@@ -1,6 +1,8 @@
 .MainPage,
 .popular_cocktail,
-.card_cocktail, .popular_drinks, .card_drink {
+.card_cocktail,
+.popular_drinks,
+.card_drink {
   display: flex;
   flex-direction: column;
 }
@@ -19,7 +21,8 @@
   height: 25rem;
   border-radius: 2rem;
 }
-.container .cocktail_title, .drink_title {
+.container .cocktail_title,
+.drink_title {
   font-size: 1.5rem;
   font-family: 'Montserrat Alternates', sans-serif;
   background-image: linear-gradient(to right, #ffbe63, #896532);
@@ -28,11 +31,6 @@
   background-clip: text;
   color: transparent;
   margin: 1rem;
-}
-
-.card_cocktail, .card_drink {
-  align-items: center;
-  margin: 3rem;
 }
 
 .categoryPopular {
@@ -48,4 +46,15 @@
   -moz-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.card_cocktail,
+.card_drink {
+  align-items: center;
+  margin: 3rem;
+  transition: transform 0.3s ease-in-out;
+}
+.card_cocktail:hover,
+.card_drink:hover {
+  transform: scale(1.05);
 }

@@ -12,7 +12,7 @@ function FilterDrinks({ setFilter }: FilterDrinksProps): JSX.Element {
 
   return (
     <div className="FilterDrinks">
-      <p>Фильтр</p>
+      <p className="categoryFilt">Фильтр</p>
       <div className="container_filter">
         <div className="filter">
           <div className="filter-item">

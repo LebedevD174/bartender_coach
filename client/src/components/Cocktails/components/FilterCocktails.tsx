@@ -4,8 +4,8 @@ import { loadFeatures } from '../features/featuresSlice';
 import type { Feature } from '../features/types/features';
 
 type FilterCocktailsProps = {
-  setFilter: (filter: { feature: string; category: string }) => void;
-  filter: { feature: string; category: string };
+  setFilter: (filter: { feature: number; category: number }) => void;
+  filter: { feature: number; category: number };
 };
 
 function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Element {
@@ -20,16 +20,16 @@ function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Eleme
 
   const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter({ ...filter, feature: id });
+    setFilter({ ...filter, feature: +id });
   };
   const onHandlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter({ ...filter, category: id });
+    setFilter({ ...filter, category: +id });
   };
 
   return (
     <div className="FilterCocktails">
-      <p>Фильтр</p>
+      <p className="categoryFilt">Фильтр</p>
       <div className="container_filter">
         <div className="filter">
           <div className="filter-item">
