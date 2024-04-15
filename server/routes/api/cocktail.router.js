@@ -77,9 +77,7 @@ router.get('/:id', async (req, res) => {
   try {
     const {id} = req.params
     const cocktails = await Cocktail.findOne({
-      where: {
-        [Op.and]: [{ id }, { status: true }],
-      },
+      where: { id },
       include: [
         {
           model: Formula,
