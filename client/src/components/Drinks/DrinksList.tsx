@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import FilterDrinks from './components/FilterDrinks';
 import type { Drink } from './types/drink';
@@ -7,7 +7,6 @@ import { loadDrinks } from './drinksSlice';
 
 function DrinksList(): JSX.Element {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [filter, setFilter] = useState({ category: 0 });
   const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
   const [drinks, setDrinks] = useState(drinksArr);

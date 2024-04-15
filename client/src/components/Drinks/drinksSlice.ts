@@ -8,6 +8,7 @@ const initialState: DrinkType = {
 };
 
 export const loadDrinks = createAsyncThunk('drinks/loadDrinks', () => api.fetchDrinksLoad());
+// export const loadDrink = createAsyncThunk('drinks/drinkid', () => api.fetchDrinkLoad());
 
 const cocktailsSlice = createSlice({
   name: 'drinks',
@@ -21,7 +22,10 @@ const cocktailsSlice = createSlice({
       .addCase(loadDrinks.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadDrinks.pending, (state, action) => {});
+      .addCase(loadDrinks.pending, (state, action) => {})
+      // .addCase(loadDrink.fulfilled, (state, action) => {
+      //   state.drink = action.payload.drink;
+      // });
   },
 });
 

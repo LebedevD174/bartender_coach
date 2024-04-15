@@ -1,7 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
-import type { UserWithoutId,  User, UserAuth } from '../components/Auth/types/User';
-import type { Profile, ProfileWithoutID} from '../components/Profile/types/Profile';
-import { UserProfile } from '../components/Profile/types/Profile';
+import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
+import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
 import type { Cocktail } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
 import type { Feature } from '../components/Cocktails/features/types/features';
@@ -25,9 +24,8 @@ export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user
   return response.data;
 };
 export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
-  const response: AxiosResponse<{ message: string; user: User }> = await axios.get(
-    '/api/sign/check',
-  );
+  const response: AxiosResponse<{ message: string; user: User }> =
+    await axios.get('/api/sign/check');
   return response.data;
 };
 
@@ -36,24 +34,33 @@ export const fetchLogout = async (): Promise<{ message: string }> => {
   return response.data;
 };
 
-export const fetchLoadProfile = async (id: number): Promise<{ message: string, profile: Profile }> => {
-    const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.get(`/api/profile/${id}`, profile);
-    
-    if (response.data.message === "success") {
-        return response.data
-    } 
-        return response.data.message
-    
-}
+export const fetchLoadProfile = async (
+  id: number,
+): Promise<{ message: string; profile: Profile }> => {
+  const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.get(
+    `/api/profile/${id}`,
+    profile,
+  );
 
-export const fetchUpdateProfile = async (profile:ProfileWithoutID, id: number): Promise<{ message: string, profile: Profile }> => {
-    const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${id}`, profile);
-    if (response.data.message === "success") {
-        return response.data.profile
-    } 
-        return response.data.message
-    
-}
+  if (response.data.message === 'success') {
+    return response.data;
+  }
+  return response.data.message;
+};
+
+export const fetchUpdateProfile = async (
+  profile: ProfileWithoutID,
+  id: number,
+): Promise<{ message: string; profile: Profile }> => {
+  const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.put(
+    `/api/profile/${id}`,
+    profile,
+  );
+  if (response.data.message === 'success') {
+    return response.data.profile;
+  }
+  return response.data.message;
+};
 
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
   const response: AxiosResponse<{ message: string; cocktails: Cocktail[] }> =
@@ -78,3 +85,4 @@ export const fetchFeaturesLoad = async (): Promise<{ message: string; features: 
     await axios.get('/api/features/');
   return response.data;
 };
+

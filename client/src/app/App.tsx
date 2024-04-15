@@ -13,6 +13,7 @@ import DrinkPage from '../components/Drinks/DrinkPage';
 
 
 function App(): JSX.Element {
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -22,7 +23,7 @@ function App(): JSX.Element {
           <Route path='/cocktails/:id' element = {<CocktailCard/>} />
           <Route path="/cocktails" element={<CocktailsList />} />
           <Route path="/drinks" element={<DrinksList />} />
-          <Route path="/drinks/drinkId" element={<DrinkPage />} />
+          <Route path="/drinks/:drinkId" element={<DrinkPage />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="authorization" element={<AuthorizationPage />} />
           <Route path="profile" element={<ProfilePage />} />
