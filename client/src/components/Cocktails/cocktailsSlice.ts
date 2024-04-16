@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
-import type { CocktailType } from './types/cocktail';
+import type { Cocktail, CocktailNew, CocktailType } from './types/cocktail';
 
 const initialState: CocktailType = {
   cocktail: {},
@@ -12,8 +12,12 @@ export const loadCocktails = createAsyncThunk('cocktails/loadCocktails', () =>
   api.fetchCocktailsLoad(),
 );
 
-export const loadCocktailsID = createAsyncThunk('cocktails/loadCocktailsId', (id:string) =>
+export const loadCocktailsID = createAsyncThunk('cocktails/loadCocktailsId', (id: string) =>
   api.fetchCocktailsLoadId(id),
+);
+
+export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: CocktailNew) =>
+  api.fetchCocktailAdd(cocktail),
 );
 
 const cocktailsSlice = createSlice({
@@ -34,6 +38,12 @@ const cocktailsSlice = createSlice({
       .addCase(loadCocktailsID.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(addCocktail.fulfilled, (state, action) => {
+        state.cocktails.push(action.payload.cocktail);
+      })
+      .addCase(addCocktail.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
   },
 });
 
