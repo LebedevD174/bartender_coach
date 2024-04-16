@@ -55,8 +55,7 @@ export const fetchLoadProfile = async (
   id: number,
 ): Promise<{ message: string; profile: Profile }> => {
   const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.get(
-    `/api/profile/${id}`,
-    profile,
+    `/api/profile/${id}`
   );
     if (response.data.message === 'success') {
     return response.data;
