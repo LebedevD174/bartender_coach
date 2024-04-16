@@ -6,7 +6,7 @@ import Main from '../components/Main/components/Main';
 import MainPageCocktail from '../components/Main/components/MainPage';
 import ProfilePage from '../components/Profile/ProfilePage';
 import CocktailsList from '../components/Cocktails/CocktailsList';
-import CocktailCard from '../components/Cocktails/components/CocktailCard';
+import CocktailCard from '../components/Cocktails/CocktailPage';
 import CoachPage from '../components/Coach/CoachPage';
 import DrinksList from '../components/Drinks/DrinksList';
 import DrinkPage from '../components/Drinks/DrinkPage';

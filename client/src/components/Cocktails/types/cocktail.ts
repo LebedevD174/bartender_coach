@@ -12,10 +12,12 @@ export type Cocktail = {
   CocktailFeatures: CocktailFeature[];
 };
 
+export type CocktailNew = Omit<Cocktail, 'id' | 'status' | 'CocktailFeatures' | 'status'>;
+
 export type CocktailID = Cocktail['id'];
 
 export type CocktailType = {
-  cocktail:Cocktail | {};
+  cocktail: Cocktail | {};
   cocktails: Cocktail[];
   error: string | undefined;
 };
@@ -32,15 +34,15 @@ export type Formula = {
   barware_id: number;
   drink_id: number;
   drinks_volume: number;
-  tech_id: number,
-  ingredient_id: number,
-  ingredient_volume: number,
-  order: number,
-  Barware: Barware,
-  Ingredient: Ingredient,
-  Drink: Drink,
-  Tech: Tech
-}
+  tech_id: number;
+  ingredient_id: number;
+  ingredient_volume: number;
+  order: number;
+  Barware: Barware;
+  Ingredient: Ingredient;
+  Drink: Drink;
+  Tech: Tech;
+};
 
 export type Ingredient = {
   id: number;
@@ -50,13 +52,12 @@ export type Ingredient = {
 };
 
 export type CocktailFormula = Cocktail & {
-  Formula: Formula[]
-}
+  Formula: Formula[];
+};
 
 export type Tech = {
-  id: number,
-  title: string,
-  description: string,
-  img: string,
-}
-
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+};

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const multer = require('multer');
 const { Op } = require('sequelize');
 const {
   Cocktail,
@@ -12,10 +13,21 @@ const {
   Category,
 } = require('../../db/models');
 
+//Настройка мультера
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'public/img');
+  },
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
 router.get('/', async (req, res) => {
   try {
     const cocktails = await Cocktail.findAll({
-      where: { status: true },
       include: [
         {
           model: Formula,
@@ -75,7 +87,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const {id} = req.params
+    const { id } = req.params;
     const cocktails = await Cocktail.findOne({
       where: { id },
       include: [
@@ -135,9 +147,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('img'), async (req, res) => {
   try {
-    const { title, description, img, user_id } = req.body;
+    const { title, description, user_id } = req.body;
+    let img;
+    if (req.file) { 
+      img = `/img/${req.file.originalname}`; 
+  } else { 
+      const currentProfile = await Cocktail.findOne({ where: { id } }); 
+      img = currentProfile.img;  
+  } 
     const cocktail = await Cocktail.create({
       title,
       description,
@@ -149,6 +168,34 @@ router.post('/', async (req, res) => {
   } catch ({ message }) {
     res.json(message);
   }
+});
+
+
+
+router.put('/:id', upload.single('img'), async (req, res) => { 
+  console.log(req.body, req.params); 
+  try { 
+      const { id } = req.params; 
+      let { name, lastName, age, phoneNumber } = req.body; 
+      let img; 
+      if (req.file) { 
+          img = `/img/${req.file.originalname}`; 
+      } else { 
+          const currentProfile = await Profile.findOne({ where: { id } }); 
+          img = currentProfile.img;  
+      } 
+
+      await Profile.update({ name, lastName, age, phoneNumber, img }, { 
+          where: { id }, 
+          fields: ['name', 'lastName', 'age', 'phoneNumber', 'img'] 
+      }); 
+
+      const profile = await Profile.findOne({ where: { id } }); 
+      res.status(200).json({ message: 'success', profile }); 
+  } catch ({ message }) { 
+      console.log(message); 
+      res.status(500).json({ message: 'Ошибка при обновлении профиля' }); 
+  } 
 });
 
 router.delete('/:id', async (req, res) => {
