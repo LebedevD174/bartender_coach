@@ -1,15 +1,14 @@
-
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { AxiosError} from 'axios';
+import type { AxiosError } from 'axios';
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
-import type { Cocktail, Ingredient, Tech } from '../components/Cocktails/types/cocktail';
+import type { Cocktail, Ingredient, Tech, CocktailNew } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
 import type { Feature } from '../components/Cocktails/features/types/features';
-import { Barware } from '../components/Barware/types/barware';
+import type { Barware } from '../components/Barware/types/barware';
 
 // eslint-disable-next-line import/prefer-default-export
 export const fetchRegistration = async (
@@ -22,9 +21,9 @@ export const fetchRegistration = async (
     );
     return response.data;
   } catch (error) {
-    const axiosError = error as AxiosError
-    throw new Error(axiosError.response.data.message)
-  } 
+    const axiosError = error as AxiosError;
+    throw new Error(axiosError.response.data.message);
+  }
 };
 
 export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user: User }> => {
@@ -34,11 +33,10 @@ export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user
       user,
     );
     return response.data;
-  } 
-    catch (error) {
-      const axiosError = error as AxiosError
-      throw new Error(axiosError.response.data.message)
-    }
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    throw new Error(axiosError.response.data.message);
+  }
 };
 export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
   const response: AxiosResponse<{ message: string; user: User }> =
@@ -57,20 +55,24 @@ export const fetchLoadProfile = async (
   const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.get(
     `/api/profile/${id}`
   );
-    if (response.data.message === 'success') {
+  if (response.data.message === 'success') {
     return response.data;
   }
   return response.data.message;
 };
 
-export const fetchUpdateProfile = async (profile: FormData): Promise<{ message: string, profile: Profile }> => {
-  const response: AxiosResponse<{ message: string, profile: Profile }> = await axios.put(`/api/profile/${profile.get('profileId')}`, profile);
-  if (response.data.message === "success") {
-      return response.data.profile;
-  } 
+export const fetchUpdateProfile = async (
+  profile: FormData,
+): Promise<{ message: string; profile: Profile }> => {
+  const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.put(
+    `/api/profile/${profile.get('profileId')}`,
+    profile,
+  );
+  if (response.data.message === 'success') {
+    return response.data.profile;
+  }
   return response.data.message;
 };
-
 
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
   const response: AxiosResponse<{ message: string; cocktails: Cocktail[] }> =
@@ -78,9 +80,23 @@ export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails
   return response.data;
 };
 
-export const fetchCocktailsLoadId = async (id: string): Promise<{ message: string; cocktails: Cocktail }> => {
-  const response: AxiosResponse<{ message: string; cocktails: Cocktail}> =
-    await axios.get(`/api/cocktails/${id}`);
+export const fetchCocktailAdd = async (cocktail: CocktailNew): Promise<Cocktail> => {
+  const response: AxiosResponse<{ message: string; cocktail: Cocktail }> = await axios.post(
+    '/api/cocktails/',
+    cocktail,
+  );
+  // console.log(response.data.cocktail);
+  
+  return response.data;
+};
+
+export const fetchCocktailsLoadId = async (
+  id: string,
+): Promise<{ message: string; cocktails: Cocktail }> => {
+  const response: AxiosResponse<{ message: string; cocktails: Cocktail }> = await axios.get(
+    `/api/cocktails/${id}`,
+  );
+
   return response.data;
 };
 

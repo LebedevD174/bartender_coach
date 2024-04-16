@@ -6,7 +6,8 @@ import type { Cocktail } from './types/cocktail';
 
 function CocktailsList(): JSX.Element {
   const [filter, setFilter] = useState({ category: 0, feature: 0 });
-  const cocktailsArr: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
+  const cockt: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
+  const cocktailsArr = cockt.filter((cocktail) => cocktail.status === true);
   const [cocktails, setCocktails] = useState(cocktailsArr);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function CocktailsList(): JSX.Element {
   return (
     <div className="CocktailsList">
       <FilterCocktails setFilter={setFilter} filter={filter} />
-      <div className='container'>
+      <div className="container">
         {cocktails.map((cocktail) => (
           <Link key={cocktail.id} to={`/cocktails/${cocktail.id}`}>
             <div className="card_cocktail">
