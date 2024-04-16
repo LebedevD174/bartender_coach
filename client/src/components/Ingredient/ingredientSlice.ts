@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
-import type {  } from './types/barware';
 import { Ingredient, IngredientType } from './types/ingredient';
 
 const initialState: IngredientType = {
@@ -8,7 +7,7 @@ const initialState: IngredientType = {
   error: undefined,
 };
 
-export const loadIngredient = createAsyncThunk('barware/loadIngredient', () =>
+export const loadIngredient = createAsyncThunk('ingredient/loadIngredient', () =>
   api.fetchIngredientLoad(),
 );
 
@@ -19,7 +18,7 @@ const ingredientSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadIngredient.fulfilled, (state, action) => {
-        state.ingredients = action.payload.ingredients;
+        state.ingredients = action.payload.ingredient;
       })
       .addCase(loadIngredient.rejected, (state, action) => {
         state.error = action.error.message;
