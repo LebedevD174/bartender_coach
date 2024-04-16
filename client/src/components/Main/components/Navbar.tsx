@@ -13,7 +13,7 @@ function Navbar(): JSX.Element {
   const profile: Profile | undefined = useAppSelector((store: RootState) => store.profile.profile);
   useEffect(()=>{
     console.log(profile);
-  },[profile])
+  },[user])
   
   const isUserRegistered = user?.email || user?.login;
   return (

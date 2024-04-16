@@ -30,7 +30,7 @@ const profileSlice = createSlice({
         builder
             .addCase(profileLoad.fulfilled, (state, action) => {
                 console.log(action.payload);
-                state.profile = action.payload;
+                state.profile = action.payload.profile;
             })
             .addCase(profileLoad.rejected, (state, action) => {
                 console.log(action.payload);
