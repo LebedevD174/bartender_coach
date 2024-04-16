@@ -18,12 +18,6 @@ function ProfileInfo(): JSX.Element {
         setShowEditForm(false);
     };
 
-    useEffect(() => {
-        if (user) {
-            dispatch(profileLoad(user.id))
-        }
-    }, [user, dispatch, profile]) 
-
     return (
         <div>
             <h1>Личные данные</h1>
