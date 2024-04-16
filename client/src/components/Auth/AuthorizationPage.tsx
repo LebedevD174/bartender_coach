@@ -17,7 +17,6 @@ function AuthorizationPage(): JSX.Element {
   const navigate = useNavigate()
   const user = useAppSelector((store) => store.auth.user)
   const error = useAppSelector((state) => state.auth.error)
-  console.log(error);
   
   const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();

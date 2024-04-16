@@ -1,17 +1,25 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../app/redux/store';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import {userReg} from './authSlice'
+import Modal from '../ui/Modal';
+import * as thunk from './authSlice'
 
 function RegistrationPage(): JSX.Element {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checkPassword, setCheckPassword] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const user = useAppSelector((store) => store.auth.user)
+  const error = useAppSelector((state) => state.auth.error)
+  const navigate = useNavigate()
   const dispatch = useAppDispatch();
 
   const onHandleSubmit = async (
@@ -27,6 +35,19 @@ function RegistrationPage(): JSX.Element {
         dispatch(userReg(data))
       }
 
+    const closeModal = () :void => {
+        setIsModalOpen(false)
+        dispatch(thunk.clearError())
+    }
+    useEffect(() => {
+      if (error) {
+          setIsModalOpen(true)
+      }
+      if(user){
+        navigate('/')
+      }
+    }, [error,user])
+
   
 
   return (
@@ -38,7 +59,6 @@ function RegistrationPage(): JSX.Element {
             type='text'
             name='login'
             placeholder='Name'
-            required
             value={login}
             onChange={(e) => {
               setLogin(e.target.value);
@@ -51,7 +71,6 @@ function RegistrationPage(): JSX.Element {
             type='email'
             name='email'
             placeholder='Email'
-            required
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -64,7 +83,6 @@ function RegistrationPage(): JSX.Element {
             type='password'
             name='password'
             placeholder='password'
-            required
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -77,7 +95,6 @@ function RegistrationPage(): JSX.Element {
             type='password'
             name='password'
             placeholder='confirm password'
-            required
             value={checkPassword}
             onChange={(e) => {
               setCheckPassword(e.target.value);
@@ -92,6 +109,7 @@ function RegistrationPage(): JSX.Element {
           </Link>
         </div>
       </form>
+      <Modal children={error} isOpen={isModalOpen} onClose={closeModal} />
     </div>
   )
 }
