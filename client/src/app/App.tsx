@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegistrationPage from '../components/Auth/RegistrationPage';
-import AuthorizationPage from '../components/Auth/AuthorizationPage';
+import AuthorizationPage from '../components/Auth/AuthorizationPage copy';
 import Main from '../components/Main/components/Main';
 import MainPageCocktail from '../components/Main/components/MainPage';
 import ProfilePage from '../components/Profile/ProfilePage';
@@ -16,6 +16,7 @@ import '../components/styles/MainPage.css';
 import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
+import '../components/styles/login.css';
 
 function App(): JSX.Element {
   return (
