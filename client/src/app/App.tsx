@@ -17,6 +17,7 @@ import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
 import '../components/styles/login.css';
+import AdminPage from '../components/Admin/AdminPage';
 
 function App(): JSX.Element {
   return (
@@ -32,6 +33,7 @@ function App(): JSX.Element {
           <Route path="authorization" element={<AuthorizationPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="coach" element={<CoachPage />} />
+          <Route path="admin" element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

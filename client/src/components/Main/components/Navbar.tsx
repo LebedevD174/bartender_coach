@@ -8,9 +8,10 @@ import type { User } from '../../Auth/types/User';
 import type { Profile } from '../../Profile/types/Profile';
 
 function Navbar(): JSX.Element {
-  const user: User = useAppSelector((store: RootState) => store.auth.user);
-  const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
-
+  const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
+  const profile: Profile | undefined = useAppSelector((store: RootState) => store.profile.profile);
+  console.log(profile);
+  
   const isUserRegistered = user?.email || user?.login;
   return (
     <div className="navbar_top">
@@ -22,6 +23,7 @@ function Navbar(): JSX.Element {
             <>
               <Link to="/drinks"><span>Напитки</span></Link>
               <Link to="/cocktails"><span>Коктейли</span></Link>
+              {profile?.isAdmin === true && <Link to="/admin"><span>Модерация</span></Link>}
               <Link to="/coach"><span>Тренажер</span></Link>
               <Link to="/profile"><span>Личный кабинет</span></Link>
               <Logout />

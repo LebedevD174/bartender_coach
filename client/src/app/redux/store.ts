@@ -8,6 +8,7 @@ import drinksSlice from '../../components/Drinks/drinksSlice';
 import profileSlice from '../../components/Profile/profileSlice';
 import featuresSlice from '../../components/Cocktails/features/featuresSlice';
 import barwareSlice from '../../components/Barware/barwareSlice';
+import ingredientSlice from '../../components/Ingredient/ingredientSlice';
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     barware: barwareSlice,
     profile: profileSlice,
     features: featuresSlice,
+    ingredients: ingredientSlice,
   },
 });
 
