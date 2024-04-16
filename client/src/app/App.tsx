@@ -17,6 +17,7 @@ import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
 import '../components/styles/LogaRega.css';
+import '../components/styles/Profile.css';
 import AdminPage from '../components/Admin/AdminPage';
 import AdminCocktail from '../components/Admin/AdminCocktail';
 
