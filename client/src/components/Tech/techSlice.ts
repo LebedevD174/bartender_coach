@@ -7,7 +7,7 @@ const initialState: TechType = {
   error: undefined,
 };
 
-export const loadTech = createAsyncThunk('barware/loadTech', () =>
+export const loadTech = createAsyncThunk('tech/loadTech', () =>
   api.fetchTechLoad(),
 );
 

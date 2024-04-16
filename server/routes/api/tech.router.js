@@ -17,8 +17,8 @@ const {
  */
 router.get('/', async (req, res) => {
   try {
-    const barware = await Tech.findAll();
-    res.json({ message: 'success', barware });
+    const techs = await Tech.findAll();
+    res.json({ message: 'success', techs });
   } catch ({ message }) {
     res.status(200).json({ error: message });
   }
