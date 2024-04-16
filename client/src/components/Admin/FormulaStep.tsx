@@ -7,10 +7,10 @@ import { loadIngredient } from '../Ingredient/ingredientSlice';
 import { loadTech } from '../Tech/techSlice';
 import { loadDrinks } from '../Drinks/drinksSlice';
 
-function FormulaStep(): JSX.Element {
+function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): JSX.Element {
     const dispatch = useAppDispatch();
     const [select, setSelect] = useState<string>('')
-    const [input, setInput] = useState({barware_id: 0, drink_id: 0, drinks_volume: 0, tech_id: 0, ingredient_id: 0, ingredients_volume: 0})
+    const [input, setInput] = useState({cocktail_id: cocktail.id, barware_id: 0, drink_id: 0, drinks_volume: 0, tech_id: 0, ingredient_id: 0, ingredients_volume: 0, order})
     const barware = useAppSelector((store: RootState) => store.barware.barware);
     const drinks = useAppSelector((store: RootState) => store.drinks.drinks);
     const ingredients = useAppSelector((store: RootState) => store.ingredients.ingredients);

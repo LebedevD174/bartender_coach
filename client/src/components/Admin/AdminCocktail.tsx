@@ -10,15 +10,17 @@ import { loadCocktailsID } from '../Cocktails/cocktailsSlice';
 function AdminCocktail(): JSX.Element { 
     const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
-    const cocktail: Cocktail | {}  = useAppSelector((store: RootState) => store.cocktails.cocktail);
+    const cocktail: Cocktail  = useAppSelector((store: RootState) => store.cocktails.cocktail);
     useEffect(() => {
         dispatch(loadCocktailsID(id)).catch(console.log);
       }, []); 
       const [count, setCount] = useState<number>(0)
       const [arr, setArr] = useState<Formula[] | number[]>([])
+      const [order, setOrder] = useState<number[]>([])
       useEffect(() => {
           if (count > 0) {
-              setArr(Array(count).fill(''))
+            setOrder([...order, count])
+            setArr(Array(count).fill(''))
           }
       }, [count])
     return ( 
@@ -30,8 +32,8 @@ function AdminCocktail(): JSX.Element {
         <h2>Создание рецепта</h2>
         <button onClick={()=>setCount((prev) => prev += 1)}>Добавить шаг рецепта</button>
         <div className='container__formula'>
-        {count !== 0 && arr.map((formula) => {
-            return <FormulaStep key={formula.id}/>
+        {count !== 0 && arr.map((el, index) => {
+            return <FormulaStep key={order[index]}/>
         })}
         </div>
         </>

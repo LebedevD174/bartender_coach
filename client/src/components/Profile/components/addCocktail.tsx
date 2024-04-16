@@ -4,12 +4,12 @@ import type { User } from '../../Auth/types/User';
 import { addCocktail } from '../../Cocktails/cocktailsSlice';
 
 function AddCardCocktail(): JSX.Element {
-  const [title, setTitle] = useState('');
-  const [img, setImg] = useState('');
-  const [description, setDescription] = useState('');
-  const [category_id, setCategory] = useState('');
+  const [title, setTitle] = useState<string>('');
+  const [img, setImg] = useState<File | null>(null);
+  const [description, setDescription] = useState<string>('');
+  const [category_id, setCategory] = useState<string>('');
 
-  const user: User = useAppSelector((store) => store.auth.user);
+  const user: User | undefined = useAppSelector((store) => store.auth.user);
 
   const dispatch = useAppDispatch();
 
@@ -22,7 +22,7 @@ function AddCardCocktail(): JSX.Element {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('category_id', category_id);
-    formData.append('user_id', user.id.toString());
+    formData.append('user_id', user?.id.toString() || '');
     // консоль (formData);
     // for (let [key, value] of formData.entries()) {
     //   console.log(key, value);

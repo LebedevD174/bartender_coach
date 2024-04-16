@@ -32,7 +32,7 @@ function CocktailsList(): JSX.Element {
  
      setCocktails(filteredCocktails);
   }, [cocktailsArr, filter, searchQuery]);
- 
+
   return (
      <div className="CocktailsList">
        <FilterCocktails setFilter={setFilter} filter={filter} onSearch={setSearchQuery} />
