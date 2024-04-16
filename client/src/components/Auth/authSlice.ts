@@ -40,7 +40,7 @@ const authSlice = createSlice({
                 state.user = action.payload.user;
             })
             .addCase(userLog.rejected, (state, action) => {
-                console.log();
+                console.log('error');
                 
                 state.error = action.error.message;
             })

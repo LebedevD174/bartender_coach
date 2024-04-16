@@ -23,9 +23,8 @@ export const fetchRegistration = async (
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError
-    throw new Error(axiosError.response?.data.message)
+    throw new Error(axiosError.response.data.message)
   } 
-
 };
 
 export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user: User }> => {

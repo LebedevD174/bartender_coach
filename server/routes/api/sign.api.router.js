@@ -11,21 +11,21 @@ router.post('/authorization', async (req, res) => {
     const { email, password } = req.body;
 
     if (email.trim() === '' || password.trim() === '') {
-      res.json({ message: 'Заполните поля корректно' });
+      res.status(400).json({ message: 'Заполните поля корректно' });
       return;
     }
     if (
       email.trim().length !== email.length ||
       email.replace(' ', '').length !== email.length
     ) {
-      res.json({ message: 'E-mail не должен содержать пробелов' });
+      res.status(400).json({ message: 'E-mail не должен содержать пробелов' });
       return;
     }
     if (
       password.trim().length !== password.length ||
       password.replace(' ', '').length !== password.length
     ) {
-      res.json({ message: 'Пароль не должен содержать пробелов' });
+      res.status(400).json({ message: 'Пароль не должен содержать пробелов' });
       return;
     }
 
@@ -44,7 +44,7 @@ router.post('/authorization', async (req, res) => {
   }
     const passTest = await bcrypt.compare(password, user.password);
     if (!passTest) {
-      res.json({ message: 'Такого пользователя нет или пароль неверный' });
+      res.status(400).json({ message: 'Такого пользователя нет или пароль неверный' });
     } else {
       const { accessToken, refreshToken } = signUtils({
         user: {
@@ -63,10 +63,10 @@ router.post('/authorization', async (req, res) => {
           maxAge: jwtConfig.access.expiresIn,
           httpOnly: true,
         });
-      res.json({ message: 'success', user });
+      res.status(200).json({ message: 'success', user });
     }
   } catch ({ message }) {
-    res.json({ message });
+    res.status(500).json({ message });
   }
 });
 
@@ -75,13 +75,13 @@ router.post('/registration', async (req, res) => {
     const { email, password, checkPassword, login } = req.body;
 
     if (email.trim() === '' || password.trim() === '') {
-      res.json({ message: 'Заполните поля корректно' });
+      res.status(400).json({ message: 'Заполните поля корректно' });
       return;
     }
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const emailCheck = pattern.test(email);
     if (!emailCheck) {
-      res.json({ message: 'Некорректно заполнен e-mail' });
+      res.status(400).json({ message: 'Некорректно заполнен e-mail' });
       return;
     }
     const invalidCharacters = /[@#$%^&*()-_+=|\\:;"'<,>.?/~]/;
@@ -90,7 +90,7 @@ router.post('/registration', async (req, res) => {
       login.replace(' ', '').length !== login.length ||
       !invalidCharacters.test(login)
     ) {
-      res.json({
+      res.status(400).json({
         message: 'Login не должен содержать пробелов или специальных символов',
       });
       return;
@@ -102,7 +102,7 @@ router.post('/registration', async (req, res) => {
       checkPassword.trim().length !== checkPassword.length ||
       checkPassword.replace(' ', '').length !== checkPassword.length
     ) {
-      res.json({
+      res.status(400).json({
         message: 'Пароль или повтор пароля не должен содержать пробелов',
       });
       return;
@@ -110,18 +110,18 @@ router.post('/registration', async (req, res) => {
 
     const userEmail = await User.findOne({ where: { email } });
     if (userEmail) {
-      res.json({ message: 'Пользователь с таким email уже существует!' });
+      res.status(400).json({ message: 'Пользователь с таким email уже существует!' });
       return;
     }
 
     const userLogin = await User.findOne({ where: { login } });
     if (userLogin) {
-      res.json({ message: 'Пользователь с таким login уже существует!' });
+      res.status(400).json({ message: 'Пользователь с таким login уже существует!' });
       return;
     }
 
     if (password !== checkPassword) {
-      res.json({ message: 'Пароли не совпадают!' });
+      res.status(400).json({ message: 'Пароли не совпадают!' });
     } else {
       const newUser = await User.create({
         email,
@@ -150,10 +150,10 @@ router.post('/registration', async (req, res) => {
           maxAge: jwtConfig.access.expiresIn,
           httpOnly: true,
         });
-      res.json({ message: 'success', user: user });
+      res.status(200).json({ message: 'success', user: user });
     }
   } catch ({ message }) {
-    res.json({ message });
+    res.status(500).json({ message });
   }
 });
 router.get('/logout', (req, res) => {
