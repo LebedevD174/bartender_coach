@@ -14,9 +14,10 @@ function Main(): JSX.Element {
   const user = useAppSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
   const checkUser = async (): Promise<void> => {
-    dispatch(userCheck())
+    dispatch(userCheck()).then((user) => {
+      dispatch(profileLoad(user.id))
+    })
   };
-
 
   useEffect(() => {
     dispatch(loadCocktails()).catch(console.log);

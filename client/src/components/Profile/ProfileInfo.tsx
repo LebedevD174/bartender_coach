@@ -22,7 +22,7 @@ function ProfileInfo(): JSX.Element {
         if (user) {
             dispatch(profileLoad(user.id))
         }
-    }, [user, dispatch]) 
+    }, [user, dispatch, profile]) 
 
     return (
         <div>
