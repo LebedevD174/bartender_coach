@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
@@ -5,6 +9,8 @@ import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import type { User } from '../Auth/types/User';
 import { profileUpdate } from './profileSlice';
+import Modal from '../ui/Modal';
+import ModalForm from '../ui/ModalForm';
 
 
 function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
@@ -33,6 +39,7 @@ function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
     data.append('img', img); 
   }
   data.append('profileId', user.id.toString());
+
 
   dispatch(profileUpdate(data))
     .then(() => {
