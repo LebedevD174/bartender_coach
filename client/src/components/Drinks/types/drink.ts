@@ -12,3 +12,7 @@ export type DrinkType = {
   drinks: Drink[];
   error: string | undefined;
 };
+
+export type DrinkParams = {
+  drinkId: string;
+};

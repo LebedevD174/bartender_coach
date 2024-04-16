@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../app/redux/store';
 import type { Cocktail } from '../../Cocktails/types/cocktail';
 import CocktailCard from './cocktailCard';
@@ -13,9 +12,7 @@ function CocktailsList(): JSX.Element {
     <div className="CocktailsList">
       <div className="container">
         {cocktails.map((cocktail) => (
-          <Link key={cocktail?.id} to={`/cocktails/${cocktail?.id}`}>
-            <CocktailCard cocktail={cocktail} />
-          </Link>
+          <CocktailCard cocktail={cocktail} />
         ))}
       </div>
     </div>

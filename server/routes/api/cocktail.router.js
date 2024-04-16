@@ -149,7 +149,6 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', upload.single('img'), async (req, res) => {
   try {
-    console.log(req.body);
     const { title, description, user_id, category_id } = req.body;
     let img;
     if (req.file) {
@@ -175,7 +174,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { userId } = req.body;
-    const cocktail = Cocktail.findOne({
+    const cocktail = await Cocktail.findOne({
       where: {
         [Op.and]: [{ id }, { user_id: userId }],
       },
@@ -189,7 +188,7 @@ router.delete('/:id', async (req, res) => {
       res.json({ message: 'failed to destroy' });
     }
   } catch ({ message }) {
-    res.status(200).json({ error: message });
+    res.status(400).json({ error: message });
   }
 });
 

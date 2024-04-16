@@ -1,11 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
-import type { Cocktail, CocktailNew, CocktailType } from './types/cocktail';
+import type { CocktailType } from './types/cocktail';
 
 const initialState: CocktailType = {
   cocktail: {},
   cocktails: [],
   error: undefined,
+};
+
+type DeleteCocktailArgs = {
+  id: string;
+  user_id: string;
+};
+type DeleteCocktailResponse = {
+  message: string;
 };
 
 export const loadCocktails = createAsyncThunk('cocktails/loadCocktails', () =>
@@ -18,6 +26,11 @@ export const loadCocktailsID = createAsyncThunk('cocktails/loadCocktailsId', (id
 
 export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: FormData) =>
   api.fetchCocktailAdd(cocktail),
+);
+
+export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
+  'cocktails/deleteCocktail',
+  ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
 );
 
 const cocktailsSlice = createSlice({
@@ -42,6 +55,12 @@ const cocktailsSlice = createSlice({
         state.cocktails.push(action.payload.cocktail);
       })
       .addCase(addCocktail.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteCocktail.fulfilled, (state, action) => {
+        state.cocktails = state.cocktails.filter((cocktail) => cocktail.id !== action.payload.id);
+      })
+      .addCase(deleteCocktail.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

@@ -5,8 +5,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {userLogout} from './authSlice'
-import { useAppDispatch, useAppSelector } from '../../app/redux/store';
-import { Profile } from '../Profile/types/Profile';
+import { useAppDispatch } from '../../app/redux/store';
 import { profileLogout } from '../Profile/profileSlice';
 
 function Logout(): JSX.Element {

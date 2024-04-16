@@ -1,5 +1,6 @@
 import React from 'react';
-import { RootState, useAppSelector } from '../../app/redux/store';
+import type { RootState} from '../../app/redux/store';
+import { useAppSelector } from '../../app/redux/store';
 
 function Barware() {
     const cocktail = useAppSelector((store: RootState) => store.cocktails.cocktails)

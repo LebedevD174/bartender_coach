@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
-import type { Cocktail, CocktailNew, CocktailType } from './types/cocktail';
+import type { CocktailNew, CocktailType } from '../Cocktails/types/cocktail';
 
 const initialState: CocktailType = {
   cocktail: {},

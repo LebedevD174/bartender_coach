@@ -6,9 +6,8 @@ import type { RootState } from '../../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import { userCheck } from '../../Auth/authSlice';
 import { loadCocktails } from '../../Cocktails/cocktailsSlice';
-import { loadDrinks } from '../../Drinks/drinksSlice';
 import { profileLoad } from '../../Profile/profileSlice';
-import { User } from '../../Auth/types/User';
+import type { User } from '../../Auth/types/User';
 
 // Компонент главной страницы
 function Main(): JSX.Element {
@@ -17,9 +16,9 @@ function Main(): JSX.Element {
   const dispatch = useAppDispatch();
   const checkUser = async (): Promise<void> => {
     dispatch(userCheck()).then((data) => {
-      const user: User = data.payload.user;
-      dispatch(profileLoad(user.id))
-    })
+      const { user } = data.payload as { user: User | undefined };
+      dispatch(profileLoad(user?.id));
+    });
   };
 
   useEffect(() => {
