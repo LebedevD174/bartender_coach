@@ -39,7 +39,7 @@ function AdminCocktail(): JSX.Element {
             dispatch(updateStatusCocktail({id, user_id}))
           }
         })
-      }
+      };
     return ( 
         <>
         <h1>{cocktail.title}</h1> 
