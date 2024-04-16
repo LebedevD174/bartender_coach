@@ -15,17 +15,22 @@ const {
 
 router.post('/', async (req, res) => {
   try {
-    console.log(req.body);
     const arr = req.body;
-    console.log(arr[0]);
-    // const cocktail = await Cocktail.create({
-    //   title,
-    //   description,
-    //   img,
-    //   user_id: +user_id,
-    //   status: false,
-    //   category_id: +category_id,
-    // });
+    const formulas = await (Promise.all(arr
+    .map((el) => {
+      const {cocktail_id, barware_id, drink_id, drinks_volume, tech_id, ingredient_id, ingredients_volume, order} = el;
+      return Formula.create({
+          cocktail_id,
+          barware_id,
+          drink_id,
+          drinks_volume,
+          tech_id,
+          ingredient_id,
+          ingredients_volume,
+          order,
+        });
+    })
+  ))
     res.status(200).json({ message: 'success' });
   } catch ({ message }) {
     res.json(message);

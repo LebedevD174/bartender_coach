@@ -5,12 +5,15 @@ import { useAppSelector , useAppDispatch } from '../../app/redux/store'
 import type { Cocktail, Formula, FormulaNew } from "../Cocktails/types/cocktail";
 import type { RootState } from '../../app/redux/store';
 import FormulaStep from './FormulaStep';
-import { loadCocktailsID } from '../Cocktails/cocktailsSlice';
+import { loadCocktailsID, updateStatusCocktail } from '../Cocktails/cocktailsSlice';
+import { addFormula } from './formulaSlice';
+import { User } from '../Auth/types/User';
  
 function AdminCocktail(): JSX.Element { 
     const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const cocktail: Cocktail  = useAppSelector((store: RootState) => store.cocktails.cocktail);
+    const user: User | undefined  = useAppSelector((store: RootState) => store.auth.user);
     useEffect(() => {
         dispatch(loadCocktailsID(id)).catch(console.log);
       }, []); 
@@ -24,8 +27,18 @@ function AdminCocktail(): JSX.Element {
             setArr(Array(count).fill(''))
           }
       }, [count])
-      function addFormulas() {
-        dispatch(addFormulas())
+      useEffect(()=>{
+        console.log(formulas);
+      }, [formulas])
+
+      function addForm() {
+        dispatch(addFormula(formulas)).then((data) => {
+          if (data.payload.message === 'success') {
+            const {id} = cocktail;
+            const user_id = user?.id
+            dispatch(updateStatusCocktail({id, user_id}))
+          }
+        })
       }
     return ( 
         <>
@@ -36,10 +49,8 @@ function AdminCocktail(): JSX.Element {
         <h2>Создание рецепта</h2>
         <button onClick={()=>setCount((prev) => prev += 1)}>Добавить шаг рецепта</button>
         <div className='container__formula'>
-        {count !== 0 && arr.map((el, index) => {
-            return <FormulaStep key={order[index]} cocktail={cocktail} order={order[index]} formulas={formulas} setFormulas={setFormulas}/>
-        })}
-        <button onClick={()=>{}}>Отправить</button>
+        {count !== 0 && arr.map((el, index) => <FormulaStep key={order[index]} cocktail={cocktail} order={order[index]} formulas={formulas} setFormulas={setFormulas}/>)}
+        <button onClick={addForm}>Отправить</button>
         </div>
         </>
     ); 

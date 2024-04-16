@@ -9,10 +9,11 @@ const initialState: CocktailType = {
 };
 
 type DeleteCocktailArgs = {
-  id: string;
-  user_id: string;
+  id: number;
+  user_id: number;
 };
 type DeleteCocktailResponse = {
+  id: number;
   message: string;
 };
 
@@ -31,6 +32,11 @@ export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: 
 export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
   'cocktails/deleteCocktail',
   ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
+);
+
+export const updateStatusCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
+  'cocktails/updateStatusCocktail',
+  ({ id, user_id }) => api.fetchCocktailUpdateStatus(id, user_id),
 );
 
 const cocktailsSlice = createSlice({
@@ -55,6 +61,12 @@ const cocktailsSlice = createSlice({
         state.cocktails.push(action.payload.cocktail);
       })
       .addCase(addCocktail.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(updateStatusCocktail.fulfilled, (state, action) => {
+        state.cocktails = state.cocktails.map((el) => el.id === action.payload.id ? ({...el, status: true}) : el);
+      })
+      .addCase(updateStatusCocktail.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(deleteCocktail.fulfilled, (state, action) => {
