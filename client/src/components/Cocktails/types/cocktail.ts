@@ -1,6 +1,7 @@
 import type { Barware } from '../../Barware/types/barware';
 import type { Drink } from '../../Drinks/types/drink';
 import type { Ingredient } from '../../Ingredient/types/ingredient';
+import type { Tech } from '../../Tech/types/tech';
 
 export type Cocktail = {
   id: number;

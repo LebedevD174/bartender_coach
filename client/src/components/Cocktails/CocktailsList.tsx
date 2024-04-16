@@ -10,8 +10,6 @@ function CocktailsList(): JSX.Element {
   const [cocktails, setCocktails] = useState(cocktailsArr);
 
   useEffect(() => {
-    console.log('cocktailsArr updated:', cocktailsArr);
-    console.log('filter:', filter);
     setCocktails(cocktailsArr);
     if (filter.category > 0 || filter.feature > 0) {
       const res = cocktailsArr.filter(
