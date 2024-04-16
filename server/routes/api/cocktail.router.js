@@ -81,7 +81,7 @@ router.get('/', async (req, res) => {
     });
     res.status(200).json({ message: 'success', cocktails });
   } catch ({ message }) {
-    res.json({ message });
+    res.status(400).json({ message });
   }
 });
 
@@ -143,7 +143,7 @@ router.get('/:id', async (req, res) => {
     });
     res.status(200).json({ message: 'success', cocktails });
   } catch ({ message }) {
-    res.json({ message });
+    res.status(400).json({ message });
   }
 });
 
@@ -166,7 +166,30 @@ router.post('/', upload.single('img'), async (req, res) => {
     });
     res.status(200).json({ message: 'success', cocktail });
   } catch ({ message }) {
-    res.json(message);
+    res.status(400).json(message);
+  }
+});
+
+router.put('/updatestatus/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId } = req.body;
+    const cocktail = await Cocktail.findOne({
+      where: {
+        [Op.and]: [{ id }, { user_id: userId }],
+      },
+    });
+    if (cocktail) {
+      await Cocktail.update({ status: true }, {
+        where: { id },
+        fields: ['status']
+    });
+      res.status(200).json({ message: 'success' });
+    } else {
+      res.status(400).json({ message: 'failed to update status' });
+    }
+  } catch ({ message }) {
+    res.status(400).json({ error: message });
   }
 });
 
@@ -185,7 +208,7 @@ router.delete('/:id', async (req, res) => {
       });
       res.status(200).json({ message: 'success' });
     } else {
-      res.json({ message: 'failed to destroy' });
+      res.status(400).json({ message: 'failed to destroy' });
     }
   } catch ({ message }) {
     res.status(400).json({ error: message });

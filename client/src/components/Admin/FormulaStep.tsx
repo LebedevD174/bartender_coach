@@ -1,17 +1,19 @@
-import React, {useEffect, useState } from 'react';
+import type { Dispatch, SetStateAction} from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import Barware from '../Coach/Barware';
-import type { Cocktail } from '../Cocktails/types/cocktail';
+import type { Cocktail, FormulaNew } from '../Cocktails/types/cocktail';
 import { loadBarware } from '../Barware/barwareSlice';
 import { loadIngredient } from '../Ingredient/ingredientSlice';
 import { loadTech } from '../Tech/techSlice';
 import { loadDrinks } from '../Drinks/drinksSlice';
 
-function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): JSX.Element {
+function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cocktail, order: number, formulas: FormulaNew[], setFormulas: Dispatch<SetStateAction<FormulaNew[]>>}): JSX.Element {
     const dispatch = useAppDispatch();
     const [select, setSelect] = useState<string>('')
-    const [input, setInput] = useState({cocktail_id: cocktail.id, barware_id: 0, drink_id: 0, drinks_volume: 0, tech_id: 0, ingredient_id: 0, ingredients_volume: 0, order})
+    const [input, setInput] = useState<FormulaNew>({cocktail_id: cocktail.id, barware_id: null, drink_id: null, drinks_volume: null, tech_id: null, ingredient_id: null, ingredients_volume: null, order})
+    const [isFormDisabled, setDisable] = useState<boolean>(false)
     const barware = useAppSelector((store: RootState) => store.barware.barware);
     const drinks = useAppSelector((store: RootState) => store.drinks.drinks);
     const ingredients = useAppSelector((store: RootState) => store.ingredients.ingredients);
@@ -22,9 +24,13 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         dispatch(loadTech()).catch(console.log)
         dispatch(loadDrinks()).catch(console.log)
     }, [])
+    function fixChange(): void {
+        setFormulas([...formulas, input])
+        setDisable(true)
+    }
     return (
         <div>
-        <select name="option" id="option" onChange={(e) => setSelect(e.target.value)}>
+        <select name="option" id="option" onChange={(e) => setSelect(e.target.value)} disabled={isFormDisabled}>
             <option hidden>Шаг рецепта</option>
             <option value='barware_id'>Барные принадлежности</option>
             <option value='drink_id'>Напитки</option>
@@ -34,7 +40,7 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         {select === 'barware_id' && 
         <>
         <label htmlFor="barware_id">Выберите барные принадлежности</label>
-        <select name="barware_id" id="barware_id" onChange={(e) => setInput((prev) => ({...prev, barware_id: +e.target.value}))}>
+        <select name="barware_id" id="barware_id" onChange={(e) => setInput((prev) => ({...prev, barware_id: +e.target.value}))} disabled={isFormDisabled}>
             <option hidden>Барные принадлежности</option>
             {barware.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
@@ -43,17 +49,17 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         {select === 'drink_id' && 
         <>
         <label htmlFor="drink_id">Выберите напиток</label>
-        <select name="drink_id" id="drink_id" onChange={(e) => setInput((prev) => ({...prev, drink_id: +e.target.value}))}>
+        <select name="drink_id" id="drink_id" onChange={(e) => setInput((prev) => ({...prev, drink_id: +e.target.value}))} disabled={isFormDisabled}>
             <option hidden>Напитки</option>
             {drinks.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
-        <input type="number" value={input.drinks_volume} onChange={(e) => setInput((prev) => ({...prev, drinks_volume: +e.target.value}))}/>
+        <input type="number" value={input.drinks_volume} onChange={(e) => setInput((prev) => ({...prev, drinks_volume: +e.target.value}))} disabled={isFormDisabled}/>
         </>
         }
         {select === 'tech_id' && 
         <>
         <label htmlFor="tech_id">Выберите технику</label>
-        <select name="tech_id" id="tech_id" onChange={(e) => setInput((prev) => ({...prev, tech_id: +e.target.value}))}>
+        <select name="tech_id" id="tech_id" onChange={(e) => setInput((prev) => ({...prev, tech_id: +e.target.value}))} disabled={isFormDisabled}>
             <option hidden>Техники</option>
             {techs.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
@@ -62,14 +68,14 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         {select === 'ingredient_id' && 
         <>
         <label htmlFor="ingredient_id">Напитки</label>
-        <select name="ingredient_id" id="ingredient_id" onChange={(e) => setInput((prev) => ({...prev, ingredient_id: +e.target.value}))}>
+        <select name="ingredient_id" id="ingredient_id" onChange={(e) => setInput((prev) => ({...prev, ingredient_id: +e.target.value}))} disabled={isFormDisabled}>
             <option hidden>Напитки</option>
             {ingredients.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
-        <input type="number" value={input.ingredients_volume} onChange={(e) => setInput((prev) => ({...prev, ingredients_volume: +e.target.value}))}/>
+        <input type="number" value={input.ingredients_volume} onChange={(e) => setInput((prev) => ({...prev, ingredients_volume: +e.target.value}))} disabled={isFormDisabled}/>
         </>
         }
-        <button>++++++++++</button>
+        <button onClick={fixChange}>Зафиксировать</button>
         </div>
     );
 }
