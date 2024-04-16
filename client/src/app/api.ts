@@ -80,7 +80,7 @@ export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails
   return response.data;
 };
 
-export const fetchCocktailAdd = async (cocktail: CocktailNew): Promise<Cocktail> => {
+export const fetchCocktailAdd = async (cocktail: FormData): Promise<{ message: string; cocktail: Cocktail }> => {
   const response: AxiosResponse<{ message: string; cocktail: Cocktail }> = await axios.post(
     '/api/cocktails/',
     cocktail,
