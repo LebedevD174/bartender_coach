@@ -86,7 +86,8 @@ export const fetchCocktailAdd = async (cocktail: CocktailNew): Promise<Cocktail>
     '/api/cocktails/',
     cocktail,
   );
-  console.log(response.data);
+  // console.log(response.data.cocktail);
+  
   return response.data;
 };
 

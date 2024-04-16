@@ -7,7 +7,7 @@ function AddCardCocktail(): JSX.Element {
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+  const [category_id, setCategory] = useState('');
 
   const user: User = useAppSelector((store) => store.auth.user);
 
@@ -15,15 +15,13 @@ function AddCardCocktail(): JSX.Element {
 
   const addCocktailForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    console.log(category);
-
     const formData = new FormData();
     if (img) {
       formData.append('img', img);
     }
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('category', category);
+    formData.append('category_id', category_id);
     formData.append('user_id', user.id.toString());
     // консоль (formData);
     // for (let [key, value] of formData.entries()) {
@@ -46,7 +44,7 @@ function AddCardCocktail(): JSX.Element {
           id="description"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select value={category_id} onChange={(e) => setCategory(e.target.value)}>
           <option hidden>Крепость</option>
           <option value={1}>Безалкогольные</option>
           <option value={2}>Крепкие</option>

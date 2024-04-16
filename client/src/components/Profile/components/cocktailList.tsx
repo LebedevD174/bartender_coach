@@ -6,7 +6,8 @@ import CocktailCard from './cocktailCard';
 
 function CocktailsList(): JSX.Element {
   const cocktailsArr: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
-  const cocktails = cocktailsArr.filter((cocktail) => cocktail.user_id === 2);
+  const user: User = useAppSelector((store) => store.auth.user);
+  const cocktails = cocktailsArr.filter((cocktail) => cocktail.user_id === user.id);
   return (
     <div className="CocktailsList">
       <div className="container">
