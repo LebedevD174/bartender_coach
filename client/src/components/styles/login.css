@@ -6,7 +6,7 @@
   font-family: 'Quicksand', sans-serif;
 }
 
-.container-auth{
+.container-auth {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,10 +88,10 @@
   width: 100%;
 }
 
-.inputBx input, .inputBx button {
-  position: relative; /* Добавлено для работы z-index */
-  z-index: 1; /* Установлено значение z-index для input */
-  /* Остальные стили */
+.inputBx input,
+.inputBx button, .links {
+  position: relative;
+  z-index: 1;
 }
 
 .login .inputBx input {
