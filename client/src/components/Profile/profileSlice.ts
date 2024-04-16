@@ -28,6 +28,14 @@ const profileSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
+            .addCase(profileLoad.fulfilled, (state, action) => {
+                console.log(action.payload);
+                state.profile = action.payload;
+            })
+            .addCase(profileLoad.rejected, (state, action) => {
+                console.log(action.payload);
+                state.error = action.error.message;
+            })
             .addCase(profileUpdate.fulfilled, (state, action) => {
                 console.log(action.payload);
                 state.profile = action.payload;

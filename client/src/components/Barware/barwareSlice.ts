@@ -11,7 +11,7 @@ export const loadBarware = createAsyncThunk('barware/loadBarware', () =>
   api.fetchBarwareLoad(),
 );
 
-const cocktailsSlice = createSlice({
+const baraweSlice = createSlice({
   name: 'barware',
   initialState,
   reducers: {},
@@ -26,4 +26,4 @@ const cocktailsSlice = createSlice({
   },
 });
 
-export default cocktailsSlice.reducer;
+export default baraweSlice.reducer;

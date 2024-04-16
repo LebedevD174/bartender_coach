@@ -5,6 +5,7 @@ import { useAppSelector , useAppDispatch } from '../../../app/redux/store';
 import type { Cocktail } from "../types/cocktail";
 import { loadCocktailsID } from '../cocktailsSlice';
 import type { RootState } from '../../app/redux/store';
+import FormulaStep from './FormulaStep';
  
 function CocktailCard(): JSX.Element { 
     const {id} = useParams<{ id: string }>();
@@ -20,14 +21,10 @@ function CocktailCard(): JSX.Element {
         <div>{cocktail.img}</div>
         <h2>Описание</h2>
         <div>{cocktail.description}</div>
-        <h2>Рецепт</h2>
-        <label htmlFor="lastName">Первый шаг:</label>
-      <input
-        type="text"
-        name='lastName'
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
+        <h2>Создание рецепта</h2>
+        <div className='container__formula'>
+        <FormulaStep cocktail = {cocktail}></FormulaStep>
+        </div>
         </>
     ); 
 } 

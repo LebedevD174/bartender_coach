@@ -6,6 +6,6 @@ export type Barware = {
   };
 
 export type BarwareType = {
-    barwares: Barware[];
+    barware: Barware[];
     error: string | undefined;
 }

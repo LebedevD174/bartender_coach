@@ -15,7 +15,6 @@ const {
 router.get('/', async (req, res) => {
   try {
     const cocktails = await Cocktail.findAll({
-      where: { status: true },
       include: [
         {
           model: Formula,

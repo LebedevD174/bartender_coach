@@ -14,15 +14,19 @@ function Main(): JSX.Element {
   const user = useAppSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
   const checkUser = async (): Promise<void> => {
-    dispatch(userCheck()).then((user) => {
-      dispatch(profileLoad(user.id))
-    })
+    dispatch(userCheck())
   };
 
   useEffect(() => {
     dispatch(loadCocktails()).catch(console.log);
     checkUser();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+        dispatch(profileLoad(user.id))
+    }
+}, [user]) 
 
   return (
     <div className="wrapper">
