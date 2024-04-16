@@ -6,7 +6,7 @@ import type { AxiosError} from 'axios';
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
-import type { Cocktail } from '../components/Cocktails/types/cocktail';
+import type { Cocktail, Ingredient } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
 import type { Feature } from '../components/Cocktails/features/types/features';
 import { Barware } from '../components/Barware/types/barware';
@@ -101,6 +101,12 @@ export const fetchFeaturesLoad = async (): Promise<{ message: string; features: 
 export const fetchBarwareLoad = async (): Promise<{ message: string; barware: Barware[] }> => {
   const response: AxiosResponse<{ message: string; barware: Barware[] }> =
     await axios.get('/api/barware/');
+  return response.data;
+};
+
+export const fetchIngredientLoad = async (): Promise<{ message: string; ingredient: Ingredient[] }> => {
+  const response: AxiosResponse<{ message: string; ingredient: Ingredient[] }> =
+    await axios.get('/api/ingredient/');
   return response.data;
 };
 

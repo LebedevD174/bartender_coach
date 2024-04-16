@@ -21,7 +21,7 @@ function CocktailCard(): JSX.Element {
         <h2>Описание</h2>
         <div>{cocktail.description}</div>
         <h2>Рецепт</h2>
-        <label htmlFor="lastName">Первый шаг:</label>
+        <label htmlFor="lastName">шаг:</label>
       <input
         type="text"
         name='lastName'

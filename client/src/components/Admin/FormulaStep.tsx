@@ -7,7 +7,7 @@ function FormulaStep() {
     const 
     const [select, setSelect] = useState('')
     const [input, setInput] = useState({})
-    const barware = useAppSelector((store: RootState) => store.admin.barware);
+    const barware = useAppSelector((store: RootState) => store.barware.barware);
     const drinks = useAppSelector((store: RootState) => store.drinks.drinks);
     useEffect(()=>{
         dispatch(loadBarware()).catch(console.log)
@@ -15,16 +15,19 @@ function FormulaStep() {
     }, [])
     return (
         <>
-        <select name="" id="">
+        <select name="option" id="option">
             <option value='barware_id'>Барные принадлежности</option>
             <option value='drink_id'>Напитки</option>
-            <option value='tech_id'>Ингредиенты</option>
+            <option value='tech_id'>Техники</option>
             <option value='ingredient_id'>Ингредиенты</option>
         </select>
         {select === 'barware_id' && 
         <label htmlFor="barware_id">{}</label>
-        <select name="" id="">
-            <option value={barware.id}></option>
+        <select name="barware" id="barware">
+            {barware.map((el) => {
+                return <option key={el.id} value={el.id}>{el.title}</option>
+            })}
+            
         </select>
         }
         </>
