@@ -16,7 +16,7 @@ import '../components/styles/MainPage.css';
 import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
-import '../components/styles/login.css';
+import '../components/styles/LogaRega.css';
 import AdminPage from '../components/Admin/AdminPage';
 import AdminCocktail from '../components/Admin/AdminCocktail';
 

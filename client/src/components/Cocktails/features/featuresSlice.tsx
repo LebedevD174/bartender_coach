@@ -11,7 +11,7 @@ export const loadFeatures = createAsyncThunk('features/loadFeatures', () =>
   api.fetchFeaturesLoad(),
 );
 
-const cocktailsSlice = createSlice({
+const featuresSlice = createSlice({
   name: 'features',
   initialState,
   reducers: {},
@@ -26,4 +26,4 @@ const cocktailsSlice = createSlice({
   },
 });
 
-export default cocktailsSlice.reducer;
+export default featuresSlice.reducer;

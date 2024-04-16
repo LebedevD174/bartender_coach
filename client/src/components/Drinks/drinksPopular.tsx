@@ -7,7 +7,7 @@ import { loadDrinks } from './drinksSlice';
 
 function DrinksPopular(): JSX.Element {
   const dispatch = useAppDispatch();
-
+  const user = useAppSelector((store) => store.auth.user);
   const drinksPop: Drink[] = useAppSelector((store) => store.drinks.drinks);
   const firstEightDrinks = drinksPop.slice(0, 4);
   useEffect(() => {
@@ -26,9 +26,11 @@ function DrinksPopular(): JSX.Element {
           </Link>
         ))}
       </div>
-      <Link to="/drinks">
-        <p className="all_cards">все напитки →</p>
-      </Link>
+      {user && (
+        <Link to="/drinks">
+          <p className="all_cards">все напитки →</p>
+        </Link>
+      )}
     </div>
   );
 }

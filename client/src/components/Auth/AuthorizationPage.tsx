@@ -18,7 +18,6 @@ function AuthorizationPage(): JSX.Element {
   const user = useAppSelector((store) => store.auth.user);
   const error = useAppSelector((state) => state.auth.error);
 
-
   const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const data = {
@@ -48,36 +47,40 @@ function AuthorizationPage(): JSX.Element {
         <i className="--clr" />
         <i className="--clr" />
         <i className="--clr" />
-        <h2>Login</h2>
-        <form className="sign-in" onSubmit={onHandleSubmit}>
-          <div className="inputBx">
-            <input
-              type="text"
-              name="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
+        <div className="formAuth">
+          <h2>Вход</h2>
+          <form className="sign-in" onSubmit={onHandleSubmit}>
+            <div className="inputBx">
+              <input
+                type="text"
+                name="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+            <div className="inputBx">
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
+            <div className="inputBx">
+              <button type="submit">Войти</button>
+            </div>
+          </form>
+          <div className="links">
+            <Link to="/registration">
+              <p>Зарегистрироваться</p>
+            </Link>
           </div>
-          <div className="inputBx">
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-          <div className="inputBx">
-            <button type="submit">Log-In</button>
-          </div>
-        </form>
-        <div className="links">
-          <Link to="/registration">Зарегистрироваться</Link>
         </div>
       </div>
       <Modal children={error} isOpen={isModalOpen} onClose={closeModal} />
