@@ -6,27 +6,36 @@ import type { Drink } from './types/drink';
 import { loadDrinks } from './drinksSlice';
 
 function DrinksList(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const [filter, setFilter] = useState({ category: 0 });
-  const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
-  const [drinks, setDrinks] = useState(drinksArr);
+ const dispatch = useAppDispatch();
+ const [filter, setFilter] = useState({ category: 0 });
+ const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
+ const [drinks, setDrinks] = useState(drinksArr);
 
-  useEffect(() => {
+ const [searchQuery, setSearchQuery] = useState('');
+
+ useEffect(() => {
     dispatch(loadDrinks()).catch(console.log);
-  }, []);
+ }, []);
 
-  useEffect(() => {
+ useEffect(() => {
+    let filteredDrinks = drinksArr;
+
     if (+filter.category > 0) {
-      const res = drinksArr.filter((drink: Drink) => drink.category_id === +filter.category);
-      setDrinks(res);
-    } else {
-      setDrinks(drinksArr);
+      filteredDrinks = filteredDrinks.filter((drink: Drink) => drink.category_id === +filter.category);
     }
-  }, [drinksArr, filter]);
 
-  return (
+    if (searchQuery) {
+      filteredDrinks = filteredDrinks.filter((drink: Drink) =>
+        drink.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    setDrinks(filteredDrinks);
+ }, [drinksArr, filter, searchQuery]);
+
+ return (
     <div className="DrinksList">
-      <FilterDrinks setFilter={setFilter} />
+      <FilterDrinks setFilter={setFilter} onSearch={setSearchQuery} /> 
       <div className="container">
         {drinks.map((drink) => (
           <Link to={`/drinks/${drink.id}`}>
@@ -38,7 +47,7 @@ function DrinksList(): JSX.Element {
         ))}
       </div>
     </div>
-  );
+ );
 }
 
 export default DrinksList;
