@@ -22,10 +22,6 @@ const cocktailsSlice = createSlice({
       .addCase(loadDrinks.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadDrinks.pending, (state, action) => {})
-      // .addCase(loadDrink.fulfilled, (state, action) => {
-      //   state.drink = action.payload.drink;
-      // });
   },
 });
 

@@ -23,6 +23,9 @@ function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cockt
         dispatch(loadTech()).catch(console.log)
         dispatch(loadDrinks()).catch(console.log)
     }, [])
+    function fixChange() {
+        setFormulas([...formulas, input])
+    }
     return (
         <div>
         <select name="option" id="option" onChange={(e) => setSelect(e.target.value)}>
@@ -70,6 +73,7 @@ function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cockt
         <input type="number" value={input.ingredients_volume} onChange={(e) => setInput((prev) => ({...prev, ingredients_volume: +e.target.value}))}/>
         </>
         }
+        <button onClick={() => ()}>Зафиксировать</button>
         </div>
     );
 }

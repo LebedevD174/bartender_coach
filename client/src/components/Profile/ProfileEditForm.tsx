@@ -9,8 +9,7 @@ import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import type { User } from '../Auth/types/User';
 import { profileUpdate } from './profileSlice';
-import Modal from '../ui/Modal';
-import ModalForm from '../ui/ModalForm';
+import type { Profile } from './types/Profile';
 
 
 function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
