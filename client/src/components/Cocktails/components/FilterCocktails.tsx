@@ -2,33 +2,36 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import { loadFeatures } from '../features/featuresSlice';
 import type { Feature } from '../features/types/features';
+import SearchInput from '../../ui/SearchInput'; 
 
 type FilterCocktailsProps = {
-  setFilter: (filter: { feature: number; category: number }) => void;
-  filter: { feature: number; category: number };
+ setFilter: (filter: { feature: number; category: number }) => void;
+ filter: { feature: number; category: number };
+ onSearch: (query: string) => void; 
 };
 
-function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Element {
-  const dispatch = useAppDispatch();
-  const features: Feature[] = useAppSelector((store) => store.features.features);
+function FilterCocktails({ setFilter, filter, onSearch }: FilterCocktailsProps): JSX.Element {
+ const dispatch = useAppDispatch();
+ const features: Feature[] = useAppSelector((store) => store.features.features);
 
-  useEffect(() => {
+ useEffect(() => {
     if (features) {
       dispatch(loadFeatures()).catch(console.log);
     }
-  }, [dispatch, features.length]);
+ }, [dispatch, features.length]);
 
-  const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+ const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
     setFilter({ ...filter, feature: +id });
-  };
-  const onHandlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+ };
+ const onHandlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
     setFilter({ ...filter, category: +id });
-  };
+ };
 
-  return (
+ return (
     <div className="FilterCocktails">
+      <SearchInput onSearch={onSearch} /> 
       <p className="categoryFilt">Фильтр</p>
       <div className="container_filter">
         <div className="filter">
@@ -47,7 +50,7 @@ function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Eleme
               <option value={0}>Все вкусы</option>
               {features.map((feature) => (
                 <option key={feature.id} value={feature.id}>
-                  {feature.title}
+                 {feature.title}
                 </option>
               ))}
             </select>
@@ -55,7 +58,7 @@ function FilterCocktails({ setFilter, filter }: FilterCocktailsProps): JSX.Eleme
         </div>
       </div>
     </div>
-  );
+ );
 }
 
 export default FilterCocktails;

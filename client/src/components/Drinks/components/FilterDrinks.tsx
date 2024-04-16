@@ -1,17 +1,20 @@
 import React from 'react';
+import SearchInput from '../../ui/SearchInput';
 
 type FilterDrinksProps = {
-  setFilter: (filter: { category: string }) => void;
+ setFilter: (filter: { category: string }) => void;
+ onSearch: (query: string) => void; 
 };
 
-function FilterDrinks({ setFilter }: FilterDrinksProps): JSX.Element {
-  const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+function FilterDrinks({ setFilter, onSearch }: FilterDrinksProps): JSX.Element {
+ const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
     setFilter({ category: id });
-  };
+ };
 
-  return (
+ return (
     <div className="FilterDrinks">
+      <SearchInput onSearch={onSearch} /> 
       <p className="categoryFilt">Фильтр</p>
       <div className="container_filter">
         <div className="filter">
@@ -27,7 +30,7 @@ function FilterDrinks({ setFilter }: FilterDrinksProps): JSX.Element {
         </div>
       </div>
     </div>
-  );
+ );
 }
 
 export default FilterDrinks;

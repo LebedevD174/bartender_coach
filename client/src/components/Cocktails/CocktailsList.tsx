@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import FilterCocktails from './components/FilterCocktails';
 import { useAppSelector } from '../../app/redux/store';
 import type { Cocktail } from './types/cocktail';
-import SearchInput from '../ui/SearchInput';
 
 function CocktailsList(): JSX.Element {
   const [filter, setFilter] = useState({ category: 0, feature: 0 });
@@ -38,8 +37,7 @@ function CocktailsList(): JSX.Element {
  
   return (
      <div className="CocktailsList">
-       <FilterCocktails setFilter={setFilter} filter={filter} />
-       <SearchInput onSearch={setSearchQuery} />
+       <FilterCocktails setFilter={setFilter} filter={filter} onSearch={setSearchQuery} />
        <div className="container">
          {cocktails.map((cocktail) => (
            <Link key={cocktail.id} to={`/cocktails/${cocktail.id}`}>

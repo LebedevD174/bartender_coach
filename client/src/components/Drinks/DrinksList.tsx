@@ -4,17 +4,16 @@ import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import FilterDrinks from './components/FilterDrinks';
 import type { Drink } from './types/drink';
 import { loadDrinks } from './drinksSlice';
-import SearchInput from '../ui/SearchInput';
 
 function DrinksList(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const [filter, setFilter] = useState({ category: 0 });
-  const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
-  const [drinks, setDrinks] = useState(drinksArr);
+ const dispatch = useAppDispatch();
+ const [filter, setFilter] = useState({ category: 0 });
+ const drinksArr: Drink[] = useAppSelector((store) => store.drinks.drinks);
+ const [drinks, setDrinks] = useState(drinksArr);
 
-  const [searchQuery, setSearchQuery] = useState('');
+ const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
+ useEffect(() => {
     dispatch(loadDrinks()).catch(console.log);
  }, []);
 
@@ -34,11 +33,9 @@ function DrinksList(): JSX.Element {
     setDrinks(filteredDrinks);
  }, [drinksArr, filter, searchQuery]);
 
-
-  return (
+ return (
     <div className="DrinksList">
-      <FilterDrinks setFilter={setFilter} />
-      <SearchInput onSearch={setSearchQuery} />
+      <FilterDrinks setFilter={setFilter} onSearch={setSearchQuery} /> 
       <div className="container">
         {drinks.map((drink) => (
           <Link to={`/drinks/${drink.id}`}>
