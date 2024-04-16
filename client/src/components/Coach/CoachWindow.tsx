@@ -4,7 +4,6 @@ import { shallowEqual as equal } from 'shallow-equal'; // Assuming you install s
 import type { RootState } from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
 import type { CocktailFormula, Formula } from '../Cocktails/types/cocktail';
-import { Cocktail } from '../Cocktails/types/cocktail';
 
 function CoachWindow({
   cocktail,
@@ -110,7 +109,7 @@ function CoachWindow({
     <>
       <div>{profile?.name}</div>
       <div>{user?.login}</div>
-      <div className='titleCocktailBtn'>{cocktail?.title}</div>
+      <div className="titleCocktailBtn">{cocktail?.title}</div>
       <div className="allContainerFormula">
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
@@ -202,12 +201,18 @@ function CoachWindow({
         </DragDropContext>
       </div>
       <div>
-        {result === true && <button className='btnClose' onClick={closeCoach}>Завершить</button>}
-        {win === true && <div className='cool' >Успех!</div>}
+        {result === true && (
+          <button className="btnClose" onClick={closeCoach}>
+            Завершить
+          </button>
+        )}
+        {win === true && <div className="cool">Успех!</div>}
         {win === false && (
           <>
-            <div className='lost'>Вы проиграли</div>
-            <button className='btnRestart' onClick={restartCoach}>Начать заново</button>
+            <div className="lost">Вы проиграли</div>
+            <button className="btnRestart" onClick={restartCoach}>
+              Начать заново
+            </button>
           </>
         )}
       </div>

@@ -4,7 +4,6 @@ import type { User } from '../Auth/types/User';
 import type { Profile} from './types/Profile';
 import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
-import { profileLoad } from './profileSlice';
 import ProfileEditForm from './ProfileEditForm';
 import Modal from '../ui/Modal';
 

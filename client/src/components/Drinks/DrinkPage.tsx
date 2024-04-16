@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { RootState } from '@reduxjs/toolkit/query';
-import type { Drink } from './types/drink';
+import type { Drink, DrinkParams } from './types/drink';
 import { useAppDispatch } from '../../app/redux/store';
 import { loadDrinks } from './drinksSlice';
 
 function DrinkPage(): JSX.Element {
-  const { drinkId }: { drinkId: string } = useParams();
+
+  const { drinkId } = useParams<DrinkParams>();
   const dispatch = useAppDispatch();
   const drinks: Drink[] = useSelector((store: RootState) => store.drinks.drinks);
   const navigate = useNavigate();
