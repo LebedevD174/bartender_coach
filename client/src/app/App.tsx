@@ -17,6 +17,8 @@ import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
 import '../components/styles/login.css';
+import AdminPage from '../components/Admin/AdminPage';
+import AdminCocktail from '../components/Admin/AdminCocktail';
 
 function App(): JSX.Element {
   return (
@@ -28,10 +30,12 @@ function App(): JSX.Element {
           <Route path="/cocktails" element={<CocktailsList />} />
           <Route path="/drinks" element={<DrinksList />} />
           <Route path="/drinks/:drinkId" element={<DrinkPage />} />
-          <Route path="registration" element={<RegistrationPage />} />
-          <Route path="authorization" element={<AuthorizationPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="coach" element={<CoachPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/authorization" element={<AuthorizationPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/coach" element={<CoachPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/cocktails/:id" element={<AdminCocktail />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -5,7 +5,7 @@ import type { AxiosError } from 'axios';
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
-import type { Cocktail, CocktailNew } from '../components/Cocktails/types/cocktail';
+import type { Cocktail, Ingredient, Tech, CocktailNew } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
 import type { Feature } from '../components/Cocktails/features/types/features';
 import type { Barware } from '../components/Barware/types/barware';
@@ -53,8 +53,7 @@ export const fetchLoadProfile = async (
   id: number,
 ): Promise<{ message: string; profile: Profile }> => {
   const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.get(
-    `/api/profile/${id}`,
-    profile,
+    `/api/profile/${id}`
   );
   if (response.data.message === 'success') {
     return response.data;
@@ -118,3 +117,16 @@ export const fetchBarwareLoad = async (): Promise<{ message: string; barware: Ba
     await axios.get('/api/barware/');
   return response.data;
 };
+
+export const fetchIngredientLoad = async (): Promise<{ message: string; ingredient: Ingredient[] }> => {
+  const response: AxiosResponse<{ message: string; ingredient: Ingredient[] }> =
+    await axios.get('/api/ingredient/');
+  return response.data;
+};
+
+export const fetchTechLoad = async (): Promise<{ message: string; tech: Tech[] }> => {
+  const response: AxiosResponse<{ message: string; tech: Tech[] }> =
+    await axios.get('/api/tech/');
+  return response.data;
+};
+

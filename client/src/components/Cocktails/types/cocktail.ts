@@ -1,5 +1,7 @@
 import type { Barware } from '../../Barware/types/barware';
 import type { Drink } from '../../Drinks/types/drink';
+import type { Ingredient } from '../../Ingredient/types/ingredient';
+import type { Tech } from '../../Tech/types/tech';
 
 export type Cocktail = {
   id: number;
@@ -44,20 +46,9 @@ export type Formula = {
   Tech: Tech;
 };
 
-export type Ingredient = {
-  id: number;
-  title: string;
-  measure: string;
-  img: string;
-};
+
 
 export type CocktailFormula = Cocktail & {
   Formula: Formula[];
 };
 
-export type Tech = {
-  id: number;
-  title: string;
-  description: string;
-  img: string;
-};
