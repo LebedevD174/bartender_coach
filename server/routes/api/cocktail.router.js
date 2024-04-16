@@ -154,6 +154,8 @@ router.post('/', upload.single('img'), async (req, res) => {
     let img;
     if (req.file) {
       img = `/img/${req.file.originalname}`;
+    } else {
+      img = '/img/imgCocktail.jpg';
     }
     const cocktail = await Cocktail.create({
       title,
