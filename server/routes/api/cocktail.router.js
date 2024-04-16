@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const multer = require('multer');
 const { Op } = require('sequelize');
 const {
   Cocktail,
@@ -11,6 +12,18 @@ const {
   Drink,
   Category,
 } = require('../../db/models');
+
+//Настройка мультера
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'public/img');
+  },
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 router.get('/', async (req, res) => {
   try {
@@ -74,7 +87,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const {id} = req.params
+    const { id } = req.params;
     const cocktails = await Cocktail.findOne({
       where: { id },
       include: [
@@ -134,15 +147,21 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('img'), async (req, res) => {
   try {
-    const { title, description, img, user_id } = req.body;
+    console.log(req.body);
+    const { title, description, user_id, category_id } = req.body;
+    let img;
+    if (req.file) {
+      img = `/img/${req.file.originalname}`;
+    }
     const cocktail = await Cocktail.create({
       title,
       description,
       img,
-      user_id,
+      user_id: +user_id,
       status: false,
+      category_id: +category_id,
     });
     res.status(200).json({ message: 'success', cocktail });
   } catch ({ message }) {
