@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 
-function Modal({ children, isOpen, onClose }: { children: React.ReactNode }) : JSX.Element {
+function Modal({ children, isOpen, onClose }: { children: React.ReactNode; isOpen: boolean; onClose: () => void }) : JSX.Element | null {
   if (!isOpen) {
      return null;
   }

@@ -3,7 +3,7 @@ import * as api from '../../app/api';
 import type { CocktailType } from './types/cocktail';
 
 const initialState: CocktailType = {
-  cocktail: {},
+  cocktail: null,
   cocktails: [],
   error: undefined,
 };

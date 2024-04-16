@@ -12,10 +12,10 @@ import { profileUpdate } from './profileSlice';
 import type { Profile } from './types/Profile';
 
 
-function ProfileEditForm({onSubmitSuccess} ):JSX.Element {
+function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):JSX.Element {
 
- const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
- const user: User = useAppSelector((store: RootState) => store.auth.user);
+ const profile: Profile | undefined = useAppSelector((store: RootState) => store.profile.profile);
+ const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
 
  const [name, setName] = useState(profile ? profile.name : '');
  const [lastName, setLastName] = useState(profile ? profile.lastName : '');

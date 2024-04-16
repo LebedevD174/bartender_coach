@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import type { User } from '../Auth/types/User';
 import type { Profile} from './types/Profile';
 import type { RootState} from '../../app/redux/store';
-import { useAppDispatch, useAppSelector } from '../../app/redux/store';
+import { useAppSelector } from '../../app/redux/store';
 import ProfileEditForm from './ProfileEditForm';
 import Modal from '../ui/Modal';
 
 function ProfileInfo(): JSX.Element {
-    const user: User = useAppSelector((store: RootState) => store.auth.user);
-    const profile: Profile = useAppSelector((store: RootState) => store.profile.profile);
-    const dispatch = useAppDispatch();
+    const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
+    const profile: Profile | undefined  = useAppSelector((store: RootState) => store.profile.profile);
     const [showEditForm, setShowEditForm] = useState(false);
 
     const handleFormSubmit = ():void => {
