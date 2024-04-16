@@ -1,13 +1,15 @@
+import type { Dispatch, SetStateAction} from 'react';
 import React, { FormEventHandler, useEffect, useState } from 'react';
-import { RootState, useAppDispatch, useAppSelector } from '../../app/redux/store';
+import type { RootState} from '../../app/redux/store';
+import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import Barware from '../Coach/Barware';
-import type { Cocktail } from '../Cocktails/types/cocktail';
+import type { Cocktail, FormulaNew } from '../Cocktails/types/cocktail';
 import { loadBarware } from '../Barware/barwareSlice';
 import { loadIngredient } from '../Ingredient/ingredientSlice';
 import { loadTech } from '../Tech/techSlice';
 import { loadDrinks } from '../Drinks/drinksSlice';
 
-function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): JSX.Element {
+function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cocktail, order: number, formulas: FormulaNew[], setFormulas: Dispatch<SetStateAction<FormulaNew[]>>}): JSX.Element {
     const dispatch = useAppDispatch();
     const [select, setSelect] = useState<string>('')
     const [input, setInput] = useState({cocktail_id: cocktail.id, barware_id: 0, drink_id: 0, drinks_volume: 0, tech_id: 0, ingredient_id: 0, ingredients_volume: 0, order})
@@ -35,9 +37,7 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         <label htmlFor="barware_id">Выберите барные принадлежности</label>
         <select name="barware_id" id="barware_id" onChange={(e) => setInput((prev) => ({...prev, barware_id: +e.target.value}))}>
             <option hidden>Барные принадлежности</option>
-            {barware.map((el) => {
-                return <option key={el.id} value={el.id}>{el.title}</option>
-            })}
+            {barware.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
         </>
         }
@@ -46,9 +46,7 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         <label htmlFor="drink_id">Выберите напиток</label>
         <select name="drink_id" id="drink_id" onChange={(e) => setInput((prev) => ({...prev, drink_id: +e.target.value}))}>
             <option hidden>Напитки</option>
-            {drinks.map((el) => {
-                return <option key={el.id} value={el.id}>{el.title}</option>
-            })}
+            {drinks.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
         <input type="number" value={input.drinks_volume} onChange={(e) => setInput((prev) => ({...prev, drinks_volume: +e.target.value}))}/>
         </>
@@ -58,9 +56,7 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         <label htmlFor="tech_id">Выберите технику</label>
         <select name="tech_id" id="tech_id" onChange={(e) => setInput((prev) => ({...prev, tech_id: +e.target.value}))}>
             <option hidden>Техники</option>
-            {techs.map((el) => {
-                return <option key={el.id} value={el.id}>{el.title}</option>
-            })}
+            {techs.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
         </>
         }
@@ -69,14 +65,11 @@ function FormulaStep({cocktail, order} : {cocktail: Cocktail, order: number}): J
         <label htmlFor="ingredient_id">Напитки</label>
         <select name="ingredient_id" id="ingredient_id" onChange={(e) => setInput((prev) => ({...prev, ingredient_id: +e.target.value}))}>
             <option hidden>Напитки</option>
-            {ingredients.map((el) => {
-                return <option key={el.id} value={el.id}>{el.title}</option>
-            })}
+            {ingredients.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
         <input type="number" value={input.ingredients_volume} onChange={(e) => setInput((prev) => ({...prev, ingredients_volume: +e.target.value}))}/>
         </>
         }
-        <button>++++++++++</button>
         </div>
     );
 }

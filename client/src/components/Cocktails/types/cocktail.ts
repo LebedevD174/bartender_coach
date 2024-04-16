@@ -14,7 +14,7 @@ export type Cocktail = {
   CocktailFeatures: CocktailFeature[];
 };
 
-export type CocktailNew = Omit<Cocktail, 'id' | 'status' | 'CocktailFeatures' | 'status'>;
+export type CocktailNew = Omit<Cocktail, 'id' | 'status' | 'CocktailFeatures'>;
 
 export type CocktailID = Cocktail['id'];
 
@@ -45,6 +45,7 @@ export type Formula = {
   Drink: Drink;
   Tech: Tech;
 };
+export type FormulaNew = Omit<Formula, 'Barware' | 'Ingredient' | 'Drink' | 'Tech'>
 
 
 

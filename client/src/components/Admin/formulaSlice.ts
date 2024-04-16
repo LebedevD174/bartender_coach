@@ -1,47 +1,47 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
 import type { Cocktail, CocktailNew, CocktailType } from './types/cocktail';
+import { Formula } from '../Cocktails/types/cocktail';
 
 const initialState: CocktailType = {
-  cocktail: {},
-  cocktails: [],
-  error: undefined,
+    formula: [],
+    error: undefined,
 };
 
-export const loadCocktails = createAsyncThunk('cocktails/loadCocktails', () =>
-  api.fetchCocktailsLoad(),
+export const loadFormula = createAsyncThunk('formulas/loadFormulas', () =>
+  api.fetchFormulaLoad(),
 );
 
-export const loadCocktailsID = createAsyncThunk('cocktails/loadCocktailsId', (id: string) =>
-  api.fetchCocktailsLoadId(id),
+export const loadFormulaID = createAsyncThunk('formulas/loadCocktailsId', (id: string) =>
+  api.fetchFormulaLoadId(id),
 );
 
-export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: CocktailNew) =>
-  api.fetchCocktailAdd(cocktail),
+export const addFormula = createAsyncThunk('formulas/addCocktail', (formulas: Formula[]) =>
+  api.fetchFormulaAdd(formulas),
 );
 
 const cocktailsSlice = createSlice({
-  name: 'cocktails',
+  name: 'formulas',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loadCocktails.fulfilled, (state, action) => {
+      .addCase(loadFormula.fulfilled, (state, action) => {
         state.cocktails = action.payload.cocktails;
       })
-      .addCase(loadCocktails.rejected, (state, action) => {
+      .addCase(loadFormula.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadCocktailsID.fulfilled, (state, action) => {
+      .addCase(loadFormulaID.fulfilled, (state, action) => {
         state.cocktail = action.payload.cocktails;
       })
-      .addCase(loadCocktailsID.rejected, (state, action) => {
+      .addCase(loadFormulaID.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(addCocktail.fulfilled, (state, action) => {
+      .addCase(addFormula.fulfilled, (state, action) => {
         state.cocktails.push(action.payload.cocktail);
       })
-      .addCase(addCocktail.rejected, (state, action) => {
+      .addCase(addFormula.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

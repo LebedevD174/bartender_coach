@@ -5,7 +5,7 @@ import type { AxiosError } from 'axios';
 import axios, { type AxiosResponse } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile, ProfileWithoutID } from '../components/Profile/types/Profile';
-import type { Cocktail, Ingredient, Tech, CocktailNew } from '../components/Cocktails/types/cocktail';
+import type { Cocktail, Ingredient, Tech, CocktailNew, Formula, FormulaNew } from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
 import type { Feature } from '../components/Cocktails/features/types/features';
 import type { Barware } from '../components/Barware/types/barware';
@@ -127,6 +127,18 @@ export const fetchIngredientLoad = async (): Promise<{ message: string; ingredie
 export const fetchTechLoad = async (): Promise<{ message: string; tech: Tech[] }> => {
   const response: AxiosResponse<{ message: string; tech: Tech[] }> =
     await axios.get('/api/tech/');
+  return response.data;
+};
+
+export const fetchFormulaLoad = async (): Promise<{ message: string; formulas: Formula[] }> => {
+  const response: AxiosResponse<{ message: string; formulas: Formula[] }> =
+    await axios.get('/api/formula/');
+  return response.data;
+};
+
+export const fetchFormulaAdd = async (formulas: FormulaNew[]): Promise<{ message: string; formulas: Formula[] }> => {
+  const response: AxiosResponse<{ message: string; formulas: Formula[] }> =
+    await axios.post('/api/formula/', formulas);
   return response.data;
 };
 
