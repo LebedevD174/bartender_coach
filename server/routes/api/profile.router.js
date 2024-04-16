@@ -24,7 +24,6 @@ router.get('/:id', async (req,res) => {
     }
 })
 router.put('/:id', upload.single('img'), async (req, res) => {
-    console.log(req.body, req.params);
     try {
         const { id } = req.params;
         let { name, lastName, age, phoneNumber } = req.body;
