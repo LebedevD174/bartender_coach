@@ -12,8 +12,6 @@ function CocktailsList(): JSX.Element {
   const [cocktails, setCocktails] = useState(cocktailsArr);
  
   useEffect(() => {
-     console.log('cocktailsArr updated:', cocktailsArr);
-     console.log('filter:', filter);
      setCocktails(cocktailsArr);
      let filteredCocktails = cocktailsArr;
  
@@ -34,7 +32,7 @@ function CocktailsList(): JSX.Element {
  
      setCocktails(filteredCocktails);
   }, [cocktailsArr, filter, searchQuery]);
- 
+
   return (
      <div className="CocktailsList">
        <FilterCocktails setFilter={setFilter} filter={filter} onSearch={setSearchQuery} />

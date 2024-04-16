@@ -16,7 +16,7 @@ export const loadCocktailsID = createAsyncThunk('cocktails/loadCocktailsId', (id
   api.fetchCocktailsLoadId(id),
 );
 
-export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: FormData) =>
+export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: CocktailNew) =>
   api.fetchCocktailAdd(cocktail),
 );
 
