@@ -9,8 +9,43 @@
 }
 
 .cocktailCardPage img {
-    width: 600px;
+    width: 23rem;
     margin: 2rem;
     border-radius: 10px;
 }
 
+.cocktailCardPage {
+  display: flex;
+  border-radius: 0.5rem;
+  border: 1px solid#dbb864;
+  margin: 5rem 20rem;
+}
+
+.pageCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.allCardInfo {
+  display: flex;
+}
+
+
+.infoCard{
+  display: flex;
+  flex-direction: column;
+  color: #eee3ca;
+  font-weight: 100;
+  align-items: center;
+}
+
+.infoCard h2{
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.descriptionCard{
+  font-size: 1.5rem;
+  margin: 0 2rem;
+  font-weight: 300;
+}
