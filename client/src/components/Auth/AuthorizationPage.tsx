@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import { userLog } from './authSlice';
 import * as thunk from './authSlice';
 import Modal from '../ui/Modal';
+import { profileLoad } from '../Profile/profileSlice';
+import { fetchLoadProfile } from '../../app/api';
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -37,6 +39,7 @@ function AuthorizationPage(): JSX.Element {
       setIsModalOpen(true);
     }
     if (user) {
+      dispatch(profileLoad(user.id))
       navigate('/');
     }
   }, [error, user]);

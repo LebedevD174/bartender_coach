@@ -83,7 +83,7 @@ export const fetchUpdateProfile = async (
   profile: FormData,
 ): Promise<{ message: string; profile: Profile }> => {
   const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.put(
-    `/api/profile/${profile.get('profileId')}`);
+    `/api/profile/${profile.get('profileId')}`, profile);
   if (response.data.message === 'success') {
     console.log(response.data);
     
