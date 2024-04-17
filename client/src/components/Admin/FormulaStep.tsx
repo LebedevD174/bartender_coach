@@ -10,10 +10,10 @@ import { loadIngredient } from '../Ingredient/ingredientSlice';
 import { loadTech } from '../Tech/techSlice';
 import { loadDrinks } from '../Drinks/drinksSlice';
 
-function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cocktail | null, order: number, formulas: FormulaNew[], setFormulas: Dispatch<SetStateAction<FormulaNew[]>>}): JSX.Element {
+function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cocktail | undefined, order: number, formulas: FormulaNew[], setFormulas: Dispatch<SetStateAction<FormulaNew[]>>}): JSX.Element {
     const dispatch = useAppDispatch();
     const [select, setSelect] = useState<string>('')
-    const [input, setInput] = useState<FormulaNew>({cocktail_id: cocktail?.id, barware_id: null, drink_id: null, drinks_volume: 0, tech_id: null, ingredient_id: null, ingredients_volume: 0, order})
+    const [input, setInput] = useState<FormulaNew>({cocktail_id: cocktail?.id, barware_id: null, drink_id: null, drinks_volume: 0, tech_id: null, ingredient_id: null, ingredient_volume: 0, order})
     const [isFormDisabled, setDisable] = useState<boolean>(false)
     const barware = useAppSelector((store: RootState) => store.barware.barware);
     const drinks = useAppSelector((store: RootState) => store.drinks.drinks);
