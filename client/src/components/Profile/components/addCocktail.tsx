@@ -32,25 +32,40 @@ function AddCardCocktail(): JSX.Element {
 
   return (
     <div className="AddCardCocktail">
-      <form onSubmit={addCocktailForm}>
-        <label htmlFor="title">Название</label>
-        <input value={title} type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
-        <label htmlFor="img">Фото коктейля</label>
-        <input type="file" id="img" onChange={(e) => setImg(e.target.files[0])} />
-        <label htmlFor="description">Описание</label>
-        <input
-          value={description}
-          type="text"
-          id="description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <select value={category_id} onChange={(e) => setCategory(e.target.value)}>
-          <option hidden>Крепость</option>
-          <option value={1}>Безалкогольные</option>
-          <option value={2}>Крепкие</option>
-          <option value={3}>Слабоалкогольные</option>
-        </select>
-        <button type="submit">Добавить</button>
+      <h1 className="titleForm">Добавить новый коктейль</h1>
+      <form className="formAddCocktail" onSubmit={addCocktailForm}>
+        <div>
+          <label htmlFor="title">Название</label>
+          <input value={title} type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
+        </div>
+
+        <div>
+          <label htmlFor="description">Описание</label>
+          <input
+            value={description}
+            type="text"
+            id="description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Крепость</label>
+          <select
+            className="categorySelect"
+            value={category_id}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option hidden>Выберите крепость</option>
+            <option value={1}>Безалкогольные</option>
+            <option value={2}>Крепкие</option>
+            <option value={3}>Слабоалкогольные</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="img">Фото</label>
+          <input type="file" id="img" onChange={(e) => setImg(e.target.files[0])} />
+        </div>
+        <button className='btn-add-cocktail' type="submit">Добавить</button>
       </form>
     </div>
   );
