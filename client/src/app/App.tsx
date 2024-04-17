@@ -22,7 +22,7 @@ import '../components/styles/CocktailPage.css';
 import '../components/styles/Profile.css';
 import AdminPage from '../components/Admin/AdminPage';
 import AdminCocktail from '../components/Admin/AdminCocktail';
-import CocktailPopular from '../components/Cocktails/components/cocktailPopular';
+// import CocktailPopular from '../components/Cocktails/components/cocktailPopular';
 
 function App(): JSX.Element {
   return (
