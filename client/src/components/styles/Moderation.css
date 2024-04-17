@@ -1,0 +1,18 @@
+.PageModeration{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 6rem;
+}
+
+.moderationTitle {
+  font-size: 2.25rem;
+  background-image: linear-gradient(#ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.moderationTitle
+
