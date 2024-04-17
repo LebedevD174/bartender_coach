@@ -3,7 +3,7 @@ import * as api from '../../app/api';
 import type { CocktailType } from './types/cocktail';
 
 const initialState: CocktailType = {
-  cocktail: null,
+  cocktail: undefined,
   cocktails: [],
   error: undefined,
 };
@@ -64,7 +64,12 @@ const cocktailsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(updateStatusCocktail.fulfilled, (state, action) => {
-        state.cocktails = state.cocktails.map((el) => el.id === action.payload.id ? ({...el, status: true}) : el);
+        console.log(state.cocktails);
+        console.log(action.payload);
+        
+        state.cocktails = state.cocktails.map((el) => el.id === +action.payload.id ? ({...el, status: true}) : el);
+        console.log(state.cocktails);
+
       })
       .addCase(updateStatusCocktail.rejected, (state, action) => {
         state.error = action.error.message;
