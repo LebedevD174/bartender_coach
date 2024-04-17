@@ -12,6 +12,7 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
   const [img, setImg] = useState<File | null>(null);
   const [description, setDescription] = useState<string>('');
   const [category_id, setCategory] = useState<string>('');
+  const [feature_id, setFeature] = useState<string>('');
 
   const user: User | undefined = useAppSelector((store) => store.auth.user);
 
@@ -23,6 +24,11 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
       alert('Пожалуйста, выберите крепость коктейля.');
       return; 
    }
+   if (!feature_id) {
+    alert('Пожалуйста, выберите вкус коктейля.');
+    return; 
+ }
+
     const formData = new FormData();
     if (img) {
       formData.append('img', img);
@@ -30,6 +36,7 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
     formData.append('title', title);
     formData.append('description', description);
     formData.append('category_id', category_id);
+    formData.append('feature_id', feature_id);
     formData.append('user_id', user?.id.toString() || '');
     dispatch(addCocktail(formData)).then(() => {
       onSubmitSuccess();
@@ -69,13 +76,16 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         <label htmlFor="description">Вкус</label>
         <select
             className="categorySelect"
-            value={category_id}
-            onChange={(e) => setCategory(e.target.value)}
+            value={feature_id}
+            onChange={(e) => setFeature(e.target.value)}
           >
-            <option hidden>Выберите крепость</option>
-            <option value={1}>Безалкогольные</option>
-            <option value={2}>Крепкие</option>
-            <option value={3}>Слабоалкогольные</option>
+            <option hidden>Выберите вкус</option>
+            <option value={1}>Горький</option>
+            <option value={2}>Кислый</option>
+            <option value={3}>Острый</option>
+            <option value={4}>Ореховый</option>
+            <option value={5}>Цветочный</option>
+            <option value={6}>Ягодный</option>
           </select>
         </div>
         <div>
