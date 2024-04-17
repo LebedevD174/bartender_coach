@@ -5,8 +5,10 @@ import DrinksPopular from '../../Drinks/drinksPopular';
 function MainPageCocktail(): JSX.Element {
   return (
     <div className="MainPage">
+      <div className="Main">
+      </div>
       <CocktailPopular />
-      <DrinksPopular/>
+      <DrinksPopular />
     </div>
   );
 }

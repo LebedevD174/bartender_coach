@@ -15,14 +15,14 @@ function CoctailPage(): JSX.Element {
   
   const navigate = useNavigate();
   useEffect(() => {
-    if(id) {
+    if (id) {
       dispatch(loadCocktailsID(id)).catch(console.log);
     }
   }, []);
   return (
-    <>
+    <div className="cocktailCardPage">
       <h1>{formula?.title}</h1>
-      <div>{formula?.img}</div>
+      <img src={formula?.img} alt={formula?.title} />
       <h2>Описание</h2>
       <div>{formula?.description}</div>
       <h2>Рецепт</h2>
@@ -43,7 +43,7 @@ function CoctailPage(): JSX.Element {
         </div>
       ))}
       <button onClick={() => navigate(-1)}>Назад</button>
-    </>
+    </div>
   );
 }
 

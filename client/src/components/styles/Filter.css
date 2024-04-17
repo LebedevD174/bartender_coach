@@ -13,13 +13,13 @@
   margin: 3rem;
   width: 85%;
   height: 5rem;
-  border-radius: 20px;
-  background-color: #ffd4971a;
-  border: 1px solid #db9b41c9;
+  border-bottom: 1px solid #db9b41c9;;
+
 }
 
 .categoryFilt,
-.titleForm {
+.titleForm,
+.cocktailCardPage h1 {
   font-size: 2rem;
   font-family: 'Montserrat Alternates', sans-serif;
   background-image: linear-gradient(to right, #fdca82, #9e6e2b);

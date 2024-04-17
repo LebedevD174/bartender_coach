@@ -1,0 +1,16 @@
+.cocktailCardPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cocktailCardPage h1 {
+    font-size: 2.2rem;
+}
+
+.cocktailCardPage img {
+    width: 600px;
+    margin: 2rem;
+    border-radius: 10px;
+}
+
