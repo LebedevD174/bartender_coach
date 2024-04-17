@@ -1,3 +1,6 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -8,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import { userLog } from './authSlice';
 import * as thunk from './authSlice';
 import Modal from '../ui/Modal';
+import { profileLoad } from '../Profile/profileSlice';
 
 function AuthorizationPage(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -37,6 +41,7 @@ function AuthorizationPage(): JSX.Element {
       setIsModalOpen(true);
     }
     if (user) {
+      dispatch(profileLoad(user.id))
       navigate('/');
     }
   }, [error, user]);

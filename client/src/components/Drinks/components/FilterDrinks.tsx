@@ -3,14 +3,14 @@ import React from 'react';
 import SearchInput from '../../ui/SearchInput';
 
 type FilterDrinksProps = {
- setFilter: (filter: { category: string }) => void;
+ setFilter: (filter: { category: number }) => void;
  onSearch: (query: string) => void; 
 };
 
 function FilterDrinks({ setFilter, onSearch }: FilterDrinksProps): JSX.Element {
  const onHandlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.target.value;
-    setFilter({ category: id });
+    setFilter({ category: +id });
  };
 
  return (

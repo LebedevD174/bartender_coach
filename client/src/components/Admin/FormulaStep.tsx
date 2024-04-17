@@ -1,18 +1,19 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import type { Dispatch, SetStateAction} from 'react';
-import React, { FormEventHandler, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import type { RootState} from '../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../app/redux/store';
-import Barware from '../Coach/Barware';
 import type { Cocktail, FormulaNew } from '../Cocktails/types/cocktail';
 import { loadBarware } from '../Barware/barwareSlice';
 import { loadIngredient } from '../Ingredient/ingredientSlice';
 import { loadTech } from '../Tech/techSlice';
 import { loadDrinks } from '../Drinks/drinksSlice';
 
-function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cocktail | null, order: number, formulas: FormulaNew[], setFormulas: Dispatch<SetStateAction<FormulaNew[]>>}): JSX.Element {
+function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cocktail | undefined, order: number, formulas: FormulaNew[], setFormulas: Dispatch<SetStateAction<FormulaNew[]>>}): JSX.Element {
     const dispatch = useAppDispatch();
     const [select, setSelect] = useState<string>('')
-    const [input, setInput] = useState<FormulaNew>({cocktail_id: cocktail?.id, barware_id: null, drink_id: null, drinks_volume: 0, tech_id: null, ingredient_id: null, ingredients_volume: 0, order})
+    const [input, setInput] = useState<FormulaNew>({cocktail_id: cocktail?.id, barware_id: null, drink_id: null, drinks_volume: 0, tech_id: null, ingredient_id: null, ingredient_volume: 0, order})
     const [isFormDisabled, setDisable] = useState<boolean>(false)
     const barware = useAppSelector((store: RootState) => store.barware.barware);
     const drinks = useAppSelector((store: RootState) => store.drinks.drinks);
@@ -74,7 +75,7 @@ function FormulaStep({cocktail, order, formulas, setFormulas} : {cocktail: Cockt
             {ingredients.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>
         <label htmlFor="ingredients_volume" />
-        <input type="number" id='ingredients_volume' value={input.ingredients_volume} onChange={(e) => setInput((prev) => ({...prev, ingredients_volume: +e.target.value}))} disabled={isFormDisabled}/>
+        <input type="number" id='ingredients_volume' value={input.ingredient_volume} onChange={(e) => setInput((prev) => ({...prev, ingredients_volume: +e.target.value}))} disabled={isFormDisabled}/>
         <span>{ingredients.find((el)=>el.id === input.ingredient_id)?.measure}</span>
         </>
         }

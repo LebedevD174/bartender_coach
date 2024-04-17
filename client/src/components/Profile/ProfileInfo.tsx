@@ -69,7 +69,7 @@ function ProfileInfo(): JSX.Element {
           {profile && profile.phoneNumber ? (
             <div className="line">
               <div className="titleProf">Телефон:</div>
-              <div>{profile.phoneNumber}</div>
+              <div>+7{profile.phoneNumber}</div>
             </div>
           ) : (
             <div className="titleProf">Номер телефона не указан</div>

@@ -19,7 +19,7 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
 
  const [name, setName] = useState(profile ? profile.name : '');
  const [lastName, setLastName] = useState(profile ? profile.lastName : '');
- const [img, setImg] = useState(profile ? profile.img : null);
+ const [img, setImg] = useState<File | string | null>(profile ? profile.img : null);
  const [age, setAge] = useState(profile ? profile.age : '');
  const [phoneNumber, setPhoneNumber] = useState(profile ? profile.phoneNumber : '');
 
@@ -32,12 +32,12 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
 
   data.append('name', name);
   data.append('lastName', lastName);
-  data.append('age', +age);
-  data.append('phoneNumber', +phoneNumber);
+  data.append('age', age.toString());
+  data.append('phoneNumber', phoneNumber.toString());
   if (img) {
     data.append('img', img); 
   }
-  data.append('profileId', user.id.toString());
+  data.append('profileId', user?.id.toString() || '');
 
 
   dispatch(profileUpdate(data))
@@ -58,7 +58,16 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
  return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="img">Фотография:</label>
-       <input type="file" onChange={(e) => setImg(e.target.files[0])} />
+      <input
+        type="file"
+        id="img"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          if (e.target.files && e.target.files.length > 0) {
+            const file = e.target.files[0];
+            setImg(file);
+          }
+        }}
+      />
       <br />
       <label htmlFor="name">Имя:</label>
       <input
@@ -84,7 +93,7 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
         onChange={(e) => setAge(e.target.value)}
       />
       <br />
-      <label htmlFor="phoneNumber">Номер телефона:</label>
+      <label htmlFor="phoneNumber">Номер телефона:</label><span>+7</span>
       <input
         type="tel"
         name='phoneNumber'

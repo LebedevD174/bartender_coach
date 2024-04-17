@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
-import type { Formula, FormulaType } from '../Cocktails/types/cocktail';
+import type { FormulaNew, FormulaType } from '../Cocktails/types/cocktail';
 
 
 const initialState: FormulaType = {
@@ -8,7 +8,7 @@ const initialState: FormulaType = {
     error: undefined,
 };
 
-export const addFormula = createAsyncThunk('formulas/addFormulas', (formulas: Formula[]) =>
+export const addFormula = createAsyncThunk('formulas/addFormulas', (formulas: FormulaNew[]) =>
   api.fetchFormulaAdd(formulas),
 );
 

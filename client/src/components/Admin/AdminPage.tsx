@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RootState } from '../../app/redux/store';
-import { useAppDispatch, useAppSelector } from '../../app/redux/store';
+import {  useAppSelector } from '../../app/redux/store';
 
 function AdminPage(): JSX.Element {
-    const dispatch = useAppDispatch();
-    const user = useAppSelector((store: RootState) => store.auth.user);
-    const cocktailsAll = useAppSelector((store: RootState) => store.cocktails.cocktails)
+    const cocktailsAll = useAppSelector((store: RootState) => store.cocktails.cocktails).filter((el) => el.status === false)
     const [cocktails, setCocktails] = useState(cocktailsAll);
     useEffect(()=>{
       setCocktails(cocktailsAll.filter((el) => el.status === false));

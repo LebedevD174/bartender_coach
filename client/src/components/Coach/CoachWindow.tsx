@@ -1,6 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { DragDropContext, Droppable, Draggable, type DropResult } from 'react-beautiful-dnd';
-import { shallowEqual as equal } from 'shallow-equal'; // Assuming you install shallow-equal
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/consistent-type-imports */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/button-has-type */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { DragDropContext, Droppable, Draggable, type DropResult, DroppableProvided, DraggableProvided } from 'react-beautiful-dnd';
+import { shallowEqual as equal } from 'shallow-equal'; 
 import type { RootState } from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
 import type { CocktailFormula, Formula } from '../Cocktails/types/cocktail';
@@ -10,18 +19,17 @@ function CoachWindow({
   setCocktail,
 }: {
   cocktail: CocktailFormula | null;
-  setCocktail: (el: CocktailFormula | null) => void;
+  setCocktail: Dispatch<SetStateAction<CocktailFormula | null>>;
 }): JSX.Element {
   const user = useAppSelector((store: RootState) => store.auth.user);
   const profile = useAppSelector((store: RootState) => store.profile.profile);
-  //   const [formulas, setFormulas] = useState(cocktail.Formulas.toSorted((a: Formula, b: Formula) => a.order - b.order));
   const [formulas, setFormulas] = useState<Formula[]>(
-    cocktail.Formulas.toSorted((a: Formula, b: Formula) => Math.random() - 0.5),
-  );
+    cocktail ? cocktail.Formulas.toSorted(() => Math.random() - 0.5) : [],
+   );
   const [newFormulas, setNewFormulas] = useState<Formula[]>([]);
   const initialFormulas = useRef<Formula[]>(
-    cocktail.Formulas.toSorted((a: Formula, b: Formula) => a.order - b.order),
-  );
+    cocktail?.Formulas.toSorted((a: Formula, b: Formula) => (a.order || 0) - (b.order || 0)) || [],
+   );
   const [check, setCheck] = useState<CheckState>({});
   const [result, setResult] = useState(false);
   const [win, setWin] = useState<boolean | null>(null);
@@ -49,8 +57,6 @@ function CoachWindow({
   }, [newFormulas]);
 
   useEffect(() => {
-    console.log(check);
-
     if (Object.values(check).some((el) => el === false)) {
       setResult(true);
       setWin(false);
@@ -59,19 +65,19 @@ function CoachWindow({
       setResult(true);
       setWin(true);
     }
-    console.log(result, win, Object.values(check));
   }, [check]);
   useEffect(() => {
-    setFormulas(cocktail.Formulas.toSorted((a: Formula, b: Formula) => Math.random() - 0.5));
-    setNewFormulas([]);
-    setCheck({ ...Array(formulas.length).fill(null) });
-    setWin(null);
-    setResult(false);
+    if(cocktail) {
+      setFormulas(cocktail.Formulas.toSorted(() => Math.random() - 0.5));
+      setNewFormulas([]);
+      setCheck({ ...Array(formulas.length).fill(null) });
+      setWin(null);
+      setResult(false);
+    }
   }, [cocktail]);
 
   const onDragEnd = (result: DropResult): void => {
     if (!result.destination) return;
-
     const items: Formula[] = Array.from(formulas);
     const newItems: Formula[] = Array.from(newFormulas);
 
@@ -98,11 +104,13 @@ function CoachWindow({
     setCocktail(null);
   }
   function restartCoach(): void {
-    setFormulas(cocktail.Formulas.toSorted((a: Formula, b: Formula) => Math.random() - 0.5));
+    if(cocktail) {
+    setFormulas(cocktail.Formulas.toSorted(() => Math.random() - 0.5));
     setNewFormulas([]);
     setCheck({ ...Array(formulas.length).fill(null) });
     setWin(null);
     setResult(false);
+    }
   }
 
   return (
@@ -113,7 +121,7 @@ function CoachWindow({
       <div className="allContainerFormula">
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
-            {(provided) => (
+            {(provided: DroppableProvided) => (
               <div
                 className="containerCardFormula"
                 {...provided.droppableProps}
@@ -121,7 +129,7 @@ function CoachWindow({
               >
                 {formulas.map((formula: Formula, index: number) => (
                   <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
-                    {(provided) => (
+                    {(provided: DraggableProvided) => (
                       <div
                         className="cardFormula"
                         ref={provided.innerRef}
@@ -151,7 +159,7 @@ function CoachWindow({
             )}
           </Droppable>
           <Droppable droppableId="newDroppable">
-            {(provided) => (
+            {(provided: DroppableProvided) => (
               <div
                 className="newContainerCardFormula"
                 {...provided.droppableProps}
@@ -161,7 +169,7 @@ function CoachWindow({
                 <h3>Коктейль</h3>
                 {newFormulas.map((formula: Formula, index: number) => (
                   <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
-                    {(provided) => (
+                    {(provided: DraggableProvided) => (
                       <div
                         className="cardFormula"
                         ref={provided.innerRef}
