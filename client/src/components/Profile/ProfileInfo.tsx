@@ -1,25 +1,25 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState } from 'react';
 import type { User } from '../Auth/types/User';
-import type { Profile} from './types/Profile';
-import type { RootState} from '../../app/redux/store';
+import type { Profile } from './types/Profile';
+import type { RootState } from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
 import ProfileEditForm from './ProfileEditForm';
 import Modal from '../ui/Modal';
 
 function ProfileInfo(): JSX.Element {
-    const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
-    const profile: Profile | undefined  = useAppSelector((store: RootState) => store.profile.profile);
-    const [showEditForm, setShowEditForm] = useState(false);
+  const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
+  const profile: Profile | undefined = useAppSelector((store: RootState) => store.profile.profile);
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const handleFormSubmit = (): void => {
     setShowEditForm(false);
   };
 
   return (
-    <div className="ProfileCard">
+    <div className="ProfileCard gradient">
       <h1>Личные данные</h1>
-      <div className='prof'>
+      <div className="prof">
         {profile && profile.img ? (
           <div>
             <img src={profile.img} alt="" />
@@ -32,22 +32,53 @@ function ProfileInfo(): JSX.Element {
             />
           </div>
         )}
-        <div className='infoProfile'>
-          <div>Email: {user?.email}</div>
-          <div>Login: {user?.login}</div>
-          {profile && profile.name ? <div>{profile.name}</div> : <div>Имя не заполнено</div>}
+        <div className="infoProfile">
+          {profile && profile.name ? (
+            <div className="line">
+              <div className="titleProf">Имя:</div>
+              <div>{profile.name}</div>
+            </div>
+          ) : (
+            <div>Имя не заполнено</div>
+          )}
           {profile && profile.lastName ? (
-            <div>{profile.lastName}</div>
+            <div className="line">
+              <div className="titleProf">Фамилия:</div>
+              <div>{profile.lastName}</div>
+            </div>
           ) : (
             <div>Фамилия не заполнена</div>
           )}
-          {profile && profile.age ? <div>{profile.age}</div> : <div>Возраст не указан</div>}
+          {profile && profile.age ? (
+            <div className="line">
+              <div className="titleProf">Возраст:</div>
+              <div>{profile.age}</div>
+            </div>
+          ) : (
+            <div>Возраст не указан</div>
+          )}
+          <div className="line">
+            <div className="titleProf">email:</div>
+            <div>{user?.email}</div>
+          </div>
+          <div className="line">
+            <div className="titleProf">Логин:</div>
+            <div>{user?.login}</div>
+          </div>
+
           {profile && profile.phoneNumber ? (
-            <div>{profile.phoneNumber}</div>
+            <div className="line">
+              <div className="titleProf">Телефон:</div>
+              <div>{profile.phoneNumber}</div>
+            </div>
           ) : (
             <div>Номер телефона не указан</div>
           )}
-          <button type="button" onClick={() => setShowEditForm(true)}>
+          <button
+            className="btn-update-profile"
+            type="button"
+            onClick={() => setShowEditForm(true)}
+          >
             Изменить данные
           </button>
         </div>
