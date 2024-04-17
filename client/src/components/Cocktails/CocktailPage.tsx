@@ -11,7 +11,7 @@ import { loadCocktailsID } from './cocktailsSlice';
 function CoctailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const formula: CocktailFormula | null = useAppSelector((store) => store.cocktails.cocktail);
+  const formula: CocktailFormula | undefined = useAppSelector((store) => store.cocktails.cocktail);
   
   const navigate = useNavigate();
   useEffect(() => {
