@@ -24,6 +24,7 @@ router.get('/:id', async (req,res) => {
     }
 })
 router.put('/:id', upload.single('img'), async (req, res) => {
+    console.log(req.body);
     try {
         const { id } = req.params;
         let { name, lastName, age, phoneNumber } = req.body;
@@ -35,7 +36,7 @@ router.put('/:id', upload.single('img'), async (req, res) => {
             img = currentProfile.img; 
         }
 
-        await Profile.update({ name, lastName, age, phoneNumber, img }, {
+        await Profile.update({ name, lastName, age: +age, phoneNumber: +phoneNumber, img }, {
             where: { id },
             fields: ['name', 'lastName', 'age', 'phoneNumber', 'img']
         });
