@@ -173,12 +173,7 @@ router.post('/', upload.single('img'), async (req, res) => {
 router.put('/updatestatus/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { userId } = req.body;
-    const cocktail = await Cocktail.findOne({
-      where: {
-        [Op.and]: [{ id }, { user_id: userId }],
-      },
-    });
+    const cocktail = await Cocktail.findOne({where: { id }});
     if (cocktail) {
       await Cocktail.update({ status: true }, {
         where: { id },

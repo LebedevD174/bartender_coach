@@ -34,9 +34,9 @@ export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCoc
   ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
 );
 
-export const updateStatusCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
+export const updateStatusCocktail = createAsyncThunk<{id: number, message: string}, number>(
   'cocktails/updateStatusCocktail',
-  ({ id, user_id }) => api.fetchCocktailUpdateStatus(id, user_id),
+  (id) => api.fetchCocktailUpdateStatus(id),
 );
 
 const cocktailsSlice = createSlice({
