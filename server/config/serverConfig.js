@@ -13,6 +13,7 @@ const serverConfig = (app) => {
   app.use(express.json());
   // подключаем статику
   app.use(express.static(path.join(__dirname, '..', 'public')));
+  app.use(express.static(path.join(__dirname, '..', 'dist')));
   // для пользователя
   app.use(getUser);
   // нужен для чтение кук на сервере
