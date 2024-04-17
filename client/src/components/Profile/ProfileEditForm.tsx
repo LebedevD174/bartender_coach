@@ -32,8 +32,8 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
 
   data.append('name', name);
   data.append('lastName', lastName);
-  data.append('age', +age);
-  data.append('phoneNumber', +phoneNumber);
+  data.append('age', age.toString());
+  data.append('phoneNumber', phoneNumber.toString());
   if (img) {
     data.append('img', img); 
   }

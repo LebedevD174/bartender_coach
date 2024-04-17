@@ -1,15 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../app/redux/store';
-import type { Cocktail, CocktailFormula } from './types/cocktail';
+import type { CocktailFormula, Formula } from './types/cocktail';
 import { loadCocktailsID } from './cocktailsSlice';
 
 function CoctailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
   const formula: CocktailFormula | null = useAppSelector((store) => store.cocktails.cocktail);
+  console.log(formula);
+  
   const navigate = useNavigate();
   useEffect(() => {
     if(id) {
@@ -23,7 +27,7 @@ function CoctailPage(): JSX.Element {
       <h2>Описание</h2>
       <div>{formula?.description}</div>
       <h2>Рецепт</h2>
-      {formula?.Formulas?.toSorted((a, b) => a.order - b.order).map((el) => (
+      {formula?.Formulas.toSorted((a, b) => (a.order ?? 0) - (b.order ?? 0))?.map((el:Formula) => (
         <div key={el.id}>
           {el.Barware && <div>{el.Barware?.title}</div>}
           {el.Drink && (

@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react';
 import type { Cocktail } from '../../Cocktails/types/cocktail';
 import { deleteCocktail } from '../../Cocktails/cocktailsSlice';
@@ -9,8 +11,12 @@ function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
   const user = useAppSelector((store) => store.auth.user);
 
   useEffect(() => {
-    if (deleteId !== null) dispatch(deleteCocktail({ id: deleteId, user_id: user?.id }));
-  }, [deleteId]);
+    if (deleteId !== null) {
+      if (user && user.id) {
+        dispatch(deleteCocktail({ id: deleteId, user_id: user.id }));
+      } 
+    }
+ }, [deleteId, user?.id]);
   return (
     <div className="card_cocktail" key={cocktail.id}>
       <img src={cocktail.img} alt={cocktail.title} />

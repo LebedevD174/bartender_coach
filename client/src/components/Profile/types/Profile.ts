@@ -4,8 +4,8 @@ export type Profile = {
     id: number,
     name: string,
     lastName: string,
-    age: number,
-    phoneNumber: number,
+    age: number|string,
+    phoneNumber: number|string,
     img: string | null,
     isAdmin: boolean,
 }

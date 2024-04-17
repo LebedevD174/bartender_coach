@@ -1,16 +1,17 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import type { RootState } from '@reduxjs/toolkit/query';
 import type { Drink, DrinkParams } from './types/drink';
-import { useAppDispatch } from '../../app/redux/store';
+import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import { loadDrinks } from './drinksSlice';
 
 function DrinkPage(): JSX.Element {
 
   const { drinkId } = useParams<DrinkParams>();
   const dispatch = useAppDispatch();
-  const drinks: Drink[] = useSelector((store: RootState) => store.drinks.drinks);
+  const drinks: Drink[] = useAppSelector((store) => store.drinks.drinks);
   const navigate = useNavigate();
   const [drink, setDrink] = useState<Drink | null>(null);
 
