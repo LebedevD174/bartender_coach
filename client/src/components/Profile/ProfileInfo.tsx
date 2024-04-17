@@ -39,7 +39,7 @@ function ProfileInfo(): JSX.Element {
               <div>{profile.name}</div>
             </div>
           ) : (
-            <div>Имя не заполнено</div>
+            <div className="titleProf">Имя не заполнено</div>
           )}
           {profile && profile.lastName ? (
             <div className="line">
@@ -47,7 +47,7 @@ function ProfileInfo(): JSX.Element {
               <div>{profile.lastName}</div>
             </div>
           ) : (
-            <div>Фамилия не заполнена</div>
+            <div className="titleProf">Фамилия не заполнена</div>
           )}
           {profile && profile.age ? (
             <div className="line">
@@ -55,7 +55,7 @@ function ProfileInfo(): JSX.Element {
               <div>{profile.age}</div>
             </div>
           ) : (
-            <div>Возраст не указан</div>
+            <div className="titleProf">Возраст не указан</div>
           )}
           <div className="line">
             <div className="titleProf">email:</div>
@@ -72,14 +72,14 @@ function ProfileInfo(): JSX.Element {
               <div>{profile.phoneNumber}</div>
             </div>
           ) : (
-            <div>Номер телефона не указан</div>
+            <div className="titleProf">Номер телефона не указан</div>
           )}
           <button
             className="btn-update-profile"
             type="button"
             onClick={() => setShowEditForm(true)}
           >
-            Изменить данные
+            <p>Изменить данные</p>
           </button>
         </div>
       </div>

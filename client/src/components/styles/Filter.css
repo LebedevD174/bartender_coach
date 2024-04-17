@@ -19,7 +19,8 @@
 }
 
 .categoryFilt,
-.titleForm {
+.titleForm,
+.cocktailCardPage h1 {
   font-size: 2rem;
   font-family: 'Montserrat Alternates', sans-serif;
   background-image: linear-gradient(to right, #fdca82, #9e6e2b);

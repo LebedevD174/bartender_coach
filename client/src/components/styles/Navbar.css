@@ -6,14 +6,12 @@ body {
 }
 
 .top_navbar {
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
   background-color: #000000;
   height: 11rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0 -11px 29.8px #d5b256;
+  border-bottom: 1.5px solid #eeac50;
 }
 
 .top_navbar span {

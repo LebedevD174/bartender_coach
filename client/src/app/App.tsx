@@ -16,10 +16,13 @@ import '../components/styles/MainPage.css';
 import '../components/styles/ListPage.css';
 import '../components/styles/Filter.css';
 import '../components/styles/Coach.css';
+import '../components/styles/CocktailCard.css';
 import '../components/styles/LogaRega.css';
+import '../components/styles/CocktailPage.css';
 import '../components/styles/Profile.css';
 import AdminPage from '../components/Admin/AdminPage';
 import AdminCocktail from '../components/Admin/AdminCocktail';
+import CocktailPopular from '../components/Cocktails/components/cocktailPopular';
 
 function App(): JSX.Element {
   return (

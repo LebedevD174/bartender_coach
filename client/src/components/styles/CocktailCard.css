@@ -1,0 +1,55 @@
+.card_cocktail,
+.card_drink {
+  align-items: center;
+  width: 25rem;
+  margin: 3rem;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+  /* border: 1px solid#DBB864; */
+
+  border: 1px solid #dbb864; /* Внешняя рамка */
+  padding: 2px; /* Расстояние между рамками */
+  position: relative;
+}
+
+.card_cocktail::before,
+.card_drink::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid #dbb864; /* Внутренняя рамка */
+}
+
+.card_cocktail:hover,
+.card_drink:hover {
+  transform: scale(1.05);
+}
+.all_cards {
+  font-size: 2.25rem;
+  background-image: linear-gradient(#ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.container .cocktail_title,
+.drink_title {
+  font-size: 1.5rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-image: linear-gradient(to right, #ffbe63, #896532);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 1rem;
+}
+.button-container {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
