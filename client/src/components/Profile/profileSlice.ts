@@ -35,7 +35,7 @@ const profileSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(profileUpdate.fulfilled, (state, action) => {
-        state.profile = action.payload;
+        state.profile = action.payload.profile;
       })
       .addCase(profileUpdate.rejected, (state, action) => {
         state.error = action.error.message;

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-duplicates */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -14,36 +16,41 @@ import type { Tech } from '../components/Tech/types/tech';
 // eslint-disable-next-line import/prefer-default-export
 export const fetchRegistration = async (
   user: UserWithoutId,
-): Promise<{ message: string; user: User }> => {
+ ): Promise<{ message: string; user: User }> => {
   try {
-    const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
-      '/api/sign/registration',
-      user,
-    );
-    return response.data;
+     const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
+       '/api/sign/registration',
+       user,
+     );
+     return response.data;
   } catch (error) {
-    const axiosError = error as AxiosError;
-    throw new Error(axiosError.response.data.message);
+     const axiosError = error as AxiosError;
+     if (axiosError.response) {
+      const errorMessage = (axiosError.response.data as { message?: string }).message || axiosError.message;
+       throw new Error(errorMessage);
+     } else {
+       throw new Error(axiosError.message);
+     }
   }
-};
+ };
 
 export const fetchAuth = async (user: UserAuth): Promise<{ message: string; user: User }> => {
   try {
-    const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
-      '/api/sign/authorization',
-      user,
-    );
-    return response.data;
+     const response: AxiosResponse<{ message: string; user: User }> = await axios.post(
+       '/api/sign/authorization',
+       user,
+     );
+     return response.data;
   } catch (error) {
-    const axiosError = error as AxiosError;
-    throw new Error(axiosError.response.data.message);
+     const axiosError = error as AxiosError;
+     if (axiosError.response) {
+       const errorMessage = (axiosError.response.data as { message?: string }).message || axiosError.message;
+       throw new Error(errorMessage);
+     } else {
+       throw new Error(axiosError.message);
+     }
   }
-};
-export const fetchCheck = async (): Promise<{ message: string; user: User }> => {
-  const response: AxiosResponse<{ message: string; user: User }> =
-    await axios.get('/api/sign/check');
-  return response.data;
-};
+ };
 
 export const fetchLogout = async (): Promise<{ message: string }> => {
   const response: AxiosResponse<{ message: string }> = await axios.get('/api/sign/logout');
@@ -59,7 +66,7 @@ export const fetchLoadProfile = async (
   if (response.data.message === 'success') {
     return response.data;
   }
-  return response.data.message;
+  return response.data
 };
 
 export const fetchUpdateProfile = async (
@@ -70,9 +77,11 @@ export const fetchUpdateProfile = async (
     profile,
   );
   if (response.data.message === 'success') {
-    return response.data.profile;
+    console.log(response.data);
+    
+    return response.data
   }
-  return response.data.message;
+  return response.data
 };
 
 export const fetchCocktailsLoad = async (): Promise<{ message: string; cocktails: Cocktail[] }> => {
@@ -156,8 +165,8 @@ export const fetchIngredientLoad = async (): Promise<{
   return response.data;
 };
 
-export const fetchTechLoad = async (): Promise<{ message: string; tech: Tech[] }> => {
-  const response: AxiosResponse<{ message: string; tech: Tech[] }> = await axios.get('/api/tech/');
+export const fetchTechLoad = async (): Promise<{ message: string; techs: Tech[] }> => {
+  const response: AxiosResponse<{ message: string; techs: Tech[] }> = await axios.get('/api/tech/');
   return response.data;
 };
 

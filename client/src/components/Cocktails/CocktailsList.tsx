@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FilterCocktails from './components/FilterCocktails';
 import { useAppSelector } from '../../app/redux/store';
@@ -8,7 +8,7 @@ function CocktailsList(): JSX.Element {
   const [filter, setFilter] = useState({ category: 0, feature: 0 });
   const [searchQuery, setSearchQuery] = useState('');
   const cockt: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
-  const cocktailsArr = cockt.filter((cocktail) => cocktail.status === true);
+  const cocktailsArr = useMemo(() => cockt.filter((cocktail) => cocktail.status === true), [cockt]);
   const [cocktails, setCocktails] = useState(cocktailsArr);
  
   useEffect(() => {

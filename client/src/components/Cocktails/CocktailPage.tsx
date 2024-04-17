@@ -1,24 +1,27 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../app/redux/store';
-import type { CocktailFormula } from './types/cocktail';
+import type { Cocktail, CocktailFormula } from './types/cocktail';
 import { loadCocktailsID } from './cocktailsSlice';
 
 function CoctailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const formula: CocktailFormula = useAppSelector((store) => store.cocktails.cocktail);
+  const formula: CocktailFormula | null = useAppSelector((store) => store.cocktails.cocktail);
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(loadCocktailsID(id)).catch(console.log);
+    if(id) {
+      dispatch(loadCocktailsID(id)).catch(console.log);
+    }
   }, []);
   return (
     <>
-      <h1>{formula.title}</h1>
-      <div>{formula.img}</div>
+      <h1>{formula?.title}</h1>
+      <div>{formula?.img}</div>
       <h2>Описание</h2>
-      <div>{formula.description}</div>
+      <div>{formula?.description}</div>
       <h2>Рецепт</h2>
       {formula?.Formulas?.toSorted((a, b) => a.order - b.order).map((el) => (
         <div key={el.id}>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchInput({ onSearch }) {
+function SearchInput({ onSearch }: { onSearch: (searchValue: string) => void }) : JSX.Element {
  return (
       <>
        <p className="categoryFilt">Поиск</p>

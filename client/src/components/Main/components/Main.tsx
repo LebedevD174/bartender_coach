@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -9,10 +11,8 @@ import { loadCocktails } from '../../Cocktails/cocktailsSlice';
 import { profileLoad } from '../../Profile/profileSlice';
 import type { User } from '../../Auth/types/User';
 
-// Компонент главной страницы
 function Main(): JSX.Element {
-  const user = useAppSelector((store: RootState) => store.auth.user);
-  const profile = useAppSelector((store: RootState) => store.profile.profile);
+  const user : User | undefined = useAppSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
   const checkUser = async (): Promise<void> => {
     dispatch(userCheck()).then((data) => {

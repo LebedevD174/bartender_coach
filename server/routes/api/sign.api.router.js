@@ -66,7 +66,7 @@ router.post('/authorization', async (req, res) => {
       res.status(200).json({ message: 'success', user });
     }
   } catch ({ message }) {
-    res.status(500).json({ message });
+    res.json({ message });
   }
 });
 
@@ -153,7 +153,7 @@ router.post('/registration', async (req, res) => {
       res.status(200).json({ message: 'success', user: user });
     }
   } catch ({ message }) {
-    res.status(500).json({ message });
+    res.json({ message });
   }
 });
 router.get('/logout', (req, res) => {
