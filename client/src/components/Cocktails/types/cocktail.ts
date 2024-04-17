@@ -38,7 +38,7 @@ export type Formula = {
   drinks_volume: number;
   tech_id: number | null;
   ingredient_id: number | null;
-  ingredients_volume: number;
+  ingredient_volume: number | null;
   order: number | null;
   Barware: Barware;
   Ingredient: Ingredient;
@@ -54,6 +54,6 @@ export type FormulaType = {
 
 
 export type CocktailFormula = Cocktail & {
-  Formula: Formula[];
+  Formulas: Formula[];
 };
 
