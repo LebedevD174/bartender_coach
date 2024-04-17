@@ -57,15 +57,25 @@ export const fetchLogout = async (): Promise<{ message: string }> => {
   return response.data;
 };
 
+export const fetchCheck = async (): Promise<{ user: User }> => {
+  try {
+     const response: AxiosResponse<{ user: User }> = await axios.get('/api/sign/check');
+     return response.data;
+  } catch (error) {
+     const axiosError = error as AxiosError;
+     if (axiosError.response) {
+       const errorMessage = (axiosError.response.data as { message?: string }).message || axiosError.message;
+       throw new Error(errorMessage);
+     } else {
+       throw new Error(axiosError.message);
+     }
+  }
+ };
+
 export const fetchLoadProfile = async (
   id: number,
 ): Promise<{ message: string; profile: Profile }> => {
-  const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.get(
-    `/api/profile/${id}`,
-  );
-  if (response.data.message === 'success') {
-    return response.data;
-  }
+  const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.get(`/api/profile/${id}`);
   return response.data
 };
 
@@ -73,9 +83,7 @@ export const fetchUpdateProfile = async (
   profile: FormData,
 ): Promise<{ message: string; profile: Profile }> => {
   const response: AxiosResponse<{ message: string; profile: Profile }> = await axios.put(
-    `/api/profile/${profile.get('profileId')}`,
-    profile,
-  );
+    `/api/profile/${profile.get('profileId')}`);
   if (response.data.message === 'success') {
     console.log(response.data);
     
