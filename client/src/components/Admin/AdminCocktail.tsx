@@ -42,28 +42,34 @@ function AdminCocktail(): JSX.Element {
     });
   }
   return (
-    <div className='PageModeration'>
-      <h1 className='moderationTitle'>{cocktail?.title}</h1>
-      <img src={cocktail?.img} alt={cocktail?.title}/>
-      <h2>Описание</h2>
-      <div>{cocktail?.description}</div>
-      <h2>Создание рецепта</h2>
-      <button onClick={() => setCount((prev) => (prev += 1))}>Добавить шаг рецепта</button>
-      <div className="container__formula">
-        {count !== 0 &&
-          arr.map((el, index) => (
-            <>
-              <FormulaStep
-                key={order[index]}
-                cocktail={cocktail}
-                order={order[index]}
-                formulas={formulas}
-                setFormulas={setFormulas}
-              />
-              <div>{el}</div>
-            </>
-          ))}
-        <button onClick={addForm}>Отправить</button>
+    <div className="PageModeration">
+      <h1 className="moderationTitle">{cocktail?.title}</h1>
+      <div className="infoModeration">
+        <img src={cocktail?.img} alt={cocktail?.title} />
+        <div>
+          <div>
+            <h2>Описание</h2>
+            <div>{cocktail?.description}</div>
+          </div>
+          <h2>Создание рецепта</h2>
+          <button onClick={() => setCount((prev) => (prev += 1))}>Добавить шаг рецепта</button>
+          <div className="container__formula">
+            {count !== 0 &&
+              arr.map((el, index) => (
+                <>
+                  <FormulaStep
+                    key={order[index]}
+                    cocktail={cocktail}
+                    order={order[index]}
+                    formulas={formulas}
+                    setFormulas={setFormulas}
+                  />
+                  <div>{el}</div>
+                </>
+              ))}
+            <button onClick={addForm}>Отправить</button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 .card_cocktail,
 .card_drink {
   align-items: center;
-  width: 25rem;
+  width: 25vw;
+  height: 28vw;
   margin: 3rem;
-  padding: 1rem;
   transition: transform 0.3s ease-in-out;
   position: relative;
   z-index: 1;
   border: 1px solid #dbb864;
-  padding: 2px;
+  padding: 1vw;
   position: relative;
 }
 
@@ -16,11 +16,11 @@
 .card_drink::before {
   content: '';
   position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
+  top: -0.8vw;
+  left: -0.8vw;
+  right: -0.8vw;
   z-index: -1;
-  bottom: -8px;
+  bottom: -0.8vw;
   border: 2px solid #dbb864;
 }
 
@@ -29,7 +29,7 @@
   transform: scale(1.05);
 }
 .all_cards {
-  font-size: 2.25rem;
+  font-size: 2vw;
   background-image: linear-gradient(#ffbe63, #896532);
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -39,7 +39,7 @@
 
 .container .cocktail_title,
 .drink_title {
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   font-family: 'Montserrat Alternates', sans-serif;
   background-image: linear-gradient(to right, #ffbe63, #896532);
   -webkit-background-clip: text;
