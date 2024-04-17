@@ -110,15 +110,8 @@ export const fetchCocktailAdd = async (
 
 export const fetchCocktailUpdateStatus = async (
   id: number,
-  user_id: number,
-): Promise<{ message: string; id: number }> => {
-  const response: AxiosResponse<{ message: string }> = await axios({
-    method: 'put',
-    url: `/api/cocktails/updatestatus/${id}`,
-    data: {
-      userId: user_id,
-    },
-  });
+): Promise<{ message: string, id: number}> => {
+  const response: AxiosResponse<{ message: string }> = await axios.put(`/api/cocktails/updatestatus/${id}`);
   return { ...response.data, id };
 };
 

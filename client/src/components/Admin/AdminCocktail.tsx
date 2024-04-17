@@ -5,18 +5,19 @@ import { useAppSelector , useAppDispatch } from '../../app/redux/store'
 import type { Cocktail, Formula, FormulaNew } from "../Cocktails/types/cocktail";
 import type { RootState } from '../../app/redux/store';
 import FormulaStep from './FormulaStep';
-import { loadCocktailsID, updateStatusCocktail } from '../Cocktails/cocktailsSlice';
+import { loadCocktails, loadCocktailsID, updateStatusCocktail } from '../Cocktails/cocktailsSlice';
 import { addFormula } from './formulaSlice';
 import { User } from '../Auth/types/User';
  
 function AdminCocktail(): JSX.Element { 
     const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
-    const cocktail: Cocktail  = useAppSelector((store: RootState) => store.cocktails.cocktail);
-    const user: User | undefined  = useAppSelector((store: RootState) => store.auth.user);
+    const cocktail: Cocktail | undefined  = useAppSelector((store: RootState) => store.cocktails.cocktail);
     useEffect(() => {
+      if (id) {
         dispatch(loadCocktailsID(id)).catch(console.log);
-      }, []); 
+      }
+      }, [id]); 
       const [count, setCount] = useState<number>(0)
       const [arr, setArr] = useState<Formula[] | number[]>([])
       const [order, setOrder] = useState<number[]>([])
@@ -34,18 +35,16 @@ function AdminCocktail(): JSX.Element {
       function addForm() {
         dispatch(addFormula(formulas)).then((data) => {
           if (data.payload.message === 'success') {
-            const {id} = cocktail;
-            const user_id = user?.id
-            dispatch(updateStatusCocktail({id, user_id}))
+            dispatch(updateStatusCocktail(id))
           }
         })
       };
     return ( 
         <>
-        <h1>{cocktail.title}</h1> 
-        <div>{cocktail.img}</div>
+        <h1>{cocktail?.title}</h1> 
+        <div>{cocktail?.img}</div>
         <h2>Описание</h2>
-        <div>{cocktail.description}</div>
+        <div>{cocktail?.description}</div>
         <h2>Создание рецепта</h2>
         <button onClick={()=>setCount((prev) => prev += 1)}>Добавить шаг рецепта</button>
         <div className='container__formula'>
