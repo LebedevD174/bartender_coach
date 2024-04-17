@@ -12,7 +12,6 @@ function CoctailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
   const formula: CocktailFormula | null = useAppSelector((store) => store.cocktails.cocktail);
-  console.log(formula);
   
   const navigate = useNavigate();
   useEffect(() => {

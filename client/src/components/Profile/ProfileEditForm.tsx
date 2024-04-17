@@ -37,7 +37,7 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
   if (img) {
     data.append('img', img); 
   }
-  data.append('profileId', user.id.toString());
+  data.append('profileId', user?.id.toString() || '');
 
 
   dispatch(profileUpdate(data))
