@@ -23,34 +23,38 @@ function CoctailPage(): JSX.Element {
     <div className="pageCard">
       <div className="cocktailCardPage">
         <h1>{formula?.title}</h1>
-        <div className='allCardInfo'>
-          <img className='imgCard' src={formula?.img} alt={formula?.title} />
-          <div className='infoCard'>
+        <div className="allCardInfo">
+          <img className="imgCard" src={formula?.img} alt={formula?.title} />
+          <div className="infoCard">
             <h2>Описание</h2>
-            <div className='descriptionCard'>{formula?.description}</div>
+            <div className="descriptionCard">{formula?.description}</div>
             <h2>Рецепт</h2>
-            {formula?.Formulas.toSorted((a, b) => (a.order ?? 0) - (b.order ?? 0))?.map(
-              (el: Formula) => (
-                <div key={el.id}>
-                  {el.Barware && <div>{el.Barware?.title}</div>}
-                  {el.Drink && (
-                    <div>
-                      {el.Drink?.title}: {el.drinks_volume}мл
-                    </div>
-                  )}
-                  {el.Ingredient && (
-                    <div>
-                      {el.Ingredient?.title}: {el.ingredient_volume} {el.Ingredient?.measure}
-                    </div>
-                  )}
-                  {el.Tech && <div>{el.Tech?.title}</div>}
-                </div>
-              ),
-            )}
+            <div className="recipe gradient1">
+              {formula?.Formulas.toSorted((a, b) => (a.order ?? 0) - (b.order ?? 0))?.map(
+                (el: Formula) => (
+                  <div key={el.id}>
+                    {el.Barware && <div>{el.Barware?.title}</div>}
+                    {el.Drink && (
+                      <div>
+                        {el.Drink?.title}: {el.drinks_volume}мл
+                      </div>
+                    )}
+                    {el.Ingredient && (
+                      <div>
+                        {el.Ingredient?.title}: {el.ingredient_volume} {el.Ingredient?.measure}
+                      </div>
+                    )}
+                    {el.Tech && <div>{el.Tech?.title}</div>}
+                  </div>
+                ),
+              )}
+            </div>
+            <button className="btn-back" onClick={() => navigate(-1)}>
+              <p>Назад</p>
+            </button>
           </div>
         </div>
       </div>
-      <button onClick={() => navigate(-1)}>Назад</button>
     </div>
   );
 }

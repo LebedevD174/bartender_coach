@@ -5,13 +5,13 @@
 }
 
 .cocktailCardPage h1 {
-    font-size: 2.2rem;
+  font-size: 2.2rem;
 }
 
 .cocktailCardPage img {
-    width: 23rem;
-    margin: 2rem;
-    border-radius: 10px;
+  width: 30%;
+  margin: 2rem;
+  border-radius: 10px;
 }
 
 .cocktailCardPage {
@@ -30,8 +30,7 @@
   display: flex;
 }
 
-
-.infoCard{
+.infoCard {
   display: flex;
   flex-direction: column;
   color: #eee3ca;
@@ -39,13 +38,65 @@
   align-items: center;
 }
 
-.infoCard h2{
+.infoCard h2 {
   font-size: 1.5rem;
   margin: 1rem;
 }
 
-.descriptionCard{
+.descriptionCard {
   font-size: 1.5rem;
   margin: 0 2rem;
   font-weight: 300;
+  word-spacing: 4px;
+  text-indent: 30px;
+  letter-spacing: 2px;
+}
+
+.recipe div {
+  border: 1px solid #896532;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: #443012;
+  font-weight: 500;
+}
+.recipe {
+  width: 50%;
+  margin: 15px;
+  background-color: #dbb864;
+}
+
+
+.gradient1 {
+  position: relative;
+  color: white;
+  background: linear-gradient(149deg, #fdca827c 0%, #e4b36abd 42%, #ad762d77 72%, #9e6e2b77 100%);
+  background-size: 200% 200%;
+  animation: gradient 10s infinite linear;
+}
+
+.gradient1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  background-clip: border-box;
+  border: 5px solid transparent;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient 10s infinite linear;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
