@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import type { User } from '../../Auth/types/User';
 import { addCocktail } from '../../Cocktails/cocktailsSlice';
 
-function AddCardCocktail(): JSX.Element {
+function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): JSX.Element {
   const [title, setTitle] = useState<string>('');
   const [img, setImg] = useState<File | null>(null);
   const [description, setDescription] = useState<string>('');
@@ -15,6 +19,10 @@ function AddCardCocktail(): JSX.Element {
 
   const addCocktailForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    if (!category_id) {
+      alert('Пожалуйста, выберите крепость коктейля.');
+      return; 
+   }
     const formData = new FormData();
     if (img) {
       formData.append('img', img);
@@ -23,18 +31,18 @@ function AddCardCocktail(): JSX.Element {
     formData.append('description', description);
     formData.append('category_id', category_id);
     formData.append('user_id', user?.id.toString() || '');
-    dispatch(addCocktail(formData)).catch(console.log);
+    dispatch(addCocktail(formData)).then(() => {
+      onSubmitSuccess();
+    }).catch(console.log);
   };
 
   return (
     <div className="AddCardCocktail">
-      <h1 className="titleForm">Добавить новый коктейль</h1>
       <form className="formAddCocktail" onSubmit={addCocktailForm}>
         <div>
           <label htmlFor="title">Название</label>
           <input value={title} type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
-        </div>
-
+        </div> 
         <div>
           <label htmlFor="description">Описание</label>
           <input
@@ -47,6 +55,19 @@ function AddCardCocktail(): JSX.Element {
         <div>
           <label htmlFor="description">Крепость</label>
           <select
+            className="categorySelect"
+            value={category_id}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option hidden>Выберите крепость</option>
+            <option value={1}>Безалкогольные</option>
+            <option value={2}>Крепкие</option>
+            <option value={3}>Слабоалкогольные</option>
+          </select>
+        </div>
+        <div>
+        <label htmlFor="description">Вкус</label>
+        <select
             className="categorySelect"
             value={category_id}
             onChange={(e) => setCategory(e.target.value)}
