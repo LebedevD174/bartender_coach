@@ -38,8 +38,8 @@ function DrinksList(): JSX.Element {
       <FilterDrinks setFilter={setFilter} onSearch={setSearchQuery} /> 
       <div className="container">
         {drinks.map((drink) => (
-          <Link to={`/drinks/${drink.id}`}>
-            <div key={drink.id} className="card_drink">
+          <Link key={drink.id}  to={`/drinks/${drink.id}`}>
+            <div className="card_drink">
               <img src={drink.img} alt={drink.title} />
               <p>{drink.title}</p>
             </div>

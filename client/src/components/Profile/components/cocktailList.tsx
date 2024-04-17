@@ -12,7 +12,7 @@ function CocktailsList(): JSX.Element {
     <div className="CocktailsList">
       <div className="container">
         {cocktails.map((cocktail) => (
-          <CocktailCard cocktail={cocktail} />
+          <CocktailCard key={cocktail.id} cocktail={cocktail} />
         ))}
       </div>
     </div>

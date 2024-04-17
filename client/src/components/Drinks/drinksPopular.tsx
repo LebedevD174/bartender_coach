@@ -18,8 +18,8 @@ function DrinksPopular(): JSX.Element {
       <p className="categoryPopular">Популярные ингредиенты</p>
       <div className="container">
         {firstEightDrinks.map((drink) => (
-          <Link to={`/drinks/${drink.id}`}>
-            <div key={drink.id} className="card_drink">
+          <Link key={drink.id} to={`/drinks/${drink.id}`}>
+            <div className="card_drink">
               <img src={drink.img} alt={drink.title} />
               <h3 className="drink_title">{drink.title}</h3>
             </div>
