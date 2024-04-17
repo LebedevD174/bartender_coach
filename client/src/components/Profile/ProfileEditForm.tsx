@@ -84,7 +84,7 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):J
         onChange={(e) => setAge(e.target.value)}
       />
       <br />
-      <label htmlFor="phoneNumber">Номер телефона:</label>
+      <label htmlFor="phoneNumber">Номер телефона:</label><span>+7</span>
       <input
         type="tel"
         name='phoneNumber'

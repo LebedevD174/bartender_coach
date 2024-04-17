@@ -19,7 +19,7 @@ export type CocktailNew = Omit<Cocktail, 'id' | 'status' | 'CocktailFeatures'>;
 export type CocktailID = Cocktail['id'];
 
 export type CocktailType = {
-  cocktail: Cocktail | null;
+  cocktail: Cocktail | undefined;
   cocktails: Cocktail[];
   error: string | undefined;
 };
@@ -32,10 +32,10 @@ export type CocktailFeature = {
 
 export type Formula = {
   id: number;
-  cocktail_id: number | null;
+  cocktail_id: number | undefined;
   barware_id: number | null;
   drink_id: number | null;
-  drinks_volume: number | null;
+  drinks_volume: number;
   tech_id: number | null;
   ingredient_id: number | null;
   ingredient_volume: number | null;

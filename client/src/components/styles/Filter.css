@@ -18,7 +18,8 @@
   border: 1px solid #db9b41c9;
 }
 
-.categoryFilt {
+.categoryFilt,
+.titleForm {
   font-size: 2rem;
   font-family: 'Montserrat Alternates', sans-serif;
   background-image: linear-gradient(to right, #fdca82, #9e6e2b);

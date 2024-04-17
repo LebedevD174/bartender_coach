@@ -7,8 +7,11 @@ function AdminPage(): JSX.Element {
     const cocktailsAll = useAppSelector((store: RootState) => store.cocktails.cocktails).filter((el) => el.status === false)
     const [cocktails, setCocktails] = useState(cocktailsAll);
     useEffect(()=>{
-        setCocktails([...cocktailsAll].filter((el) => el.status === false));
+      setCocktails(cocktailsAll.filter((el) => el.status === false));
     }, [])
+    useEffect(()=>{
+        setCocktails([...cocktailsAll].filter((el) => el.status === false));
+    }, [cocktailsAll])
     return (
       <>
         <h2>Коктейли для обработки</h2>

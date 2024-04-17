@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5); /* Внутренняя тень */
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .ProfileCard img {
@@ -29,17 +29,119 @@
 
 .prof {
   display: flex;
+  justify-content: space-between;
 }
 
 .infoProfile {
-  margin: 2rem;
+  margin-right: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  border: 1.5px solid #ffbe63;
+  border-radius: 0.5rem;
 }
 
-.infoProfile div{
-    color: aliceblue;
-    font-size: 1.8rem;
-    padding:1rem ;
+.btn-update-profile,
+.btn-add-cocktail {
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  background-color: #eec67d00;
+  padding: 1rem;
+  color: #fcdaaa;
+  font-weight: 300;
+  margin: 1rem;
+}
+
+.btn-update-profile:hover,
+.btn-add-cocktail:hover {
+  background-color: #ffbe63be;
+  padding: 1rem;
+  color: #3d2d17;
+  font-weight: 400;
+  /* box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5); */
+  box-shadow: inset 0 2px 40px rgba(0, 0, 0, 0.253);
+}
+
+.line {
+  display: flex;
+  font-weight: 400;
+}
+
+.titleProf {
+  font-weight: 200;
+}
+.infoProfile div {
+  color: aliceblue;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+}
+
+.formAddCocktail {
+  display: flex;
+  flex-direction: column;
+}
+
+.formAddCocktail input {
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1.5px solid #ffbe63;
+  background-color: #89653223;
+  color: #fcdaaa;
+}
+.categorySelect {
+  font-family: 'Montserrat Alternates', sans-serif;
+  border-radius: 0.5rem;
+  width: 50%;
+  font-size: 1.5rem;
+  background-color: #faddb47c;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1.5px solid #ffbe63;
+}
+
+.formAddCocktail label {
+  font-size: 1.5rem;
+}
+
+.AddCardCocktail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gradient {
+  position: relative;
+  padding: 20px;
+  color: white;
+  background: linear-gradient(149deg, #fdca823d 0%, #e4b36a79 42%, #9e6e2b77 72%, #9e6e2b77 100%);
+  background-size: 200% 200%;
+  animation: gradient 10s infinite linear;
+}
+
+.gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  background-clip: border-box;
+  border: 5px solid transparent;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient 10s infinite linear;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
