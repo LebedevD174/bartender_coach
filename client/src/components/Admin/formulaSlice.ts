@@ -1,47 +1,27 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
-import type { CocktailNew, CocktailType } from '../Cocktails/types/cocktail';
+import type { Formula, FormulaType } from '../Cocktails/types/cocktail';
 
-const initialState: CocktailType = {
-  cocktail: {},
-  cocktails: [],
-  error: undefined,
+
+const initialState: FormulaType = {
+    formulas: undefined,
+    error: undefined,
 };
 
-export const loadCocktails = createAsyncThunk('cocktails/loadCocktails', () =>
-  api.fetchCocktailsLoad(),
-);
-
-export const loadCocktailsID = createAsyncThunk('cocktails/loadCocktailsId', (id: string) =>
-  api.fetchCocktailsLoadId(id),
-);
-
-export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: CocktailNew) =>
-  api.fetchCocktailAdd(cocktail),
+export const addFormula = createAsyncThunk('formulas/addFormulas', (formulas: Formula[]) =>
+  api.fetchFormulaAdd(formulas),
 );
 
 const cocktailsSlice = createSlice({
-  name: 'cocktails',
+  name: 'formulas',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loadCocktails.fulfilled, (state, action) => {
-        state.cocktails = action.payload.cocktails;
+      .addCase(addFormula.fulfilled, (state, action) => {
+        state.formulas = action.payload.message;
       })
-      .addCase(loadCocktails.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-      .addCase(loadCocktailsID.fulfilled, (state, action) => {
-        state.cocktail = action.payload.cocktails;
-      })
-      .addCase(loadCocktailsID.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-      .addCase(addCocktail.fulfilled, (state, action) => {
-        state.cocktails.push(action.payload.cocktail);
-      })
-      .addCase(addCocktail.rejected, (state, action) => {
+      .addCase(addFormula.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

@@ -7,7 +7,7 @@ import { loadCocktails } from '../cocktailsSlice';
 function CocktailPopular(): JSX.Element {
   const dispatch = useAppDispatch();
   const cocktailPop: Cocktail[] = useAppSelector((store) => store.cocktails.cocktails);
-
+  const user = useAppSelector((store) => store.auth.user);
   useEffect(() => {
     dispatch(loadCocktails()).catch(console.log);
   }, []);
@@ -26,9 +26,11 @@ function CocktailPopular(): JSX.Element {
           </Link>
         ))}
       </div>
-      <Link to="/cocktails">
-        <p className="all_cards">все коктейли →</p>
-      </Link>
+      {user && (
+        <Link to="/cocktails">
+          <p className="all_cards">все коктейли →</p>
+        </Link>
+      )}
     </div>
   );
 }
