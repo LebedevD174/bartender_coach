@@ -8,7 +8,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useEffect, useRef, useState } from 'react';
-import { DragDropContext, Droppable, Draggable, type DropResult, DroppableProvided } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, type DropResult, DroppableProvided, DraggableProvided } from 'react-beautiful-dnd';
 import { shallowEqual as equal } from 'shallow-equal'; 
 import type { RootState } from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
@@ -129,7 +129,7 @@ function CoachWindow({
               >
                 {formulas.map((formula: Formula, index: number) => (
                   <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
-                    {(provided: DroppableProvided) => (
+                    {(provided: DraggableProvided) => (
                       <div
                         className="cardFormula"
                         ref={provided.innerRef}
@@ -169,7 +169,7 @@ function CoachWindow({
                 <h3>Коктейль</h3>
                 {newFormulas.map((formula: Formula, index: number) => (
                   <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
-                    {(provided: DroppableProvided) => (
+                    {(provided: DraggableProvided) => (
                       <div
                         className="cardFormula"
                         ref={provided.innerRef}

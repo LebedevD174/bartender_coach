@@ -1,3 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-return-assign */
+/* eslint-disable react/button-has-type */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { useEffect, useState } from 'react'; 
 import { useParams } from 'react-router-dom';
@@ -5,9 +9,8 @@ import { useAppSelector , useAppDispatch } from '../../app/redux/store'
 import type { Cocktail, Formula, FormulaNew } from "../Cocktails/types/cocktail";
 import type { RootState } from '../../app/redux/store';
 import FormulaStep from './FormulaStep';
-import { loadCocktails, loadCocktailsID, updateStatusCocktail } from '../Cocktails/cocktailsSlice';
+import { loadCocktailsID, updateStatusCocktail } from '../Cocktails/cocktailsSlice';
 import { addFormula } from './formulaSlice';
-import { User } from '../Auth/types/User';
  
 function AdminCocktail(): JSX.Element { 
     const {id} = useParams<{ id: string }>();
@@ -32,10 +35,12 @@ function AdminCocktail(): JSX.Element {
         console.log(formulas);
       }, [formulas])
 
-      function addForm() {
+      function addForm():void {
         dispatch(addFormula(formulas)).then((data) => {
           if (data.payload.message === 'success') {
-            dispatch(updateStatusCocktail(id))
+            if(id) {
+              dispatch(updateStatusCocktail(+id))
+            }
           }
         })
       };
