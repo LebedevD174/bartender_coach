@@ -149,7 +149,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', upload.single('img'), async (req, res) => {
   try {
-    const { title, description, user_id, category_id } = req.body;
+    const { title, description, user_id, category_id, feature_id } = req.body;
     let img;
     if (req.file) {
       img = `/img/${req.file.originalname}`;
@@ -164,6 +164,7 @@ router.post('/', upload.single('img'), async (req, res) => {
       status: false,
       category_id: +category_id,
     });
+    await CocktailFeature.create({cocktail_id: cocktail.id, feature_id: +feature_id})
     res.status(200).json({ message: 'success', cocktail });
   } catch ({ message }) {
     res.status(400).json(message);
