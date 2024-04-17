@@ -5,10 +5,9 @@
   margin: 3rem;
   padding: 1rem;
   transition: transform 0.3s ease-in-out;
-  /* border: 1px solid#DBB864; */
 
-  border: 1px solid #dbb864; /* Внешняя рамка */
-  padding: 2px; /* Расстояние между рамками */
+  border: 1px solid #dbb864;
+  padding: 2px;
   position: relative;
 }
 
@@ -20,7 +19,7 @@
   left: -8px;
   right: -8px;
   bottom: -8px;
-  border: 2px solid #dbb864; /* Внутренняя рамка */
+  border: 2px solid #dbb864;
 }
 
 .card_cocktail:hover,
