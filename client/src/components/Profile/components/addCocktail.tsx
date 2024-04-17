@@ -59,7 +59,17 @@ function AddCardCocktail(): JSX.Element {
         </div>
         <div>
           <label htmlFor="img">Фото</label>
-          <input type="file" id="img" onChange={(e) => setImg(e.target.files[0])} />
+          {/* <input type="file" id="img" onChange={(e) => setImg(e.target.files[0])} /> */}
+          <input
+            type="file"
+            id="img"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              if (e.target.files && e.target.files.length > 0) {
+                const file = e.target.files[0];
+                setImg(file);
+              }
+            }}
+          />
         </div>
         <button className='btn-add-cocktail' type="submit">Добавить</button>
       </form>
