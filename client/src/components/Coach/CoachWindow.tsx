@@ -7,7 +7,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable, Draggable, type DropResult, DroppableProvided, DraggableProvided } from 'react-beautiful-dnd';
 import { shallowEqual as equal } from 'shallow-equal'; 
 import type { RootState } from '../../app/redux/store';
@@ -19,7 +19,7 @@ function CoachWindow({
   setCocktail,
 }: {
   cocktail: CocktailFormula | null;
-  setCocktail: (el: CocktailFormula | null) => void;
+  setCocktail: Dispatch<SetStateAction<CocktailFormula | null>>;
 }): JSX.Element {
   const user = useAppSelector((store: RootState) => store.auth.user);
   const profile = useAppSelector((store: RootState) => store.profile.profile);

@@ -23,10 +23,6 @@ function AddCardCocktail(): JSX.Element {
     formData.append('description', description);
     formData.append('category_id', category_id);
     formData.append('user_id', user?.id.toString() || '');
-    // консоль (formData);
-    // for (let [key, value] of formData.entries()) {
-    //   console.log(key, value);
-    // }
     dispatch(addCocktail(formData)).catch(console.log);
   };
 
