@@ -13,6 +13,11 @@ type DeleteCocktailArgs = {
   id: number;
   user_id: number;
 };
+
+type DeleteCocktailArgsAdmin = {
+  id: number;
+};
+
 type DeleteCocktailResponse = {
   id: number;
   message: string;
@@ -33,6 +38,11 @@ export const addCocktail = createAsyncThunk('cocktails/addCocktail', (cocktail: 
 export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
   'cocktails/deleteCocktail',
   ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
+);
+
+export const deleteCocktailAdmin = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgsAdmin>(
+  'cocktails/deleteCocktailAdmin',
+  ({ id }) => api.fetchCocktailDeleteAdmin(id),
 );
 
 export const cocktailUpdate = createAsyncThunk('cocktail/update', (data: FormData) =>
@@ -78,6 +88,16 @@ const cocktailsSlice = createSlice({
         state.cocktails = state.cocktails.filter((cocktail) => cocktail.id !== action.payload.id);
       })
       .addCase(deleteCocktail.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteCocktailAdmin.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.cocktails = state.cocktails.filter((cocktail) => {
+          console.log(cocktail.id !== +action.payload.id);
+          return cocktail.id !== +action.payload.id
+        });
+      })
+      .addCase(deleteCocktailAdmin.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(cocktailUpdate.fulfilled, (state, action) => {

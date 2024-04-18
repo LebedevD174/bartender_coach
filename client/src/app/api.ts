@@ -129,6 +129,16 @@ export const fetchCocktailDelete = async (
   return { ...response.data, id };
 };
 
+export const fetchCocktailDeleteAdmin = async (
+  id: number,
+): Promise<{ message: string; id: number }> => {
+  const response: AxiosResponse<{ message: string; id: number }> = await axios.delete(
+    `/api/cocktails/admin/${id}`);
+    console.log({ ...response.data, id });
+    
+  return { ...response.data, id };
+};
+
 export const fetchUpdateCocktail = async (
   cocktail: FormData,
 ): Promise<{ message: string; cocktail: Cocktail }> => {
