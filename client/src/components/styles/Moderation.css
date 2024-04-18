@@ -36,6 +36,8 @@
 .card_cocktail img {
   width: 90%;
   height: 80%;
+  border-radius: 0.7vw;
+  margin: 0.1rem;
 }
 
 .createRec,

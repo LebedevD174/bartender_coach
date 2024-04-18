@@ -49,12 +49,12 @@
   background-clip: text;
   color: transparent;
 }
-.container ,
-.drink_title{
+.container,
+.drink_title {
   padding: 1vw;
 }
 
-.cocktail_title{
+.cocktail_title {
   padding: 0.2vw;
 }
 
@@ -69,18 +69,15 @@
   .card_cocktail,
   .card_drink {
     margin: 3vw;
-
   }
 
-  .container{
+  .container {
     margin: auto;
   }
 
   .container img {
     width: 80%;
     height: 80%;
-    border-radius: 0.5vw;
-    margin: 0.2vw;
   }
   .cocktail_title,
   .drink_title {
