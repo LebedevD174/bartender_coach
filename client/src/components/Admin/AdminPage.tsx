@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RootState } from '../../app/redux/store';
-import { useAppSelector } from '../../app/redux/store';
+import { useAppDispatch, useAppSelector } from '../../app/redux/store';
+import { deleteCocktailAdmin } from '../Cocktails/cocktailsSlice';
 
 function AdminPage(): JSX.Element {
   const cocktailsAll = useAppSelector((store: RootState) => store.cocktails.cocktails).filter(
@@ -10,13 +12,14 @@ function AdminPage(): JSX.Element {
   );
   const [cocktails, setCocktails] = useState(cocktailsAll);
   const [deleteId, setDeleteId] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     setCocktails(cocktailsAll.filter((el) => el.status === false));
   }, []);
 
   useEffect(() => {
     if (deleteId !== null) {
-        dispatch(deleteCocktail({ id: deleteId}));
+        dispatch(deleteCocktailAdmin({ id: deleteId }));
     }
  }, [deleteId]);
   return (

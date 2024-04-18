@@ -35,6 +35,11 @@ export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCoc
   ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
 );
 
+export const deleteCocktailAdmin = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
+  'cocktails/deleteCocktailAdmin',
+  ({ id }) => api.fetchCocktailDeleteAdmin(id),
+);
+
 export const cocktailUpdate = createAsyncThunk('cocktail/update', (data: FormData) =>
   api.fetchUpdateCocktail(data),
 );

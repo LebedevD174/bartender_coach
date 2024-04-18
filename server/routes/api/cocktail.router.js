@@ -237,4 +237,23 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.delete('/admin/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cocktail = await Cocktail.findOne({
+      where: {id},
+    });
+    if (cocktail) {
+      await Cocktail.destroy({
+        where: { id },
+      });
+      res.status(200).json({ message: 'success' });
+    } else {
+      res.status(400).json({ message: 'failed to destroy' });
+    }
+  } catch ({ message }) {
+    res.status(400).json({ error: message });
+  }
+});
+
 module.exports = router;
