@@ -40,7 +40,7 @@ function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
       </button>
       {showEditForm && (
         <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
-          <CocktailEditForm onSubmitSuccess={handleFormSubmit} />
+          <CocktailEditForm cocktailN = {cocktail} onSubmitSuccess={handleFormSubmit} />
         </Modal>
       )}
     </div>

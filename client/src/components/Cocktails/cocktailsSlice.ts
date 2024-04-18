@@ -70,8 +70,6 @@ const cocktailsSlice = createSlice({
       })
       .addCase(updateStatusCocktail.fulfilled, (state, action) => {
         state.cocktails = state.cocktails.map((el) => el.id === +action.payload.id ? ({...el, status: true}) : el);
-        console.log(state.cocktails);
-
       })
       .addCase(updateStatusCocktail.rejected, (state, action) => {
         state.error = action.error.message;
@@ -88,6 +86,7 @@ const cocktailsSlice = createSlice({
             return ({...action.payload.cocktail})
           } else return el
         })
+        state.cocktail = action.payload.cocktail
       })
       .addCase(cocktailUpdate.rejected, (state, action) => {
         state.error = action.error.message;

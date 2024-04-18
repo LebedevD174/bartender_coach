@@ -1,28 +1,34 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { RootState} from '../../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import type { User } from '../../Auth/types/User';
 import type { Cocktail } from '../../Cocktails/types/cocktail';
 import { cocktailUpdate } from '../../Cocktails/cocktailsSlice';
 
-
-
-function CocktailEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):JSX.Element {
+function CocktailEditForm({ onSubmitSuccess, cocktailN}: { onSubmitSuccess: () => void, cocktailN:Cocktail  }):JSX.Element {
 
  const cocktail: Cocktail | undefined = useAppSelector((store: RootState) => store.cocktails.cocktail);
  const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
-
- const [title, setTitle] = useState(cocktail ? cocktail.title : '');
+ 
+ const [title, setTitle] = useState(cocktail ? cocktail.title : cocktailN.title);
  const [description, setDescription] = useState(cocktail ? cocktail.description : '');
  const [img, setImg] = useState<File | string | null>(cocktail ? cocktail.img : null);
 
- const dispatch = useAppDispatch();
+ useEffect(() => {
+    if (cocktailN) {
+      setTitle(cocktailN.title);
+    }
+ }, [cocktailN]);
 
+ const dispatch = useAppDispatch();
 
  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
   e.preventDefault();
