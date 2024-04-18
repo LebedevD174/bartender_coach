@@ -95,11 +95,12 @@
   padding: 0.8vw;
 }
 
+.formUpdateCocktail,
 .formAddCocktail {
   display: flex;
   flex-direction: column;
 }
-
+.formUpdateCocktail input,
 .formAddCocktail input {
   border-radius: 0.2rem;
   font-size: 1rem;
@@ -138,7 +139,7 @@
   background-color: #ffbe63;
   border: 0.15vw solid #3d2d17;
 }
-
+.formUpdateCocktail label,
 .formAddCocktail label {
   font-size: 1rem;
   color: #fcdaaa;
