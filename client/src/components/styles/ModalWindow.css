@@ -1,23 +1,26 @@
 .ModalWindow {
-  position: fixed;
-  display: flex ;
+  position: absolute;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  top: 50%;
-  left: 50%;
-  /* transform: translate(-50%, -50%); */
-  margin-left: auto;
-  margin-right: auto;
   background-color: #221707f3;
-  padding: 7rem;
   border-radius: 1rem;
   z-index: 2000;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.25);
   border: 0.5px solid rgba(235, 183, 106, 0.953);
   overflow: hidden;
+  padding: 4vw;
+  margin-bottom: 10rem;
 }
 
-
+.modal-root {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+}
 .blur {
   position: fixed;
   top: 0;
@@ -28,7 +31,7 @@
   z-index: 1;
 }
 
-.modalerror{
+.modalerror {
   font-size: 20px;
   color: rgba(235, 183, 106, 0.953);
   margin: 20px;
