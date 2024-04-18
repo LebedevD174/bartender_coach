@@ -36,8 +36,8 @@
   background-clip: text;
   color: transparent;
 }
-.cocktail_title
-.container ,
+.cocktail_title,
+.container,
 .drink_title {
   font-size: 1vw;
   align-items: center;
@@ -55,7 +55,7 @@
 }
 
 .cocktail_title{
-  
+  padding: 0.2vw;
 }
 
 .button-container {
