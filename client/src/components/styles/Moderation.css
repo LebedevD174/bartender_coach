@@ -50,7 +50,7 @@
   margin: 1rem 0;
   color: #ffe3bc;
 }
-
+.btn-add-cocktail,
 .btn-create-select,
 .btn-fix,
 .btn-send {
@@ -63,7 +63,7 @@
   font-weight: 500;
   padding: 0.8rem;
 }
-
+.btn-add-cocktail:hover,
 .btn-create-select:hover,
 .btn-fix:hover,
 .btn-send:hover {
@@ -96,4 +96,38 @@
 .formulaModeration {
   border-bottom: 1px solid #ffbe63;
   margin: 0.5rem 0;
+}
+.add,
+.edit {
+  font-size: 1vw;
+}
+
+
+.title {
+  font-size: 1rem;
+  color: #fcdaaa;
+}
+
+.editProfile {
+  display: flex;
+  flex-direction: column;
+}
+
+.editProfile input {
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1.5px solid #ffbe63;
+  background-color: #89653223;
+  color: #fcdaaa;
+}
+
+.titleForm {
+  font-size: 2vw;
+  background-image: linear-gradient(#fcc77c, #997b50);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

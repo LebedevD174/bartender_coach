@@ -22,12 +22,12 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
     e.preventDefault();
     if (!category_id) {
       alert('Пожалуйста, выберите крепость коктейля.');
-      return; 
-   }
-   if (!feature_id) {
-    alert('Пожалуйста, выберите вкус коктейля.');
-    return; 
- }
+      return;
+    }
+    if (!feature_id) {
+      alert('Пожалуйста, выберите вкус коктейля.');
+      return;
+    }
 
     const formData = new FormData();
     if (img) {
@@ -38,9 +38,11 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
     formData.append('category_id', category_id);
     formData.append('feature_id', feature_id);
     formData.append('user_id', user?.id.toString() || '');
-    dispatch(addCocktail(formData)).then(() => {
-      onSubmitSuccess();
-    }).catch(console.log);
+    dispatch(addCocktail(formData))
+      .then(() => {
+        onSubmitSuccess();
+      })
+      .catch(console.log);
   };
 
   return (
@@ -49,7 +51,7 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         <div>
           <label htmlFor="title">Название</label>
           <input value={title} type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
-        </div> 
+        </div>
         <div>
           <label htmlFor="description">Описание</label>
           <input
@@ -73,8 +75,8 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
           </select>
         </div>
         <div>
-        <label htmlFor="description">Вкус</label>
-        <select
+          <label htmlFor="description">Вкус</label>
+          <select
             className="categorySelect"
             value={feature_id}
             onChange={(e) => setFeature(e.target.value)}
@@ -102,8 +104,8 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
             }}
           />
         </div>
-        <button className="btn-add-cocktail" type="submit">
-          <p>Добавить</p>
+        <button className="btn-create-select add" type="submit">
+          Добавить
         </button>
       </form>
     </div>
