@@ -59,10 +59,12 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
       <form className="formAddCocktail" onSubmit={addCocktailForm}>
         <div>
           <label htmlFor="title">Название</label>
+          <br/>
           <input value={title} type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div>
           <label htmlFor="description">Описание</label>
+          <br/>
           <input
             value={description}
             type="text"
@@ -72,6 +74,7 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         </div>
         <div>
           <label htmlFor="description">Крепость</label>
+          <br/>
           <select
             className="categorySelect"
             value={category_id}
@@ -85,6 +88,7 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         </div>
         <div>
           <label htmlFor="description">Вкус</label>
+          <br/>
           <select
             className="categorySelect"
             value={feature_id}
@@ -101,6 +105,7 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         </div>
         <div>
           <label htmlFor="img">Фото</label>
+          <br/>
           <input
             type="file"
             className="file-input"

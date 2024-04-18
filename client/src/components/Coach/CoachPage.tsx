@@ -14,7 +14,7 @@ function CoachPage(): JSX.Element {
             <div>
                 {cocktail !== null ? <CoachWindow cocktail={cocktail} setCocktail={setCocktail}/> : <div className='titlePage'>Выберите коктейль</div>}
             </div>
-            <div>
+            <div className='btn-coach'>
                 {cocktail === null && cocktails.map((cocktail) => <button className='btnCocktailCoach' key={cocktail.id} onClick={() => setCocktail(() => cocktail)}>{cocktail.title}</button>)}
             </div>
         </div>

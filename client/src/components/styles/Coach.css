@@ -22,18 +22,25 @@
   -moz-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 2.5rem;
+  font-size: 2.5vw;
   font-weight: 500;
   margin: 3rem 0 2rem 0;
 }
 
 .btnCocktailCoach {
-  background-color: #cf994c48;
-  border-radius: 0.5rem;
-  font-size: 2rem;
+  background-color: #271d11b2;
+  border-radius: 0.2rem;
+  font-size: 1.5vw;
   padding: 2rem;
   color: #ecd8bbf8;
   margin: 2rem;
+  border: 2px solid #ffbe63;
+}
+
+.btnCocktailCoach:hover {
+  background-color: #ffbe63;
+  color: #302211b2;
+  border: 2px solid #302211b2;
 }
 
 .titleCocktailBtn {
@@ -47,22 +54,62 @@
 }
 
 .cardFormula {
-  background-color: #cfb59075;
-  border-radius: 5rem;
+  display: flex;
+  height: 10vw;
+  width: 10vw;
+  flex-direction: column;
+  align-items: center;
+  background-color: #46311475;
+  border-radius: 0.5rem;
   padding: 2rem;
   margin: 1rem;
 }
 
-.newContainerCardFormula {
-  display: flex;
-  height: 13vw;
-  margin: 1rem;
-  width: 70rem;
-  background-color: #dd8100;
+.cardFormula img {
+  width: 6vw;
+  height: 6vw;
 }
 
-.containerCardFormula{
+.cardFormula p {
+  font-size: 0.7vw;
+  color: #ffcf8d;
+  margin: 5px 0;
+}
+
+.newContainerCardFormula {
   display: flex;
+  flex-direction: column;
+  height: 14vw;
+  margin: 1rem;
+  padding: 2rem;
+  align-items: center;
+  width: 80vw;
+  background-color: #faddb486;
+  border-radius: 0.5rem;
+}
+
+.cardsformulanew {
+  display: flex;
+  align-items: center;
+  min-width: 70rem;
+  min-height: 5vw;
+}
+
+.newContainerCardFormula h3 {
+  background-image: linear-gradient(to right, #6b583e, #3b280c);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.containerCardFormula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  flex-wrap: wrap;
 }
 
 .btnClose,
@@ -74,8 +121,38 @@
   margin: 1rem;
 }
 
+.btnClose:hover,
+.btnRestart:hover {
+  background-color: #ffbe63be;
+  color: #3d2d17;
+  border: 0.2vw solid #3d2d17;
+}
+
 .lost,
 .cool {
   color: #ecd8bbf8;
-  margin: 1rem;
+  margin: 1rem 5rem;
+  font-size: 1.8vw;
+}
+
+.btn-coach {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.chert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .newContainerCardFormula {
+    height: 19vw;
+    margin: auto;
+    width: 70vw;
+  }
 }
