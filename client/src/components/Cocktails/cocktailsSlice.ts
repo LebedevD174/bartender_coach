@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
 import type { CocktailType } from './types/cocktail';
@@ -82,7 +83,11 @@ const cocktailsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(cocktailUpdate.fulfilled, (state, action) => {
-        state.cocktail = action.payload.cocktail;
+        state.cocktails = state.cocktails.map((el)=> {
+          if(el.id === +action.payload.cocktail.id) {
+            return ({...action.payload.cocktail})
+          } else return el
+        })
       })
       .addCase(cocktailUpdate.rejected, (state, action) => {
         state.error = action.error.message;
