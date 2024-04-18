@@ -17,6 +17,7 @@ function CocktailEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):
  const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
 
  const [title, setTitle] = useState(cocktail ? cocktail.title : '');
+ const [description, setDescription] = useState(cocktail ? cocktail.description : '');
  const [img, setImg] = useState<File | string | null>(cocktail ? cocktail.img : null);
 
  const dispatch = useAppDispatch();
@@ -27,16 +28,18 @@ function CocktailEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):
   const data = new FormData();
 
   data.append('title', title);
+  data.append('description', description);
   if (img) {
     data.append('img', img); 
   }
   data.append('profileId', user?.id.toString() || '');
 
 
-  dispatch(profileUpdate(data))
+  dispatch(cocktailUpdate(data))
     .then(() => {
       onSubmitSuccess();
       setTitle('');
+      setDescription('');
       setImg(null);
     })
     .catch((error) => {
@@ -65,6 +68,14 @@ function CocktailEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }):
         name='title'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+      />
+      <br />
+      <label htmlFor="description">Описание:</label>
+      <input
+        type="text"
+        name='description'
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       />
       <br />
       <button type="submit">Сохранить изменения</button>
