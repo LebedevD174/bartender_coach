@@ -11,9 +11,11 @@ function CoachPage(): JSX.Element {
     const [cocktail, setCocktail] = useState<CocktailFormula | null>(null)
     return (
         <div className='CoachPage'>
-            {cocktail !== null ? <CoachWindow cocktail={cocktail} setCocktail={setCocktail}/> : <div className='titlePage'>Выберите коктейль</div>}
             <div>
-                {cocktails.map((cocktail) => <button className='btnCocktailCoach' key={cocktail.id} onClick={() => setCocktail(() => cocktail)}>{cocktail.title}</button>)}
+                {cocktail !== null ? <CoachWindow cocktail={cocktail} setCocktail={setCocktail}/> : <div className='titlePage'>Выберите коктейль</div>}
+            </div>
+            <div>
+                {cocktail === null && cocktails.map((cocktail) => <button className='btnCocktailCoach' key={cocktail.id} onClick={() => setCocktail(() => cocktail)}>{cocktail.title}</button>)}
             </div>
         </div>
     );
