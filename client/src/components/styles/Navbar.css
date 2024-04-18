@@ -7,7 +7,7 @@ body {
 
 .top_navbar {
   background-color: #000000;
-  height: 11rem;
+  height: 8vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -15,7 +15,7 @@ body {
 }
 
 .top_navbar span {
-  font-size: 2.25rem;
+  font-size: 1.5vw;
   background-image: linear-gradient(to right, #ffbe63, #896532);
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -29,5 +29,5 @@ span:hover {
 }
 
 .logo {
-  width: 90%;
+  width: 7vw;
 }
