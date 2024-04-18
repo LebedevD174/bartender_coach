@@ -135,15 +135,15 @@ function CoachWindow({
                       {...provided.dragHandleProps}
                     >
                       {/* {formula.order && <div>{formula.order}</div>} */}
-                      {formula.Barware && <div style={{height:'100px'}}><img src={formula.Barware?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Barware && <div><img src={formula.Barware?.img} alt=""/></div>}
                       {formula.Barware && <div>{formula.Barware?.title}</div>}
-                      {formula.Drink && <div style={{height:'100px'}}><img src={formula.Drink?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Drink && <div><img src={formula.Drink?.img} alt=""/></div>}
                       {formula.Drink && (
                         <div>
                           {formula.Drink?.title}: {formula.drinks_volume}мл
                         </div>
                       )}
-                      {formula.Ingredient && <div style={{height:'100px'}}><img src={formula.Ingredient?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Ingredient && <div><img src={formula.Ingredient?.img} alt=""/></div>}
                       {formula.Ingredient && (
                         <div>
                           {formula.Ingredient?.title}: {formula.ingredient_volume}{' '}
@@ -165,7 +165,6 @@ function CoachWindow({
               className="newContainerCardFormula"
               {...provided.droppableProps}
               ref={provided.innerRef}
-              style={{ backgroundColor: 'lightgrey', padding: '10px', borderRadius: '5px' }}
             >
               <h3>Коктейль</h3>
               {newFormulas.map((formula: Formula, index: number) => (
@@ -176,25 +175,18 @@ function CoachWindow({
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      style={{
-                        color: 'black',
-                        margin: '5px 0',
-                        padding: '5px',
-                        border: '1px solid #ccc',
-                        borderRadius: '5px',
-                      }}
                     >
                       {/* Отображение информации о формуле */}
                       {/* {formula.order && <div>{formula.order}</div>} */}
-                      {formula.Barware && <div style={{height:'100px'}}><img src={formula.Barware?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Barware && <div><img src={formula.Barware?.img} alt=""/></div>}
                       {formula.Barware && <div>{formula.Barware?.title}</div>}
-                      {formula.Drink && <div style={{height:'100px'}}><img src={formula.Drink?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Drink && <div><img src={formula.Drink?.img} alt=""/></div>}
                       {formula.Drink && (
                         <div>
                           {formula.Drink?.title}: {formula.drinks_volume}мл
                         </div>
                       )}
-                      {formula.Ingredient && <div style={{height:'100px'}}><img src={formula.Ingredient?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Ingredient && <div><img src={formula.Ingredient?.img} alt=""/></div>}
                       {formula.Ingredient && (
                         <div>
                           {formula.Ingredient?.title}: {formula.ingredient_volume}{' '}
