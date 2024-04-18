@@ -24,8 +24,8 @@ function FilterDrinks({ setFilter, onSearch }: FilterDrinksProps): JSX.Element {
               <option hidden>Крепость</option>
               <option value={0}>Все</option>
               <option value={1}>Безалкогольные</option>
-              <option value={2}>Крепкие</option>
-              <option value={3}>Слабоалкогольные</option>
+              <option value={2}>Слабоалкогольные</option>
+              <option value={3}>Крепкие</option>
             </select>
           </div>
         </div>

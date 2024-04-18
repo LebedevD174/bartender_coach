@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react';
@@ -7,12 +8,14 @@ import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import Modal from '../../ui/Modal';
 import CocktailEditForm from './CocktailEditForm';
 
-function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
+function CocktailCard({ cocktail, onShowEditForm }: { cocktail: Cocktail, onShowEditForm:  () => void }): JSX.Element {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const handleFormSubmit = (): void => {
     setShowEditForm(false);
+    setShowOverlay(false);
   };
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.auth.user);
@@ -32,7 +35,7 @@ function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
         <button
           className="btn-update-cocktails"
           type="button"
-          onClick={() => setShowEditForm(true)}
+          onClick={onShowEditForm}
         >
           <p>Изменить</p>
         </button>
@@ -40,6 +43,7 @@ function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
           Удалить
         </button>
       </div>
+      {showOverlay && <div className="overlay"></div>}
       {showEditForm && (
         <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
           <CocktailEditForm cocktailN={cocktail} onSubmitSuccess={handleFormSubmit} />
