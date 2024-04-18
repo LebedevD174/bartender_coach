@@ -7,39 +7,35 @@ import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import { deleteCocktailAdmin } from '../Cocktails/cocktailsSlice';
 
 function AdminPage(): JSX.Element {
-  const cocktailsAll = useAppSelector((store: RootState) => store.cocktails.cocktails)
+  const cocktailsAll = useAppSelector((store: RootState) => store.cocktails.cocktails);
   const [cocktails, setCocktails] = useState(cocktailsAll);
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const dispatch = useAppDispatch();
   useEffect(() => {
     setCocktails(cocktailsAll.filter((el) => el.status === false));
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     setCocktails(cocktailsAll.filter((el) => el.status === false));
-  }, [cocktailsAll])
+  }, [cocktailsAll]);
   useEffect(() => {
     if (deleteId !== null) {
-        dispatch(deleteCocktailAdmin({ id: deleteId }));
+      dispatch(deleteCocktailAdmin({ id: deleteId }));
     }
- }, [deleteId]);
+  }, [deleteId]);
   return (
-    <div className='PageModeration'>
+    <div className="PageModeration">
       <h2 className="moderationTitle">Коктейли для обработки</h2>
       <div className="container">
         {cocktails?.map((cocktail) => (
-          <>
-          <Link key={cocktail.id} to={`/admin/cocktails/${cocktail.id}`}>
-            <div className="card_cocktail">
+          <div className="card_cocktail">
+            <Link key={cocktail.id} to={`/admin/cocktails/${cocktail.id}`}>
               <img src={cocktail.img} alt={cocktail.title} />
               <p className="cocktail_title">{cocktail.title}</p>
-            </div>
-          </Link>
-          <button 
-          className="btn-delete" 
-          onClick={() => setDeleteId(+cocktail.id)}>
-          Удалить
-      </button>
-      </>
+            </Link>
+            <button className="btn-delete-cocktails" onClick={() => setDeleteId(+cocktail.id)}>
+              Удалить
+            </button>
+          </div>
         ))}
       </div>
     </div>
