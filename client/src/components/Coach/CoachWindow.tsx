@@ -196,7 +196,7 @@ function CoachWindow({
                       >
                         {(provided: DraggableProvided) => (
                           <div
-                            className="cardFormula"
+                            className="cardFormulaNew"
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
