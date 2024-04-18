@@ -17,7 +17,7 @@ function Navbar(): JSX.Element {
     <div className="navbar_top">
       <div className="navbar">
         <div className="top_navbar">
-          <Link to="/"><img className='logo' src='/public/img/LOGO.png' alt=''/></Link>
+          <Link to="/"><img className='logo' src='/img/LOGO.png' alt=''/></Link>
 
           {isUserRegistered ? (
             <>

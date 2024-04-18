@@ -6,27 +6,27 @@ module.exports = {
     const ingredientsData = [
       {
         title: 'Лайм',
-        img: 'https://sneg.top/uploads/posts/2023-03/1678669158_sneg-top-p-zelenii-laimovii-fon-krasivo-15.jpg',
+        img: '/img/Lime-Medium.png',
         measure: 'Ломтик',
       },
       {
         title: 'Мята',
-        img: 'https://ekolekar.com/wp-content/uploads/2016/11/maslo-myaty-perechnoj-dlya-lecheniya.jpg',
+        img: '/img/Mint-Medium.png',
         measure: 'Листик',
       },
       {
         title: 'Лед',
-        img: 'https://w.forfun.com/fetch/83/83cea41580060c936542b63b7244408a.jpeg',
+        img: '/img/Ice-Medium.png',
         measure: 'Кубик',
       },
       {
         title: 'Дробленый лед',
-        img: 'https://w.forfun.com/fetch/83/83cea41580060c936542b63b7244408a.jpeg',
+        img: '/img/Ice-Medium.png',
         measure: 'гр.',
       },
       {
         title: 'Персик',
-        img: 'https://imageio.forbes.com/specials-images/imageserve/5f42b5182138dffac9bf05b7/0x0.jpg',
+        img: '/ing/persik.png',
         measure: 'Ломтик',
       },
       {
@@ -36,12 +36,12 @@ module.exports = {
       },
       {
         title: 'Апельсиновая цедра',
-        img: 'https://catherineasquithgallery.com/uploads/posts/2021-03/1614575484_4-p-klubnika-na-belom-fone-8.jpg',
+        img: '/img/Lemon Peel-Medium.png',
         measure: 'Слайс',
       },
       {
         title: 'Сахар',
-        img: 'https://catherineasquithgallery.com/uploads/posts/2021-03/1614575484_4-p-klubnika-na-belom-fone-8.jpg',
+        img: '/img/Sugar-Medium.png',
         measure: 'Кубик',
       },
     ];

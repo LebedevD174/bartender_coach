@@ -7,23 +7,28 @@ module.exports = {
     const hash = await bcrypt.hash('123', 10);
     const usersData = [
       {
-        login: 'Admin',
+        login: 'admin',
         email: 'admin@mail.ru',
         password: hash,
       },
       {
-        login: 'ValeraWolf',
+        login: 'valera',
         email: 'valera@mail.ru',
         password: hash,
       },
       {
-        login: 'Maria',
+        login: 'maria',
         email: 'maria@mail.ru',
         password: hash,
       },
       {
-        login: 'DimaBear',
+        login: 'dima',
         email: 'dima@mail.ru',
+        password: hash,
+      },
+      {
+        login: 'danya',
+        email: 'danya@mail.ru',
         password: hash,
       },
     ];
