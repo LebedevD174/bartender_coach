@@ -19,11 +19,13 @@ import '../components/styles/Coach.css';
 import '../components/styles/CocktailCard.css';
 import '../components/styles/Moderation.css';
 import '../components/styles/LogaRega.css';
+import '../components/styles/404.css';
 import '../components/styles/Profile.css';
 import '../components/styles/CocktailPage.css';
 import '../components/styles/ModalWindow.css';
 import AdminPage from '../components/Admin/AdminPage';
 import AdminCocktail from '../components/Admin/AdminCocktail';
+import PageEr from '../components/ui/404';
 // import CocktailPopular from '../components/Cocktails/components/cocktailPopular';
 
 function App(): JSX.Element {
@@ -41,6 +43,7 @@ function App(): JSX.Element {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/coach" element={<CoachPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/*" element={<PageEr />} />
           <Route path="/admin/cocktails/:id" element={<AdminCocktail />} />
         </Route>
       </Routes>
