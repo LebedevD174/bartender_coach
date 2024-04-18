@@ -20,8 +20,8 @@ function ProfilePage(): JSX.Element {
        <div className="ProfilePage">
          <MovingSquares />
          <ProfileInfo />
-         <CocktailsList />
          <button className="titleForm"  onClick={() => setShowEditForm(true)}  >Добавить новый коктейль</button>
+         <CocktailsList />
          <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
             <AddCardCocktail onSubmitSuccess={handleFormSubmit}/>
          </Modal>
