@@ -5,10 +5,10 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     const profilesData = [
       {
-        name: 'Админ',
-        lastName: 'Админов',
-        age: 30,
-        phoneNumber: 1111111111,
+        name: 'Анатолий',
+        lastName: 'Башкатов',
+        age: 33,
+        phoneNumber: null,
         img: 'https://fikiwiki.com/uploads/posts/2022-02/1644852387_2-fikiwiki-com-p-kartinki-admina-2.jpg',
         isAdmin: true,
       },
@@ -16,7 +16,7 @@ module.exports = {
         name: 'Валерий',
         lastName: 'Супер',
         age: 23,
-        phoneNumber: 1111111111,
+        phoneNumber: null,
         img: 'https://klike.net/uploads/posts/2023-01/1674376895_3-19.jpg',
         isAdmin: false,
       },
@@ -24,7 +24,7 @@ module.exports = {
         name: 'Мария',
         lastName: 'Марковка',
         age: 24,
-        phoneNumber: 1111111111,
+        phoneNumber: null,
         img: 'https://i.pinimg.com/originals/d1/be/8f/d1be8fe517d190dd3d318bde5e563f8c.jpg',
         isAdmin: false,
       },
