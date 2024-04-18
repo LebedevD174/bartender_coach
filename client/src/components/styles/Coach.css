@@ -2,6 +2,7 @@
 .btnCocktailCoach,
 .allContainerFormula {
   display: flex;
+  flex-direction: column;
 }
 
 .allContainerFormula {
@@ -52,12 +53,16 @@
   margin: 1rem;
 }
 
-.newContainerCardFormula,
-.containerCardFormula {
-  height: 300px;
-  margin: 1rem;
+.newContainerCardFormula {
   display: flex;
-  width: 90rem;
+  height: 13vw;
+  margin: 1rem;
+  width: 70rem;
+  background-color: #dd8100;
+}
+
+.containerCardFormula{
+  display: flex;
 }
 
 .btnClose,
