@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../app/api';
 import type { CocktailType } from './types/cocktail';
@@ -34,6 +35,10 @@ export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCoc
   ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
 );
 
+export const cocktailUpdate = createAsyncThunk('cocktail/update', (data: FormData) =>
+  api.fetchUpdateCocktail(data),
+);
+
 export const updateStatusCocktail = createAsyncThunk<{id: number, message: string}, number>(
   'cocktails/updateStatusCocktail',
   (id) => api.fetchCocktailUpdateStatus(id),
@@ -64,12 +69,7 @@ const cocktailsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(updateStatusCocktail.fulfilled, (state, action) => {
-        console.log(state.cocktails);
-        console.log(action.payload);
-        
         state.cocktails = state.cocktails.map((el) => el.id === +action.payload.id ? ({...el, status: true}) : el);
-        console.log(state.cocktails);
-
       })
       .addCase(updateStatusCocktail.rejected, (state, action) => {
         state.error = action.error.message;
@@ -79,7 +79,18 @@ const cocktailsSlice = createSlice({
       })
       .addCase(deleteCocktail.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
+      .addCase(cocktailUpdate.fulfilled, (state, action) => {
+        state.cocktails = state.cocktails.map((el)=> {
+          if(el.id === +action.payload.cocktail.id) {
+            return ({...action.payload.cocktail})
+          } else return el
+        })
+        state.cocktail = action.payload.cocktail
+      })
+      .addCase(cocktailUpdate.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
   },
 });
 

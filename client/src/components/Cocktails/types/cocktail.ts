@@ -19,8 +19,8 @@ export type CocktailNew = Omit<Cocktail, 'id' | 'status' | 'CocktailFeatures'>;
 export type CocktailID = Cocktail['id'];
 
 export type CocktailType = {
-  cocktail: CocktailFormula | undefined;
-  cocktails: CocktailFormula[];
+  cocktail: CocktailFormula | Cocktail| undefined;
+  cocktails: CocktailFormula[] | Cocktail[] ;
   error: string | undefined;
 };
 

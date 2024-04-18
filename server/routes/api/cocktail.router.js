@@ -171,6 +171,32 @@ router.post('/', upload.single('img'), async (req, res) => {
   }
 });
 
+router.put('/:id', upload.single('img'), async (req, res) => {
+  try {
+      const { id } = req.params;
+      let { title, description } = req.body;
+      let img;
+      if (req.file) {
+          img = `/img/${req.file.originalname}`;
+      } else {
+          const currentCocktail = await Cocktail.findOne({ where: { id } });
+          img = currentCocktail.img; 
+      }
+
+      await Cocktail.update({ title, description, img }, {
+
+          where: { id },
+          fields: ['title', 'description', 'img']
+      });
+
+      const cocktail = await Cocktail.findOne({ where: { id } });
+      res.status(200).json({ message: 'success', cocktail });
+  } catch ({ message }) {
+      console.log(message);
+      res.status(500).json({ message: 'Ошибка при обновлении коктейля' });
+  }
+});
+
 router.put('/updatestatus/:id', async (req, res) => {
   try {
     const { id } = req.params;
