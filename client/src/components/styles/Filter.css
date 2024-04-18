@@ -13,8 +13,7 @@
   margin: 3rem;
   width: 85%;
   height: 5rem;
-  border-bottom: 1px solid #db9b41c9;;
-
+  border-bottom: 1px solid #db9b41c9;
 }
 
 .categoryFilt,
@@ -33,10 +32,21 @@
 .FilterCocktails select,
 .FilterDrinks select {
   font-family: 'Montserrat Alternates', sans-serif;
-  border-radius: 0.5rem;
-  width: 80%;
-  font-size: 1.5rem;
-  background-color: #faddb47c;
-  padding: 4px;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  font-weight: 500;
   margin: 1rem;
+  background-color: #faddb47c;
+  padding: 0.5rem;
+  border: 1.5px solid #ffbe63;
+}
+.FilterDrinks input,
+.FilterCocktails input {
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1.5px solid #ffbe63;
+  background-color: #89653223;
+  color: #fcdaaa;
 }

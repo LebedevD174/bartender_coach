@@ -1,0 +1,149 @@
+/* author: https://codepen.io/PraRoz/pen/OJzrmmm
+Rozan Chitrakar
+ */
+/* @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch+Pop&family=Underdog&family=Zen+Tokyo+Zoo&display=swap');
+
+body {
+  overflow: hidden;
+}
+.errq {
+  margin-top: 2rem;
+  padding: 2rem;
+  font-size: 7vw;
+  font-family: 'Zen Tokyo Zoo', system-ui;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 80px rgb(255, 196, 0),
+    0 0 30px rgb(178, 128, 34),
+    0 0 6px rgb(139, 83, 0);
+  color: #ffbe63;
+}
+.errq p {
+  margin: 2rem;
+}
+#error:hover {
+  text-shadow:
+    0 0 200px #ffffff,
+    0 0 80px #807300,
+    0 0 6px #ffd000;
+}
+#code:hover {
+  text-shadow:
+    0 0 100px rgb(255, 196, 0),
+    0 0 40px rgb(178, 128, 34),
+    0 0 8px rgb(139, 83, 0);
+}
+#error {
+  color: #fff;
+  text-shadow:
+    0 0 80px #ffffff,
+    0 0 30px #807300,
+    0 0 6px #ffd000;
+}
+#error span {
+  animation: upper 6s linear infinite;
+}
+#code span:nth-of-type(2) {
+  animation: lower 9s linear infinite;
+}
+#code span:nth-of-type(1) {
+  text-shadow: none;
+  opacity: 0.4;
+}
+@keyframes upper {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
+    opacity: 0.99;
+    text-shadow:
+      0 0 80px #ffffff,
+      0 0 30px #807300,
+      0 0 6px #ffd000;
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+@keyframes lower {
+  0%,
+  12%,
+  18.999%,
+  23%,
+  31.999%,
+  37%,
+  44.999%,
+  46%,
+  49.999%,
+  51%,
+  58.999%,
+  61%,
+  68.999%,
+  71%,
+  85.999%,
+  96%,
+  100% {
+    opacity: 0.99;
+    text-shadow:
+      0 0 80px rgb(255, 196, 0),
+      0 0 30px rgb(178, 128, 34),
+      0 0 6px rgb(139, 83, 0);
+  }
+  19%,
+  22.99%,
+  32%,
+  36.999%,
+  45%,
+  45.999%,
+  50%,
+  50.99%,
+  59%,
+  60.999%,
+  69%,
+  70.999%,
+  86%,
+  95.999% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+.btn-back-err {
+  border-radius: 0.1rem;
+  font-size: 2vw;
+  background-color: #00000050;
+  padding: 1rem;
+  color: #fcdaaa;
+  font-weight: 400;
+  border: 0.2vw solid #ffbe63;
+}
+
+.btn-back-err span {
+  border-radius: 0.1rem;
+  padding: 0.3vw;
+  border: 0.1vw solid #ffbe63;
+}
+
+.btn-back-err:hover {
+  background-color: #ffbe63be;
+  border: 0.2vw solid #3d2d17;
+  color: #3d2d17;
+}
+
+.btn-back-err span:hover {
+  text-decoration: none;
+  color: #3d2d17;
+  border: 0.1vw solid #3d2d17;
+}

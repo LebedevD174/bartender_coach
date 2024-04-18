@@ -140,7 +140,7 @@
 }
 
 .formAuth h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #fcdaaa;
   margin: 1rem;
   font-weight: 300;
@@ -152,14 +152,14 @@
   font-size: 1.5rem;
   font-family: 'Montserrat Alternates', sans-serif;
   background-color: #eec67d00;
-  padding: 1rem;
+  padding: 0.5rem;
   color: #fcdaaa;
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 .inputBx button:hover{
   background-color: #ffbe63be;
-  padding: 1rem;
+  padding: 0.5rem;
   color: #3d2d17;
 }
 

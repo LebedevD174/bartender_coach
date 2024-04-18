@@ -67,7 +67,7 @@
 .gradient1 {
   position: relative;
   color: white;
-  background: linear-gradient(149deg, #fdca827c 0%, #e4b36abd 42%, #ad762d77 72%, #9e6e2b77 100%);
+  background: linear-gradient(149deg, #fdca827c 0%, #e4b36abd 42%, #f0ae58b9 72%, #d8a55eab 100%);
   background-size: 200% 200%;
   animation: gradient 10s infinite linear;
 }
