@@ -3,9 +3,9 @@ FROM node
 ENV NODE_ENV=production
 
 # Здесь ваши переменные окружения
-ENV DATABASE_URL=postgres://postgres:postgres@94.26.229.98:5432/b_bartender_coach
-ENV TOKEN_ACCESS=e1MT3SvgHg4jMWOC 
-ENV TOKEN_REFRESH=WbYFCcYv0a65va5R 
+ENV DATABASE_URL=
+ENV TOKEN_ACCESS=laksdffijqoiji41294i9024totksdfk-010i34osdfs 
+ENV TOKEN_REFRESH=JKSksjdngNKS654Df21l1kalsdff0lFDLNKDSkk94r293iWjiJerjklr23SFIaijldsg 
 
 WORKDIR /app
 

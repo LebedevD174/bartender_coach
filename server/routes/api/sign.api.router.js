@@ -35,16 +35,16 @@ router.post('/authorization', async (req, res) => {
       },
       attributes: ['id', 'email', 'login', 'password'],
     });
-
+    console.log(user, 1111111111111111111111);
     if (!user) { 
       res.status(400).json({ 
-          message: 'Такого пользователя нет или пароль неверный', 
+          message: 'Такого пользователя нет', 
       }) 
       return 
   }
     const passTest = await bcrypt.compare(password, user.password);
     if (!passTest) {
-      res.status(400).json({ message: 'Такого пользователя нет или пароль неверный' });
+      res.status(400).json({ message: 'Пароль неверный' });
     } else {
       const { accessToken, refreshToken } = signUtils({
         user: {
@@ -88,7 +88,7 @@ router.post('/registration', async (req, res) => {
     if (
       login.trim().length !== login.length ||
       login.replace(' ', '').length !== login.length ||
-      !invalidCharacters.test(login)
+      invalidCharacters.test(login)
     ) {
       res.status(400).json({
         message: 'Login не должен содержать пробелов или специальных символов',
