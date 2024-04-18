@@ -41,7 +41,7 @@ function DrinksList(): JSX.Element {
           <Link key={drink.id}  to={`/drinks/${drink.id}`}>
             <div className="card_drink">
               <img src={drink.img} alt={drink.title} />
-              <p>{drink.title}</p>
+              <p className='cocktail_title'>{drink.title}</p>
             </div>
           </Link>
         ))}

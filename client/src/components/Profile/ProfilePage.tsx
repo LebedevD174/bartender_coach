@@ -10,23 +10,25 @@ import MovingSquares from './MovingSquares';
 import Modal from '../ui/Modal';
 
 function ProfilePage(): JSX.Element {
-    const [showEditForm, setShowEditForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
-    const handleFormSubmit = (): void => {
-        setShowEditForm(false);
-      };
+  const handleFormSubmit = (): void => {
+    setShowEditForm(false);
+  };
 
-    return (
-       <div className="ProfilePage">
-         <MovingSquares />
-         <ProfileInfo />
-         <CocktailsList />
-         <button className="titleForm"  onClick={() => setShowEditForm(true)}  >Добавить новый коктейль</button>
-         <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
-            <AddCardCocktail onSubmitSuccess={handleFormSubmit}/>
-         </Modal>
-       </div>
-    );
-   }
-   
-   export default ProfilePage;
+  return (
+    <div className="ProfilePage">
+      <MovingSquares />
+      <ProfileInfo />
+      <button className="btn-create-cocktail" onClick={() => setShowEditForm(true)}>
+        <p>Добавить новый коктейль</p>
+      </button>
+      <CocktailsList />
+      <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
+        <AddCardCocktail onSubmitSuccess={handleFormSubmit} />
+      </Modal>
+    </div>
+  );
+}
+
+export default ProfilePage;

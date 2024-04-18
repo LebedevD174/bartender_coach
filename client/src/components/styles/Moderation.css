@@ -1,8 +1,8 @@
-.PageModeration{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 3rem 6rem;
+.PageModeration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
 }
 
 .moderationTitle {
@@ -12,13 +12,88 @@
   -moz-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 0 2vw 4vw 0;
+  margin: 2rem;
 }
 
-.PageModeration img{  
-  width: 26vw;
+.image-container {
+  width: 30%;
 }
 
-.infoModeration{
+.image-container img {
+  width: 100%; /* Ширина изображения */
+  height: auto;
+}
+
+.infoModeration {
   display: flex;
+  justify-content: center;
+}
+
+.infoMod {
+  margin: 0 2rem;
+  width: 30vw;
+}
+.card_cocktail img {
+  width: 90%;
+  height: 80%;
+}
+
+.createRec,
+.descriptionModeration h2 {
+  font-size: 1.5rem;
+  color: #ffe3bc;
+  margin: 1rem auto;
+}
+
+.descriptionModeration p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: #ffe3bc;
+}
+
+.btn-create-select,
+.btn-fix,
+.btn-send {
+  border-radius: 0.2rem;
+  background-color: #faddb4bb;
+  border: 1.5px solid #ffbe63;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.8rem;
+}
+
+.btn-create-select:hover,
+.btn-fix:hover,
+.btn-send:hover {
+  background-color: #271c0c;
+  color: #faddb4e3;
+}
+
+#barware_id,
+#option,
+#drink_id,
+#tech_id,
+#ingredient_id,
+#drinks_volume {
+  border-radius: 0.2rem;
+  background-color: #fdd0919f;
+  border: 1.5px solid #ffbe63;
+  width: 70%;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 500;
+}
+
+.formulaModeration label {
+  font-size: 1rem;
+  color: #896532;
+}
+
+.formulaModeration {
+  border-bottom: 1px solid #ffbe63;
+  margin: 0.5rem 0;
 }

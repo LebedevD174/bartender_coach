@@ -45,14 +45,18 @@ function AdminCocktail(): JSX.Element {
     <div className="PageModeration">
       <h1 className="moderationTitle">{cocktail?.title}</h1>
       <div className="infoModeration">
-        <img src={cocktail?.img} alt={cocktail?.title} />
-        <div>
-          <div>
+        <div className="image-container">
+          <img src={cocktail?.img} alt={cocktail?.title} />
+        </div>
+        <div className="infoMod">
+          <div className="descriptionModeration">
             <h2>Описание</h2>
-            <div>{cocktail?.description}</div>
+            <p>{cocktail?.description}</p>
           </div>
-          <h2>Создание рецепта</h2>
-          <button onClick={() => setCount((prev) => (prev += 1))}>Добавить шаг рецепта</button>
+          <h2 className="createRec">Создание рецепта</h2>
+          <button className="btn-create-select" onClick={() => setCount((prev) => (prev += 1))}>
+            Добавить шаг рецепта
+          </button>
           <div className="container__formula">
             {count !== 0 &&
               arr.map((el, index) => (
@@ -67,7 +71,7 @@ function AdminCocktail(): JSX.Element {
                   <div>{el}</div>
                 </>
               ))}
-            <button onClick={addForm}>Отправить</button>
+            <button className="btn-send" onClick={addForm}>Отправить</button>
           </div>
         </div>
       </div>

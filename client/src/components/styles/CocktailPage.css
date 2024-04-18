@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid#dbb864;
+  margin: 5rem 10vw;
 }
 
 .cocktailCardPage h1 {
@@ -10,15 +14,9 @@
 
 .cocktailCardPage img {
   width: 30%;
-  margin: 2rem;
-  border-radius: 10px;
-}
-
-.cocktailCardPage {
-  display: flex;
-  border-radius: 0.5rem;
-  border: 1px solid#dbb864;
-  margin: 5rem 20rem;
+  height: 30%;
+  margin: 2vw;
+  border-radius: 1vw;
 }
 
 .pageCard {
@@ -28,6 +26,7 @@
 
 .allCardInfo {
   display: flex;
+  align-items: center;
 }
 
 .infoCard {
@@ -44,7 +43,7 @@
 }
 
 .descriptionCard {
-  font-size: 1.5rem;
+  font-size: 1.2vw;
   margin: 0 2rem;
   font-weight: 300;
   word-spacing: 4px;
@@ -54,17 +53,16 @@
 
 .recipe div {
   border: 1px solid #896532;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+  font-size: 1.2vw;
+  padding: 0.4vw;
   color: #443012;
   font-weight: 500;
 }
 .recipe {
   width: 50%;
-  margin: 15px;
+  margin: 1vw;
   background-color: #dbb864;
 }
-
 
 .gradient1 {
   position: relative;
@@ -98,5 +96,38 @@
   }
   100% {
     background-position: 0% 0%;
+  }
+}
+@media (max-width: 899) {
+  .cocktailCardPage h1 {
+    font-size: 10rem;
+  }
+}
+
+@media  (max-width: 1200px) {
+  .cocktailCardPage img {
+    width: 40%;
+    height: 40%;
+    margin: 2vw;
+    border-radius: 1vw;
+  }
+  .allCardInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cocktailCardPage h1 {
+    font-size: 3vw;
+  }
+  .infoCard h2 {
+    font-size: 2.5vw;
+    margin: 1rem;
+  }
+
+  .cocktailCardPage{
+    margin: 1vw;
+  }
+  .descriptionCard{
+    margin: 0 6vw;
   }
 }

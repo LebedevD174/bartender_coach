@@ -8,7 +8,7 @@
 }
 
 .popular_drinks,
-.popular_cocktail{
+.popular_cocktail {
   margin: 2vw;
   align-items: center;
 }
@@ -20,7 +20,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem 2rem;
+  margin: 0 5rem;
 }
 
 .container img {
@@ -45,3 +45,5 @@
   background-position: center;
   border-bottom: 1.5px solid #dbb864;
 }
+
+
