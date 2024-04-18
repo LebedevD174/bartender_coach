@@ -12,6 +12,7 @@
   position: relative;
 }
 
+
 .card_cocktail::before,
 .card_drink::before {
   content: '';
