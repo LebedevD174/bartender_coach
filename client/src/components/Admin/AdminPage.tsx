@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RootState } from '../../app/redux/store';
@@ -8,9 +9,16 @@ function AdminPage(): JSX.Element {
     (el) => el.status === false,
   );
   const [cocktails, setCocktails] = useState(cocktailsAll);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
   useEffect(() => {
     setCocktails(cocktailsAll.filter((el) => el.status === false));
   }, []);
+
+  useEffect(() => {
+    if (deleteId !== null) {
+        dispatch(deleteCocktail({ id: deleteId}));
+    }
+ }, [deleteId]);
   return (
     <div className='PageModeration'>
       <h2 className="moderationTitle">Коктейли для обработки</h2>
@@ -20,6 +28,11 @@ function AdminPage(): JSX.Element {
             <div className="card_cocktail">
               <img src={cocktail.img} alt={cocktail.title} />
               <p className="cocktail_title">{cocktail.title}</p>
+              <button 
+                  className="btn-delete" 
+                  onClick={() => setDeleteId(+cocktail.id)}>
+                  Удалить
+              </button>
             </div>
           </Link>
         ))}
