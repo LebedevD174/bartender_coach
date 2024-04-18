@@ -13,6 +13,7 @@ import Modal from '../ui/Modal';
 function ProfilePage(): JSX.Element {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  
 
   const handleFormSubmit = (): void => {
     setShowEditForm(false);
@@ -32,10 +33,7 @@ function ProfilePage(): JSX.Element {
       }}>
         <p>Добавить новый коктейль</p>
       </button>
-      <CocktailsList onShowEditForm={() => {
-        setShowEditForm(true);
-        setShowOverlay(true); 
-      }} />
+      <CocktailsList  />
       {showOverlay && <div className="overlay"></div>} 
       <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
         <AddCardCocktail onSubmitSuccess={handleFormSubmit} />

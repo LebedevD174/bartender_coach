@@ -7,7 +7,7 @@ import { useAppSelector } from '../../app/redux/store';
 import ProfileEditForm from './ProfileEditForm';
 import Modal from '../ui/Modal';
 
-function ProfileInfo({ onShowEditForm }: { onShowEditForm: () => void }): JSX.Element {
+function ProfileInfo(): JSX.Element {
   const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
   const profile: Profile | undefined = useAppSelector((store: RootState) => store.profile.profile);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -74,10 +74,10 @@ function ProfileInfo({ onShowEditForm }: { onShowEditForm: () => void }): JSX.El
           ) : (
             <div className="titleProf">Номер телефона не указан</div>
           )}
-         <button
+          <button
             className="btn-update-profile"
             type="button"
-            onClick={onShowEditForm} 
+            onClick={() => setShowEditForm(true)}
           >
             <p>Изменить данные</p>
           </button>
@@ -85,11 +85,9 @@ function ProfileInfo({ onShowEditForm }: { onShowEditForm: () => void }): JSX.El
       </div>
 
       {showEditForm && (
-        <Modal isOpen={showEditForm} onClose={() => {
-          setShowEditForm(false); 
-         }}>
+        <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
           <ProfileEditForm onSubmitSuccess={handleFormSubmit} />
-         </Modal>
+        </Modal>
       )}
     </div>
   );
