@@ -13,6 +13,11 @@ type DeleteCocktailArgs = {
   id: number;
   user_id: number;
 };
+
+type DeleteCocktailArgsAdmin = {
+  id: number;
+};
+
 type DeleteCocktailResponse = {
   id: number;
   message: string;
@@ -35,7 +40,7 @@ export const deleteCocktail = createAsyncThunk<DeleteCocktailResponse, DeleteCoc
   ({ id, user_id }) => api.fetchCocktailDelete(id, user_id),
 );
 
-export const deleteCocktailAdmin = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgs>(
+export const deleteCocktailAdmin = createAsyncThunk<DeleteCocktailResponse, DeleteCocktailArgsAdmin>(
   'cocktails/deleteCocktailAdmin',
   ({ id }) => api.fetchCocktailDeleteAdmin(id),
 );
@@ -83,6 +88,16 @@ const cocktailsSlice = createSlice({
         state.cocktails = state.cocktails.filter((cocktail) => cocktail.id !== action.payload.id);
       })
       .addCase(deleteCocktail.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteCocktailAdmin.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.cocktails = state.cocktails.filter((cocktail) => {
+          console.log(cocktail.id !== +action.payload.id);
+          return cocktail.id !== +action.payload.id
+        });
+      })
+      .addCase(deleteCocktailAdmin.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(cocktailUpdate.fulfilled, (state, action) => {
