@@ -22,6 +22,21 @@ module.exports = {
       {
         title: 'Ягодный',
       },
+      {
+        title: 'Цитрусовы',
+      },
+      {
+        title: 'Мятный',
+      },
+      {
+        title: 'Сладкий',
+      },
+      {
+        title: 'Сливочный',
+      },
+      {
+        title: 'Кофейный',
+      },
     ];
 
     const features = featuresData.map((feature) => ({
