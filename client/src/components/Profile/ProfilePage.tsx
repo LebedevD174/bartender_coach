@@ -17,7 +17,7 @@ function ProfilePage(): JSX.Element {
   };
 
   return (
-    <div className="ProfilePage">
+    <div className='ProfilePage'>
       <MovingSquares />
       <ProfileInfo />
       <button className="btn-create-cocktail" onClick={() => setShowEditForm(true)}>
