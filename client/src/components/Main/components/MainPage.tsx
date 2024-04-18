@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import CocktailPopular from '../../Cocktails/components/cocktailPopular';
 import DrinksPopular from '../../Drinks/drinksPopular';
