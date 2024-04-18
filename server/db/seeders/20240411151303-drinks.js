@@ -45,7 +45,6 @@ module.exports = {
         description: 'Для производства сока яблоки пускают под пресс, затем фильтруют и разливают сок по бутылкам.',
         category_id: 1,
         img: '/img/Apple juice-Medium.png'
-
       },
       {
         title: 'Лаймовый сок',
