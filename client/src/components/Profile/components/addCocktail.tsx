@@ -2,12 +2,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import type { RootState} from '../../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
 import type { User } from '../../Auth/types/User';
 import { addCocktail } from '../../Cocktails/cocktailsSlice';
+import type { Feature } from '../../Cocktails/features/types/features';
+import { loadFeatures } from '../../Cocktails/features/featuresSlice';
 
 function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): JSX.Element {
+  const dispatch = useAppDispatch();
+ const features: Feature[] = useAppSelector((store: RootState) => store.features.features);
   const [title, setTitle] = useState<string>('');
   const [img, setImg] = useState<File | null>(null);
   const [description, setDescription] = useState<string>('');
@@ -16,7 +21,11 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
 
   const user: User | undefined = useAppSelector((store) => store.auth.user);
 
-  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (features) {
+      dispatch(loadFeatures()).catch(console.log);
+    }
+ }, [dispatch, features.length]);
 
   const addCocktailForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -70,8 +79,8 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
           >
             <option hidden>Выберите крепость</option>
             <option value={1}>Безалкогольные</option>
-            <option value={2}>Крепкие</option>
-            <option value={3}>Слабоалкогольные</option>
+            <option value={2}>Слабоалкогольные</option>
+            <option value={3}>Крепкие</option>
           </select>
         </div>
         <div>
@@ -82,12 +91,12 @@ function AddCardCocktail({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
             onChange={(e) => setFeature(e.target.value)}
           >
             <option hidden>Выберите вкус</option>
-            <option value={1}>Горький</option>
-            <option value={2}>Кислый</option>
-            <option value={3}>Острый</option>
-            <option value={4}>Ореховый</option>
-            <option value={5}>Цветочный</option>
-            <option value={6}>Ягодный</option>
+              <option value={0}>Все вкусы</option>
+              {features.map((feature) => (
+                <option key={feature.id} value={feature.id}>
+                 {feature.title}
+                </option>
+              ))}
           </select>
         </div>
         <div>

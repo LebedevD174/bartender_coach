@@ -10,8 +10,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable, Draggable, type DropResult, DroppableProvided, DraggableProvided } from 'react-beautiful-dnd';
 import { shallowEqual as equal } from 'shallow-equal'; 
-import type { RootState } from '../../app/redux/store';
-import { useAppSelector } from '../../app/redux/store';
 import type { CocktailFormula, Formula } from '../Cocktails/types/cocktail';
 
 function CoachWindow({
@@ -21,8 +19,6 @@ function CoachWindow({
   cocktail: CocktailFormula | null;
   setCocktail: Dispatch<SetStateAction<CocktailFormula | null>>;
 }): JSX.Element {
-  const user = useAppSelector((store: RootState) => store.auth.user);
-  const profile = useAppSelector((store: RootState) => store.profile.profile);
   const [formulas, setFormulas] = useState<Formula[]>(
     cocktail ? cocktail.Formulas.toSorted(() => Math.random() - 0.5) : [],
    );
@@ -115,106 +111,110 @@ function CoachWindow({
 
   return (
     <>
-      <div>{profile?.name}</div>
-      <div>{user?.login}</div>
       <div className="titleCocktailBtn">{cocktail?.title}</div>
-      <div className="allContainerFormula">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided: DroppableProvided) => (
-              <div
-                className="containerCardFormula"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {formulas.map((formula: Formula, index: number) => (
-                  <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
-                    {(provided: DraggableProvided) => (
-                      <div
-                        className="cardFormula"
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        {formula.order && <div>{formula.order}</div>}
-                        {formula.Barware && <div>{formula.Barware?.title}</div>}
-                        {formula.Drink && (
-                          <div>
-                            {formula.Drink?.title}: {formula.drinks_volume}мл
-                          </div>
-                        )}
-                        {formula.Ingredient && (
-                          <div>
-                            {formula.Ingredient?.title}: {formula.ingredient_volume}{' '}
-                            {formula.Ingredient?.measure}
-                          </div>
-                        )}
-                        {formula.Tech && <div>{formula.Tech?.title}</div>}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-          <Droppable droppableId="newDroppable">
-            {(provided: DroppableProvided) => (
-              <div
-                className="newContainerCardFormula"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                style={{ backgroundColor: 'lightgrey', padding: '10px', borderRadius: '5px' }}
-              >
-                <h3>Коктейль</h3>
-                {newFormulas.map((formula: Formula, index: number) => (
-                  <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
-                    {(provided: DraggableProvided) => (
-                      <div
-                        className="cardFormula"
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={{
-                          color: 'black',
-                          margin: '5px 0',
-                          padding: '5px',
-                          border: '1px solid #ccc',
-                          borderRadius: '5px',
-                        }}
-                      >
-                        {/* Отображение информации о формуле */}
-                        {formula.order && <div>{formula.order}</div>}
-                        {formula.Barware && <div>{formula.Barware?.title}</div>}
-                        {formula.Drink && (
-                          <div>
-                            {formula.Drink?.title}: {formula.drinks_volume}мл
-                          </div>
-                        )}
-                        {formula.Ingredient && (
-                          <div>
-                            {formula.Ingredient?.title}: {formula.ingredient_volume}{' '}
-                            {formula.Ingredient?.measure}
-                          </div>
-                        )}
-                        {formula.Tech && <div>{formula.Tech?.title}</div>}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
-      <div>
-        {result === true && (
-          <button className="btnClose" onClick={closeCoach}>
-            Завершить
+      <button className="titleCocktailBtn" onClick={closeCoach}>
+            Назад
           </button>
-        )}
-        {win === true && <div className="cool">Успех!</div>}
+      {result !== true && 
+      <div className="allContainerFormula">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="droppable">
+          {(provided: DroppableProvided) => (
+            <div
+              className="containerCardFormula"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {formulas.map((formula: Formula, index: number) => (
+                <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
+                  {(provided: DraggableProvided) => (
+                    <div
+                      className="cardFormula"
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      {/* {formula.order && <div>{formula.order}</div>} */}
+                      {formula.Barware && <div style={{height:'100px'}}><img src={formula.Barware?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Barware && <div>{formula.Barware?.title}</div>}
+                      {formula.Drink && <div style={{height:'100px'}}><img src={formula.Drink?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Drink && (
+                        <div>
+                          {formula.Drink?.title}: {formula.drinks_volume}мл
+                        </div>
+                      )}
+                      {formula.Ingredient && <div style={{height:'100px'}}><img src={formula.Ingredient?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Ingredient && (
+                        <div>
+                          {formula.Ingredient?.title}: {formula.ingredient_volume}{' '}
+                          {formula.Ingredient?.measure}
+                        </div>
+                      )}
+                      {formula.Tech && <div>{formula.Tech?.title}</div>}
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+        <Droppable droppableId="newDroppable">
+          {(provided: DroppableProvided) => (
+            <div
+              className="newContainerCardFormula"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              style={{ backgroundColor: 'lightgrey', padding: '10px', borderRadius: '5px' }}
+            >
+              <h3>Коктейль</h3>
+              {newFormulas.map((formula: Formula, index: number) => (
+                <Draggable key={formula.id} draggableId={`draggable-${formula.id}`} index={index}>
+                  {(provided: DraggableProvided) => (
+                    <div
+                      className="cardFormula"
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      style={{
+                        color: 'black',
+                        margin: '5px 0',
+                        padding: '5px',
+                        border: '1px solid #ccc',
+                        borderRadius: '5px',
+                      }}
+                    >
+                      {/* Отображение информации о формуле */}
+                      {/* {formula.order && <div>{formula.order}</div>} */}
+                      {formula.Barware && <div style={{height:'100px'}}><img src={formula.Barware?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Barware && <div>{formula.Barware?.title}</div>}
+                      {formula.Drink && <div style={{height:'100px'}}><img src={formula.Drink?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Drink && (
+                        <div>
+                          {formula.Drink?.title}: {formula.drinks_volume}мл
+                        </div>
+                      )}
+                      {formula.Ingredient && <div style={{height:'100px'}}><img src={formula.Ingredient?.img} alt="" style={{height:'100px'}}/></div>}
+                      {formula.Ingredient && (
+                        <div>
+                          {formula.Ingredient?.title}: {formula.ingredient_volume}{' '}
+                          {formula.Ingredient?.measure}
+                        </div>
+                      )}
+                      {formula.Tech && <div>{formula.Tech?.title}</div>}
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
+      }
+      <div>
+      {win === true && <div className="cool">Успех!</div>}
         {win === false && (
           <>
             <div className="lost">Вы проиграли</div>
@@ -222,6 +222,11 @@ function CoachWindow({
               Начать заново
             </button>
           </>
+        )}
+        {result === true && (
+          <button className="btnClose" onClick={closeCoach}>
+            Завершить
+          </button>
         )}
       </div>
     </>

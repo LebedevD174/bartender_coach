@@ -152,7 +152,7 @@ function FormulaStep({
           <span>{ingredients.find((el) => el.id === input.ingredient_id)?.measure}</span>
         </div>
       )}
-      <button className='btn-fix' onClick={fixChange}>Зафиксировать</button>
+      <button className='btn-fix' onClick={fixChange}>+</button>
     </div>
   );
 }
