@@ -102,9 +102,9 @@
 
 .formAddCocktail input {
   border-radius: 0.2rem;
-  font-size: 1.5rem;
-  padding: 1rem;
-  margin: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
   border: 1.5px solid #ffbe63;
   background-color: #89653223;
   color: #fcdaaa;
@@ -113,15 +113,35 @@
   font-family: 'Montserrat Alternates', sans-serif;
   border-radius: 0.2rem;
   width: 50%;
-  font-size: 1.5rem;
+  font-size: 1rem;
   background-color: #faddb47c;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
   border: 1.5px solid #ffbe63;
 }
 
+.btn-update-cocktails,
+.btn-delete-cocktails {
+  border-radius: 0.1rem;
+  font-size: 0.7vw;
+  background-color: #000000e3;
+  padding: 0.5rem;
+  color: #fcdaaa;
+  font-weight: 400;
+  margin: 0.2vw;
+  border: 0.15vw solid #ffbe63;
+}
+
+.btn-update-cocktails:hover,
+.btn-delete-cocktails:hover {
+  color: #1b1308;
+  background-color: #ffbe63;
+  border: 0.15vw solid #3d2d17;
+}
+
 .formAddCocktail label {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  color: #fcdaaa;
 }
 
 .AddCardCocktail {

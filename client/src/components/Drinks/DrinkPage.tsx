@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from '../../app/redux/store';
 import { loadDrinks } from './drinksSlice';
 
 function DrinkPage(): JSX.Element {
-
   const { drinkId } = useParams<DrinkParams>();
   const dispatch = useAppDispatch();
   const drinks: Drink[] = useAppSelector((store) => store.drinks.drinks);
@@ -16,21 +15,31 @@ function DrinkPage(): JSX.Element {
   const [drink, setDrink] = useState<Drink | null>(null);
 
   useEffect(() => {
-    dispatch(loadDrinks())
-      .then(() => {
-        const id = Number(drinkId);
-        const foundDrink = drinks.find((drink) => drink.id === id);
-        setDrink(foundDrink || null);
-      })
-      .catch(console.error);
-  }, [dispatch, drinkId, drinks]);
+    dispatch(loadDrinks()).catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    if (drinks) {
+      const id = Number(drinkId);
+      const foundDrink = drinks.find((drink) => drink.id === id);
+      setDrink(foundDrink || null);
+    }
+  }, [drinks]);
+
   return (
-    <div className="DrinkItem" key={drink?.id}>
-      <p>{drink?.title}</p>
-      <img src={drink?.img} alt={drink?.title} />
-      <p>{drink?.category_id}</p>
-      <p>{drink?.description}</p>
-      <button onClick={() => navigate(-1)}>Назад</button>
+    <div className="pageCard" key={drink?.id}>
+      <div className="cocktailCardPage">
+        <h1>{drink?.title}</h1>
+        <div className="allCardInfo">
+          <img src={drink?.img} alt={drink?.title} />
+          <div className="infoCard">
+            <p className='descriptionCard'>{drink?.description}</p>
+            <button className="btn-back" onClick={() => navigate(-1)}>
+              <p>Назад</p>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

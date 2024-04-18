@@ -21,26 +21,28 @@ function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
     if (deleteId !== null) {
       if (user && user.id) {
         dispatch(deleteCocktail({ id: deleteId, user_id: user.id }));
-      } 
+      }
     }
- }, [deleteId, user?.id]);
+  }, [deleteId, user?.id]);
   return (
     <div className="card_cocktail" key={cocktail.id}>
       <img src={cocktail.img} alt={cocktail.title} />
       <p className="cocktail_title">{cocktail.title}</p>
-      <button
-            className="btn-update-profile"
-            type="button"
-            onClick={() => setShowEditForm(true)}
-          >
-            <p>Изменить данные</p>
-          </button>
-      <button className="btn-delete" onClick={() => setDeleteId(+cocktail.id)}>
-        Удалить
-      </button>
+      <div>
+        <button
+          className="btn-update-cocktails"
+          type="button"
+          onClick={() => setShowEditForm(true)}
+        >
+          <p>Изменить</p>
+        </button>
+        <button className="btn-delete-cocktails" onClick={() => setDeleteId(+cocktail.id)}>
+          Удалить
+        </button>
+      </div>
       {showEditForm && (
         <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
-          <CocktailEditForm cocktailN = {cocktail} onSubmitSuccess={handleFormSubmit} />
+          <CocktailEditForm cocktailN={cocktail} onSubmitSuccess={handleFormSubmit} />
         </Modal>
       )}
     </div>

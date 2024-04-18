@@ -2,27 +2,30 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 
-function Modal({ children, isOpen, onClose }: { children: React.ReactNode; isOpen: boolean; onClose: () => void }) : JSX.Element | null {
+function Modal({
+  children,
+  isOpen,
+  onClose,
+}: {
+  children: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+}): JSX.Element | null {
   if (!isOpen) {
-     return null;
+    return null;
   }
- 
+
   return (
-     <div style={{
-       position: 'fixed',
-       top: '50%',
-       left: '50%',
-       transform: 'translate(-50%, -50%)',
-       backgroundColor: '#fff',
-       padding: '20px',
-       borderRadius: '10px',
-       zIndex: 1000,
-       boxShadow: '0 0 10px rgba(0, 0, 0, 0.25)',
-     }}>
-       <div>{children}</div>
-       <button onClick={onClose}>Закрыть</button>
-     </div>
+    <>
+      <div className='blur'></div>
+      <div className="ModalWindow">
+        <div>{children}</div>
+        <button className="btn-back" onClick={onClose}>
+          <p>Закрыть</p>
+        </button>
+      </div>
+    </>
   );
- }
- 
- export default Modal;
+}
+
+export default Modal;
