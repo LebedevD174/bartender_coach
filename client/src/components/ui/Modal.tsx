@@ -19,7 +19,7 @@ function Modal({
     <>
       <div className='blur'></div>
       <div className="ModalWindow">
-        <div>{children}</div>
+        <div className='modalerror'>{children}</div>
         <button className="btn-back" onClick={onClose}>
           <p>Закрыть</p>
         </button>
