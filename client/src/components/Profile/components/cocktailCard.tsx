@@ -9,19 +9,15 @@ import Modal from '../../ui/Modal';
 import CocktailEditForm from './CocktailEditForm';
 import ModalPortal from '../../ui/Portal';
 
-function CocktailCard({ cocktail, onShowEditForm }: { cocktail: Cocktail }): JSX.Element {
+function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [showEditForm, setShowEditForm] = useState(false);
-  // const [showOverlay, setShowOverlay] = useState(false);
 
   const handleFormSubmit = (): void => {
     setShowEditForm(false);
-    // setShowOverlay(false);
   };
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.auth.user);
-console.log('123');
-
   useEffect(() => {
     if (deleteId !== null) {
       if (user && user.id) {
@@ -45,17 +41,13 @@ console.log('123');
           Удалить
         </button>
       </div>
-      {/* {showOverlay && <div className="overlay"></div>} */}
       {showEditForm && (
-<ModalPortal>
-
-<Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
-          <CocktailEditForm cocktailN={cocktail} onSubmitSuccess={handleFormSubmit} />
-        </Modal>
-</ModalPortal>
-        
-       
-      )}
+        <ModalPortal>
+            <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
+                <CocktailEditForm cocktailN={cocktail} onSubmitSuccess={handleFormSubmit} />
+            </Modal>
+        </ModalPortal>
+        )}
     </div>
   );
 }

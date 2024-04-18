@@ -14,7 +14,6 @@ function ProfilePage(): JSX.Element {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   
-
   const handleFormSubmit = (): void => {
     setShowEditForm(false);
     setShowOverlay(false);
@@ -23,10 +22,7 @@ function ProfilePage(): JSX.Element {
   return (
     <div className='ProfilePage'>
       <MovingSquares />
-      <ProfileInfo onShowEditForm={() => {
-        setShowEditForm(true);
-        setShowOverlay(true); 
-      }}  />
+      <ProfileInfo />
       <button className="btn-create-cocktail" onClick={() => {
         setShowEditForm(true);
         setShowOverlay(true); 
