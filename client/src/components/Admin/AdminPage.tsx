@@ -11,9 +11,6 @@ function AdminPage(): JSX.Element {
   useEffect(() => {
     setCocktails(cocktailsAll.filter((el) => el.status === false));
   }, []);
-  useEffect(() => {
-    setCocktails([...cocktailsAll].filter((el) => el.status === false));
-  }, [cocktailsAll]);
   return (
     <div className='PageModeration'>
       <h2 className="moderationTitle">Коктейли для обработки</h2>
