@@ -20,7 +20,7 @@
 }
 
 .image-container img {
-  width: 100%; /* Ширина изображения */
+  width: 100%; 
   height: auto;
 }
 
@@ -33,6 +33,8 @@
   margin: 0 2rem;
   width: 30vw;
 }
+
+.card_drink img,
 .card_cocktail img {
   width: 90%;
   height: 80%;
