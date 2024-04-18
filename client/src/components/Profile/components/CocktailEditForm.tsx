@@ -9,14 +9,12 @@
 import React, { useEffect, useState } from 'react';
 import type { RootState} from '../../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
-import type { User } from '../../Auth/types/User';
 import type { Cocktail } from '../../Cocktails/types/cocktail';
 import { cocktailUpdate } from '../../Cocktails/cocktailsSlice';
 
 function CocktailEditForm({ onSubmitSuccess, cocktailN}: { onSubmitSuccess: () => void, cocktailN:Cocktail  }):JSX.Element {
 
  const cocktail: Cocktail | undefined = useAppSelector((store: RootState) => store.cocktails.cocktail);
- const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
  
  const [title, setTitle] = useState(cocktail ? cocktail.title : cocktailN.title);
  const [description, setDescription] = useState(cocktail ? cocktail.description : '');
@@ -39,7 +37,7 @@ function CocktailEditForm({ onSubmitSuccess, cocktailN}: { onSubmitSuccess: () =
   if (img) {
     data.append('img', img); 
   }
-  data.append('profileId', user?.id.toString() || '');
+  data.append('cocktailId', cocktailN.id.toString());
 
 
   dispatch(cocktailUpdate(data))

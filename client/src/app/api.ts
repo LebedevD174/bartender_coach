@@ -143,7 +143,7 @@ export const fetchUpdateCocktail = async (
   cocktail: FormData,
 ): Promise<{ message: string; cocktail: Cocktail }> => {
   const response: AxiosResponse<{ message: string; cocktail: Cocktail }> = await axios.put(
-    `/api/cocktails/${cocktail.get('profileId')}`, cocktail);
+    `/api/cocktails/${cocktail.get('cocktailId')}`, cocktail);
   if (response.data.message === 'success') {
     return response.data
   }
