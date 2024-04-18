@@ -42,6 +42,9 @@
   border: 0.1vw solid #ffbe63;
   border-radius: 0.5rem;
 }
+
+.btnRestart,
+.btnClose,
 .btn-back,
 .btn-update-profile,
 .btn-add-cocktail,

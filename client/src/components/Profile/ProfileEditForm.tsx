@@ -58,6 +58,7 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         <label className="title" htmlFor="img">
           Фотография:
         </label>
+        <br/>
         <input
           type="file"
           id="img"
@@ -73,12 +74,14 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         <label className="title" htmlFor="name">
           Имя:
         </label>
+        <br/>
         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
       <div>
         <label className="title" htmlFor="lastName">
           Фамилия:
         </label>
+        <br/>
         <input
           type="text"
           name="lastName"
@@ -90,12 +93,14 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
         <label className="title" htmlFor="age">
           Возраст:
         </label>
+        <br/>
         <input type="number" name="age" value={age} onChange={(e) => setAge(e.target.value)} />
       </div>
       <div className="phone">
         <label className="title" htmlFor="phoneNumber">
           Номер телефона:
         </label>
+        <br/>
         <input
           type="tel"
           name="phoneNumber"

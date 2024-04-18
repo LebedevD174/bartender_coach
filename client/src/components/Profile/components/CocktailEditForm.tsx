@@ -86,14 +86,13 @@ function CocktailEditForm({
         <label className="title" htmlFor="description">
           Описание:
         </label>
-        <textarea
+        <input
+        type="text"
           value={description}
           name="description"
-          placeholder='Введите описание'
+          placeholder="Введите описание"
           onChange={(e) => setDescription(e.target.value)}
-        >
-          Описание
-        </textarea>
+        />
       </div>
       <button className="btn-create-select edit" type="submit">
         Сохранить изменения
