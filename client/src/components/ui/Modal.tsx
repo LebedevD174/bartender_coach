@@ -14,8 +14,6 @@ function Modal({
  useEffect(() => {
     const modalRoot = document.getElementById('modal-root');
     const modalWindow = document.querySelector('.ModalWindow');
-    console.log(modalRoot);
-    console.log(modalWindow);
     
     if (modalRoot) {
       if (!isOpen) {
