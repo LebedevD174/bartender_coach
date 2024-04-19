@@ -9,7 +9,7 @@
 import React, { useEffect, useState } from 'react';
 import type { RootState } from '../../../app/redux/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux/store';
-import type { Cocktail } from '../../Cocktails/types/cocktail';
+import type { Cocktail, CocktailFormula } from '../../Cocktails/types/cocktail';
 import { cocktailUpdate } from '../../Cocktails/cocktailsSlice';
 
 function CocktailEditForm({
@@ -19,7 +19,7 @@ function CocktailEditForm({
   onSubmitSuccess: () => void;
   cocktailN: Cocktail;
 }): JSX.Element {
-  const cocktail: Cocktail | undefined = useAppSelector(
+  const cocktail: CocktailFormula | undefined = useAppSelector(
     (store: RootState) => store.cocktails.cocktail,
   );
 
