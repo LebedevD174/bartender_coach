@@ -146,7 +146,7 @@ function FormulaStep({
             type="number"
             id="ingredients_volume"
             value={input.ingredient_volume}
-            onChange={(e) => setInput((prev) => ({ ...prev, ingredients_volume: +e.target.value }))}
+            onChange={(e) => setInput((prev) => ({ ...prev, ingredient_volume: +e.target.value }))}
             disabled={isFormDisabled}
           />
           <span>{ingredients.find((el) => el.id === input.ingredient_id)?.measure}</span>

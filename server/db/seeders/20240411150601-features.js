@@ -23,7 +23,7 @@ module.exports = {
         title: 'Ягодный',
       },
       {
-        title: 'Цитрусовы',
+        title: 'Цитрусовый',
       },
       {
         title: 'Мятный',
