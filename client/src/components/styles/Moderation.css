@@ -15,9 +15,9 @@
   margin: 2rem;
 }
 
-.PageModeration .container .card_cocktail img{
-height: 80%;
-margin: 0.2vw;
+.PageModeration .container .card_cocktail img {
+  height: 80%;
+  margin: 0.2vw;
 }
 
 .image-container {
@@ -25,7 +25,7 @@ margin: 0.2vw;
 }
 
 .image-container img {
-  width: 100%; 
+  width: 100%;
   height: auto;
 }
 
@@ -58,7 +58,7 @@ margin: 0.2vw;
   font-size: 1.2rem;
   margin: 1rem 0;
   color: #ffe3bc;
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
   word-spacing: 0.3rem;
   letter-spacing: 0.2rem;
 }
@@ -88,11 +88,12 @@ margin: 0.2vw;
 #drink_id,
 #tech_id,
 #ingredient_id,
-#drinks_volume {
+#drinks_volume,
+#ingredients_volume {
   border-radius: 0.2rem;
   background-color: #fdd0919f;
   border: 1.5px solid #ffbe63;
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
   width: 70%;
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
   padding: 0.5rem;
@@ -103,7 +104,7 @@ margin: 0.2vw;
 .formulaModeration label {
   font-size: 1.2rem;
   color: #ce994f;
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
 
 .formulaModeration {
@@ -113,16 +114,14 @@ margin: 0.2vw;
 .add,
 .edit {
   font-size: 1vw;
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
-
 
 .title {
   font-size: 1rem;
   color: #fcdaaa;
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
-
 
 .editProfile {
   display: flex;
@@ -133,7 +132,7 @@ margin: 0.2vw;
   border-radius: 0.2rem;
   font-size: 1rem;
   padding: 0.5rem;
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
   margin: 0.5rem;
   border: 1.5px solid #ffbe63;
   background-color: #89653223;
