@@ -9,7 +9,7 @@ module.exports = {
         lastName: 'Башкатов',
         age: 33,
         phoneNumber: null,
-        img: 'https://fikiwiki.com/uploads/posts/2022-02/1644852387_2-fikiwiki-com-p-kartinki-admina-2.jpg',
+        img: '/img/admin.jpg',
         isAdmin: true,
       },
       {
