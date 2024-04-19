@@ -144,13 +144,13 @@
   color: #fcdaaa;
   margin: 1rem;
   font-weight: 300;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Gatcby Two';
 }
 
 .inputBx button {
   border-radius: 1rem;
   font-size: 1.5rem;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Gatcby Two';
   background-color: #eec67d00;
   padding: 0.5rem;
   color: #fcdaaa;
@@ -171,7 +171,7 @@
 
 .links p {
   text-decoration: none;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Gatcby Two';
   color: #fcdaaa;
   font-weight: 200;
 }

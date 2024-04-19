@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family:'Gatcby Two';
 }
 
 .overlay {
@@ -47,6 +47,7 @@
 
 .infoProfile {
   margin-right: 3rem;
+  font-family: 'Gerhaus';
   display: flex;
   flex-direction: column;
   border: 0.1vw solid #ffbe63;
@@ -74,7 +75,9 @@
 .btn-add-cocktail p,
 .btn-update-profile p {
   border-radius: 0.1rem;
+  font-family: 'Gatcby One';
   padding: 0.3vw;
+  font-size: 2vw;
   border: 0.1vw solid #ffbe63;
 }
 .btn-back:hover,
@@ -116,6 +119,7 @@
 .formUpdateCocktail input,
 .formAddCocktail input {
   border-radius: 0.2rem;
+  font-family: 'Gerhaus';
   font-size: 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
@@ -124,7 +128,7 @@
   color: #fcdaaa;
 }
 .categorySelect {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Gerhaus';
   border-radius: 0.2rem;
   width: 50%;
   font-size: 1rem;
