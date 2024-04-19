@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function Modal({
  children,
@@ -11,26 +11,6 @@ function Modal({
  isOpen: boolean;
  onClose: () => void;
 }): JSX.Element | null {
- useEffect(() => {
-    const modalRoot = document.getElementById('modal-root');
-    const modalWindow = document.querySelector('.ModalWindow');
-    
-    if (modalRoot) {
-      if (!isOpen) {
-        modalRoot.style.zIndex = "-1"; 
-      } else {
-        modalRoot.style.zIndex = '1000'; 
-      }
-    }
-    if (modalWindow) {
-      if (!isOpen) {
-        modalWindow.style.zIndex = "-1"; 
-      } else {
-        modalWindow.style.zIndex = '1000'; 
-      }
-    }
-    
- }, [isOpen]); 
 
  if (!isOpen) {
     return null;

@@ -6,6 +6,7 @@ import type { RootState } from '../../app/redux/store';
 import { useAppSelector } from '../../app/redux/store';
 import ProfileEditForm from './ProfileEditForm';
 import Modal from '../ui/Modal';
+import ModalPortal from '../ui/Portal';
 
 function ProfileInfo(): JSX.Element {
   const user: User | undefined = useAppSelector((store: RootState) => store.auth.user);
@@ -85,9 +86,11 @@ function ProfileInfo(): JSX.Element {
       </div>
 
       {showEditForm && (
+        <ModalPortal>
         <Modal isOpen={showEditForm} onClose={() => setShowEditForm(false)}>
           <ProfileEditForm onSubmitSuccess={handleFormSubmit} />
         </Modal>
+        </ModalPortal>
       )}
     </div>
   );
