@@ -30,7 +30,7 @@
 }
 
 .infoCard {
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   display: flex;
   flex-direction: column;
   color: #eee3ca;

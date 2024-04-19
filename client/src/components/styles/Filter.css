@@ -11,7 +11,7 @@
   justify-content: center;
   position: relative;
   margin: 3rem;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   width: 85%;
   height: 5rem;
   border-bottom: 1px solid #db9b41c9;
@@ -32,9 +32,9 @@
 
 .FilterCocktails select,
 .FilterDrinks select {
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   border-radius: 0.2rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.1vw;
   font-weight: 500;
   margin: 1rem;
@@ -46,7 +46,7 @@
 .FilterCocktails input {
   border-radius: 0.2rem;
   font-size: 1.2rem;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   letter-spacing: 0.2vw;
   padding: 0.5rem;
   margin: 0.5rem;

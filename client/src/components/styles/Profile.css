@@ -47,7 +47,7 @@
 
 .infoProfile {
   margin-right: 3rem;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   display: flex;
   flex-direction: column;
   border: 0.1vw solid #ffbe63;
@@ -119,7 +119,7 @@
 .formUpdateCocktail input,
 .formAddCocktail input {
   border-radius: 0.2rem;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   font-size: 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
@@ -128,7 +128,7 @@
   color: #fcdaaa;
 }
 .categorySelect {
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   border-radius: 0.2rem;
   width: 50%;
   font-size: 1rem;

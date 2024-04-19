@@ -58,6 +58,7 @@ margin: 0.2vw;
   font-size: 1.2rem;
   margin: 1rem 0;
   color: #ffe3bc;
+  font-family: "Philosopher", sans-serif;
   word-spacing: 0.3rem;
   letter-spacing: 0.2rem;
 }
@@ -91,17 +92,18 @@ margin: 0.2vw;
   border-radius: 0.2rem;
   background-color: #fdd0919f;
   border: 1.5px solid #ffbe63;
+  font-family: "Philosopher", sans-serif;
   width: 70%;
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
   padding: 0.5rem;
-  font-size: 1rem;
-  font-family: 'Gatcby Two';
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
 .formulaModeration label {
-  font-size: 1rem;
-  color: #896532;
+  font-size: 1.2rem;
+  color: #ce994f;
+  font-family: "Philosopher", sans-serif;
 }
 
 .formulaModeration {
@@ -111,14 +113,14 @@ margin: 0.2vw;
 .add,
 .edit {
   font-size: 1vw;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
 }
 
 
 .title {
   font-size: 1rem;
   color: #fcdaaa;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
 }
 
 
@@ -131,7 +133,7 @@ margin: 0.2vw;
   border-radius: 0.2rem;
   font-size: 1rem;
   padding: 0.5rem;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   margin: 0.5rem;
   border: 1.5px solid #ffbe63;
   background-color: #89653223;

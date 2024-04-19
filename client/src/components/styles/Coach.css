@@ -28,7 +28,7 @@
 }
 
 .btnCocktailCoach {
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   background-color: #271d11b2;
   border-radius: 0.2rem;
   font-size: 1.8vw;
@@ -62,7 +62,7 @@
   align-items: center;
   flex-direction: column;
   padding: 1vw;
-  font-family: 'Gerhaus';
+  font-family: "Philosopher", sans-serif;
   align-items: center;
   background-color: #46311475;
   border-radius: 0.5rem;
