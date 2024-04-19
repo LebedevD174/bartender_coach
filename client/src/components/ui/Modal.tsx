@@ -14,12 +14,21 @@ function Modal({
  useEffect(() => {
     const modalRoot = document.getElementById('modal-root');
     const modalWindow = document.querySelector('.ModalWindow');
+    console.log(modalRoot);
+    console.log(modalWindow);
     
     if (modalRoot) {
       if (!isOpen) {
         modalRoot.style.zIndex = "-1"; 
       } else {
         modalRoot.style.zIndex = '1000'; 
+      }
+    }
+    if (modalWindow) {
+      if (!isOpen) {
+        modalWindow.style.zIndex = "-1"; 
+      } else {
+        modalWindow.style.zIndex = '1000'; 
       }
     }
     

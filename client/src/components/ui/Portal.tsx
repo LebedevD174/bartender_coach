@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'; 
 import ReactDOM from 'react-dom';
 
 const ModalPortal = ({ children }: { children: ReactNode }) => {

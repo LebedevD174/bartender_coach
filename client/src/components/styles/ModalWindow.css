@@ -13,7 +13,7 @@
   margin-bottom: 10rem;
 }
 
-.modal-root {
+/* .modal-root {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -21,9 +21,9 @@
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-}
+} */
 
-#modal-root {
+/* #modal-root {
   position: fixed; 
   top: 0;
   left: 0;
@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
- }
+ } */
 
 
 
