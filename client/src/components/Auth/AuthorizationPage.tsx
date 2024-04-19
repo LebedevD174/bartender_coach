@@ -59,7 +59,7 @@ function AuthorizationPage(): JSX.Element {
               <input
                 type="text"
                 name="email"
-                placeholder="email"
+                placeholder="email или логин"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
