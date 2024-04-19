@@ -4,7 +4,7 @@
 const bcrypt = require('bcrypt');
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const hash = await bcrypt.hash('123', 10);
+    const hash = await bcrypt.hash('asdF12315', 10);
     const usersData = [
       {
         login: 'admin',

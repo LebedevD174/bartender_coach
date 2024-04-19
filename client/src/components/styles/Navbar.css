@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch+Pop&family=Underdog&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Rubik+Glitch+Pop&family=Underdog&family=Zen+Tokyo+Zoo&display=swap');
 body {
   background-color: #151515;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Gatcby Two';
+  letter-spacing: 2px;
 }
 
 .top_navbar {
@@ -15,7 +16,7 @@ body {
 }
 
 .top_navbar span {
-  font-size: 1.5vw;
+  font-size: 2vw;
   background-image: linear-gradient(to right, #ffbe63, #896532);
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -30,4 +31,19 @@ span:hover {
 
 .logo {
   width: 7vw;
+}
+
+@font-face {
+  font-family: 'Gatcby One';
+  src: url('./fonts/Great Gatsby Two.ttf');
+}
+
+@font-face {
+  font-family: "Philosopher", sans-serif;
+  src: url('./fonts/Gerhaus.ttf');
+}
+
+@font-face {
+  font-family: "Philosopher", sans-serif;
+  src: url('./fonts/ReadexPro-Regular.ttf');
 }

@@ -35,7 +35,6 @@ router.post('/authorization', async (req, res) => {
       },
       attributes: ['id', 'email', 'login', 'password'],
     });
-    console.log(user, 1111111111111111111111);
     if (!user) { 
       res.status(400).json({ 
           message: 'Такого пользователя нет', 
@@ -85,17 +84,23 @@ router.post('/registration', async (req, res) => {
       return;
     }
     const invalidCharacters = /[@#$%^&*()-_+=|\\:;"'<,>.?/~]/;
+    console.log(login.trim().length === login.length ||
+    login.replace(' ', '').length === login.length ||
+    invalidCharacters.test(login));
     if (
       login.trim().length !== login.length ||
       login.replace(' ', '').length !== login.length ||
-      invalidCharacters.test(login)
+      !invalidCharacters.test(login)
     ) {
       res.status(400).json({
         message: 'Login не должен содержать пробелов или специальных символов',
       });
       return;
     }
-
+    console.log(password.trim().length !== password.length ||
+    password.replace(' ', '').length !== password.length ||
+    checkPassword.trim().length !== checkPassword.length ||
+    checkPassword.replace(' ', '').length !== checkPassword.length);
     if (
       password.trim().length !== password.length ||
       password.replace(' ', '').length !== password.length ||
