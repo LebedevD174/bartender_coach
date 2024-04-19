@@ -15,6 +15,11 @@
   margin: 2rem;
 }
 
+.PageModeration .container .card_cocktail img{
+height: 80%;
+margin: 0.2vw;
+}
+
 .image-container {
   width: 30%;
 }
@@ -53,6 +58,9 @@
   font-size: 1.2rem;
   margin: 1rem 0;
   color: #ffe3bc;
+  font-family: "Philosopher", sans-serif;
+  word-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
 }
 .btn-add-cocktail,
 .btn-create-select,
@@ -61,7 +69,7 @@
   border-radius: 0.2rem;
   background-color: #faddb4bb;
   border: 1.5px solid #ffbe63;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0.5rem;
   padding: 1rem;
   font-size: 1rem;
   font-weight: 500;
@@ -84,17 +92,18 @@
   border-radius: 0.2rem;
   background-color: #fdd0919f;
   border: 1.5px solid #ffbe63;
+  font-family: "Philosopher", sans-serif;
   width: 70%;
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
   padding: 0.5rem;
-  font-size: 1rem;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
 .formulaModeration label {
-  font-size: 1rem;
-  color: #896532;
+  font-size: 1.2rem;
+  color: #ce994f;
+  font-family: "Philosopher", sans-serif;
 }
 
 .formulaModeration {
@@ -104,12 +113,14 @@
 .add,
 .edit {
   font-size: 1vw;
+  font-family: "Philosopher", sans-serif;
 }
 
 
 .title {
   font-size: 1rem;
   color: #fcdaaa;
+  font-family: "Philosopher", sans-serif;
 }
 
 
@@ -122,6 +133,7 @@
   border-radius: 0.2rem;
   font-size: 1rem;
   padding: 0.5rem;
+  font-family: "Philosopher", sans-serif;
   margin: 0.5rem;
   border: 1.5px solid #ffbe63;
   background-color: #89653223;
