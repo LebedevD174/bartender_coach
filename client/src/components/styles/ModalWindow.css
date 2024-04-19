@@ -13,18 +13,6 @@
   margin-bottom: 10rem;
 }
 
-.modal-root {
-  z-index: 3000;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-}
-
-
 
 .blur {
   position: fixed;
