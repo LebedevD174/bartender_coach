@@ -28,7 +28,7 @@ function ProfileInfo(): JSX.Element {
         ) : (
           <div>
             <img
-              src="https://avatars.mds.yandex.net/i?id=73b4bfb589b8a8fe988fb3300fea843566ed6de5-12569748-images-thumbs&n=13"
+              src="/img/profile.jpg "
               alt=""
             />
           </div>

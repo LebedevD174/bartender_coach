@@ -245,7 +245,7 @@ function CoachWindow({
       )}
       <div className="chert">
         {win === true && <div className="cool">Успех!</div>}
-        <div className='backchert'>
+        <div className="backchert">
           {win === false && (
             <>
               <div className="lost">Вы проиграли</div>
@@ -261,8 +261,8 @@ function CoachWindow({
           )}
         </div>
       </div>
-      <button className="titleCocktailBtn" onClick={closeCoach}>
-        Назад
+      <button className="btn-back" onClick={closeCoach}>
+        <p>Назад</p>
       </button>
     </div>
   );

@@ -22,8 +22,10 @@
   flex-wrap: wrap;
   margin: 0 5rem;
 }
-
-
+.popular_drinks .container .card_drink,
+.popular_cocktail .container .card_cocktail {
+margin: 1.7rem;
+}
 
 .categoryPopular {
   font-size: 2.5vw;
@@ -40,5 +42,3 @@
   background-position: center;
   border-bottom: 1.5px solid #dbb864;
 }
-
-
