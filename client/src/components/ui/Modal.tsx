@@ -24,13 +24,6 @@ function Modal({
         modalRoot.style.zIndex = '1000'; 
       }
     }
-    if (modalWindow) {
-      if (!isOpen) {
-        modalWindow.style.zIndex = "-1"; 
-      } else {
-        modalWindow.style.zIndex = '1000'; 
-      }
-    }
     
  }, [isOpen]); 
 
