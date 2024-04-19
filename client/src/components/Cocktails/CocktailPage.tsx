@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import type { RootState } from '../../app/redux/store';
 import { useAppSelector, useAppDispatch } from '../../app/redux/store';
 import type { CocktailFormula, Formula } from './types/cocktail';
 import { loadCocktailsID } from './cocktailsSlice';
@@ -11,7 +12,7 @@ import { loadCocktailsID } from './cocktailsSlice';
 function CoctailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const formula: CocktailFormula | undefined = useAppSelector((store) => store.cocktails.cocktail);
+  const formula: CocktailFormula | undefined = useAppSelector((store: RootState) => store.cocktails.cocktail);
 
   const navigate = useNavigate();
   useEffect(() => {

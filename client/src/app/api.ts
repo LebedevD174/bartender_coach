@@ -6,7 +6,7 @@
 import axios,  { type AxiosResponse, type AxiosError } from 'axios';
 import type { UserWithoutId, User, UserAuth } from '../components/Auth/types/User';
 import type { Profile } from '../components/Profile/types/Profile';
-import type { Cocktail, CocktailFormula, Formula, FormulaNew} from '../components/Cocktails/types/cocktail';
+import type { CocktailFormula, Formula, FormulaNew} from '../components/Cocktails/types/cocktail';
 import type { Drink } from '../components/Drinks/types/drink';
 import type { Feature } from '../components/Cocktails/features/types/features';
 import type { Barware } from '../components/Barware/types/barware';
@@ -141,8 +141,8 @@ export const fetchCocktailDeleteAdmin = async (
 
 export const fetchUpdateCocktail = async (
   cocktail: FormData,
-): Promise<{ message: string; cocktail: Cocktail }> => {
-  const response: AxiosResponse<{ message: string; cocktail: Cocktail }> = await axios.put(
+): Promise<{ message: string; cocktail: CocktailFormula }> => {
+  const response: AxiosResponse<{ message: string; cocktail: CocktailFormula }> = await axios.put(
     `/api/cocktails/${cocktail.get('cocktailId')}`, cocktail);
   if (response.data.message === 'success') {
     return response.data
