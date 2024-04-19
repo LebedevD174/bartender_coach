@@ -105,7 +105,7 @@ function ProfileEditForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }): 
           type="tel"
           name="phoneNumber"
           id="phoneNumber"
-          value={'+7' + phoneNumber}
+          value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
