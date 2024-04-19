@@ -25,6 +25,7 @@ function CocktailCard({ cocktail }: { cocktail: Cocktail }): JSX.Element {
       }
     }
   }, [deleteId, user?.id]);
+
   return (
     <div className="card_cocktail" key={cocktail.id}>
       <img src={cocktail.img} alt={cocktail.title} />
